@@ -1,0 +1,122 @@
+package com.example.be.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+
+
+@Controller
+public class MailController {
+	@Autowired
+	private MailSender javaMailsender;
+	
+	public void setJavaMailsender(MailSender javaMailsender) {
+		this.javaMailsender = javaMailsender;
+	}
+	
+	@RequestMapping("/index")
+	public void index() {
+		
+	}
+	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping("/mailgo") public String mailPay() { String str="";
+	 * SimpleMailMessage msg = new SimpleMailMessage(); try {
+	 * msg.setFrom("rhddbgkqtlek@naver.com"); msg.setSubject("과금안내");
+	 * msg.setText("이번달 요금은 : "); msg.setTo("hisoy@me.com");
+	 * 
+	 * javaMailsender.send(msg);
+	 * 
+	 * } catch (Exception e) { System.out.println(e.getMessage()); } return str; }
+	 */
+	public static String createKey() {
+		StringBuffer key = new StringBuffer();
+		Random random = new Random();
+		
+		for(int i =0; i<10; i++) {
+			int index = random.nextInt(3);
+			
+			switch(index) {
+			case 0 :
+				key.append((char) ((int)(random.nextInt(26))+97));break;
+			case 1:
+				key.append((char)((int)(random.nextInt(26))+65));break;
+			case 2:
+				key.append((random.nextInt(10)));break;
+			}
+		}
+		System.out.println(key.toString());
+		return key.toString();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/mail.go1",method = RequestMethod.GET)
+	//@Scheduled(cron = "0 17 11 1 * * *")
+	public String joinmail(HttpServletRequest request) {
+		String r = "";
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		String keyCode = createKey();
+		String email=request.getParameter("email");
+		mailMessage.setSubject("BESHOP 회원가입 메일 인증번호입니다.");
+		mailMessage.setFrom("gofl854@naver.com");
+		
+		mailMessage.setText("인증번호 : "+keyCode+"를 홈페이지에서 입력해주세요");
+		mailMessage.setTo(email);
+		System.out.println(keyCode);
+		System.out.println(email);
+		 ModelAndView mav=new ModelAndView();
+		 mav.addObject("keyCode",keyCode);
+		
+		try {
+			javaMailsender.send(mailMessage);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println("ok");
+		return keyCode;
+	}
+	@RequestMapping(value = "/join_code.do{keyCode}",method = RequestMethod.POST)
+	public ModelAndView emailcode(HttpServletRequest request,HttpServletResponse response_equals) throws IOException {
+		String emailcode=request.getParameter("emailcode");
+		String keyCode = createKey();
+		ModelAndView mav=new ModelAndView();
+		System.out.println("인증?");
+		if(emailcode.equals(keyCode))
+		{
+			mav.addObject("keyCode",keyCode);
+			response_equals.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_equals = response_equals.getWriter();
+            out_equals.println("<script>alert('인증번호가 일치하였습니다.');</script>");
+            out_equals.flush();
+		}else if(emailcode != keyCode)
+		{
+			ModelAndView mav2=new ModelAndView();
+			
+			response_equals.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_equals = response_equals.getWriter();
+            out_equals.println("<script>alert('인증번호가 일치하지않습니다. 인증번호를 다시 입력해주세요.');</script>");
+            out_equals.println("<script>$('#emailcode').text('');</script>");
+            out_equals.flush();
+		}
+		
+		return mav;
+		
+	}
+	
+}
+

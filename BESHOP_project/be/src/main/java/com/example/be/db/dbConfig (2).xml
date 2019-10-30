@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties resource="com/bit/myBeShop/db/point.properties"/>
+  <typeAliases>
+  	<typeAlias type="com.bit.myBeShop.vo.ChargePointVo" alias="chargeVo"/>
+  	<typeAlias type="com.bit.myBeShop.vo.PayPointVo" alias="payVo"/>
+  	<typeAlias type="com.bit.myBeShop.vo.PointBalanceVo" alias="balanceVo"/>
+  </typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${pwd}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/bit/myBeShop/db/PointMapper.xml"/>
+  </mappers>
+</configuration>

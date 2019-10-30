@@ -1,0 +1,285 @@
+ body,
+        div,
+        main,
+        section,
+        article,
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .state-info {
+            //position: absolute;
+            left: 720px;
+        }
+        body
+        {
+           padding-left: 30px
+        }
+
+        .g_lank_total {
+
+            //position: absolute;
+            //left: 1080px;
+            margin-bottom: 20px;
+            margin-left: 30px;
+
+        }
+
+        div {
+            display: block;
+        }
+
+        .state-box {
+            width: 250px;
+            height: 231px;
+
+        }
+
+        .bar {
+            width: 250px;
+            height: 3px;
+            margin-bottom: 25px;
+            background: #00a8b3;
+            display: block;
+        }
+
+        .percent-rate {
+            width: 250px;
+            margin-bottom: 25px;
+        }
+
+        .total-amount {
+            width: 250px;
+            margin-bottom: 29px;
+        }
+
+        .total-suppoter {
+            width: 250px;
+
+        }
+
+        .btn-funding {
+            width: 250px;
+            height: 48px;
+            margin-bottom: 40px;
+            padding-top: 29px;
+
+        }
+
+        .btn_fund {
+            color: #fff;
+            background-color: #00a8b3;
+            border-color: #00a8b3;
+            text-align: center;
+            display: inline-block;
+            padding-top: .07em;
+            vertical-align: middle;
+            width: 250px;
+            height: 48px;
+            font-size: 17px;
+            border: 0;
+            
+
+        }
+
+        .btn-wrap {
+            width: 250px;
+            height: 48px;
+            margin-top: 10px;
+        }
+
+        .btn-wrap-flex {
+            width: 100%;
+            height: 38px;
+            margin-top: 10px;
+            margin-bottom:10px;
+            display: flex;
+            align-items: center;
+        }
+
+        #btn-like.btn_info_like {
+            width: 97px;
+            height: 38px;
+            margin-right: 6px;
+            background: #fff;
+            border: 1px solid #dadce0;
+            flex: 1;
+        }
+
+        #btn-share.btn_info_share {
+            width: 97px;
+            height: 38px;
+            background: #fff;
+            border: 1px solid #dadce0;
+            color: #4a4a4a;
+            flex: 1;
+        }
+
+        .state-info {
+            display: block;
+            float: left;
+            margin-left: 20px;
+
+        }
+
+        .state-video {
+            display: block;
+            float: left
+        }
+
+        .state-info .state-box p strong {
+            font-size: 24px;
+        }
+
+        .state-info.state-box p {
+            font-size: 15px;
+        }
+
+        .state-info .state-box p.remain-day {
+            font-size: 28px;
+            font-weight: 600;
+            color: #4a4a4a;
+        }
+
+        .g_main_fund .g_lank_section:before {
+            position: absolute;
+            top: -40px;
+            bottom: -40px;
+            left: 0;
+            background-color: #f0f2f5;
+            width: 1px;
+            content: "";
+        }
+
+        
+
+        .g_lank_title h1 {
+            line-height: 36px;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .g_lank_total {
+            display: block;
+            padding-left: 50px;
+        }
+
+        .g_lank_list {
+            width: 270px;
+            height: 394px;
+        }
+
+        .g_lank_listitem1 {
+            width: 270px;
+            height: 66px;
+            margin-bottom: 10px;
+        }
+
+        .listitem_content {
+            box-sizing: border-box;
+            position: relative;
+            padding-left: 20px;
+            float: left;
+            display: block;
+            cursor: pointer;
+
+
+        }
+        .recomanditem_content_per
+        {
+            color: #00a8b3;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .listitem_content_title {
+            margin-bottom: 3px;
+            overflow: hidden;
+            line-height: 20px;
+            font-size: 15px;
+            font-weight: 400;
+            word-break: break-all;
+            width: 100%;
+            text-overflow: ellipsis;
+        }
+
+        .listitem_box {
+            display: block;
+            vertical-align: baseline;
+            border-radius: 3px;
+            width: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
+
+        }
+
+        .listitem_content_subtag {
+            margin: 0;
+            padding: 0;
+            font-size: 13px;
+        }
+
+        .listitem_content_per {
+            display: inline-block;
+            margin-right: 6px;
+            color: #00a8b3;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .listitem_content_num {
+            line-height: 28px;
+            font-size: 21px;
+            font-weight: 700;
+            position: absolute;
+            letter-spacing: -0.3px;
+            float: left;
+            top: 0;
+            left: 0;
+
+        }
+
+        article {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        .state-video-img {
+            width: 500px;
+            height: 330px;
+            border: 1px solid black;
+           
+            
+        }
+
+        .state-video-title {
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+
+        .state-content {
+            
+            float: left;
+
+        }
+
+        .g_main_top {
+            display: inline-block;
+            float: left;
+        }
+
+        .g_lank_total {
+            display: block;
+            float: left;
+        }
+#g_section.section {
+  padding: 20px 0px;
+  margin: 20px 0px;
+    padding-bottom: 0px; 
+  
+  background-position: center;
+  background-repeat: no-repeat;
+    }

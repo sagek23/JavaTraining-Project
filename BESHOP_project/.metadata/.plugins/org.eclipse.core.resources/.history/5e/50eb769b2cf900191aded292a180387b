@@ -1,0 +1,45 @@
+package com.example.be.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.example.be.dao.UserDao;
+import com.example.be.vo.UserVo;
+
+@Controller
+public class UserController {
+	@Autowired
+	private UserDao dao;
+	
+	public void setDao(UserDao dao) {
+		this.dao = dao;
+	}
+	@RequestMapping("/hello")
+	public void hello()
+	{
+		
+	}
+	@RequestMapping(value = "/joinpage",method = RequestMethod.GET)
+	public void Joinget() 
+	{
+		
+	}
+	
+	@RequestMapping(value = "/joinpage",method = RequestMethod.POST)
+	public ModelAndView Join(UserVo v)
+	{
+		v.setAddr1("a");
+		System.out.println(v);
+		ModelAndView mav=new ModelAndView();
+		int re=dao.insert(v);
+		if(re==1)
+		{
+			mav=new ModelAndView("redirect:/hello.jsp");
+		}
+		return mav;
+		
+	}
+}

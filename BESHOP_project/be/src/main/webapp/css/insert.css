@@ -1,0 +1,86 @@
+
+#f_insert {
+    width: 460px;
+    margin: 0 auto;
+    clear: both;
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: 0 auto;
+    background-color: #f5f6f7;
+}
+
+p {
+    font-size: 13px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+#logo {
+    text-align: center;
+    font-size: 50px;
+    color: #00a8b3;
+    font-family: "나눔스퀘어";
+    font-weight: 1000;
+}
+
+input {
+    height: 40px;
+}
+
+
+#beuid, #pwd, #pwd_check, #uname {
+    width: 100%;
+}
+
+/* #pwd{background: url(image/m_icon_pass.png) top right no-repeat;} */
+#b_year, #b_mon, #phone1, #phone2{
+ width: 140px; 
+    margin-right: 8px;
+    text-align: right;
+}
+#b_day, #phone3{
+    width: 140px;
+    text-align: right;
+}
+
+#sex_f, #sex_m {
+    height: 10px;
+}
+
+#btn_phone {
+    width: 100%;
+    background-color: #00a8b3;
+    border: 0px;
+    font-size: 15px;
+    color: white;
+    margin-top: 10px;
+    transition: all 0.7s;
+}
+
+#btn_insert {
+    width: 100%;
+    margin-top: 50px;
+    background-color: #00a8b3;
+    border: 0px;
+    font-size: 15px;
+    color: white;
+    margin-top: 10px;
+    transition: all 0.7s;
+}
+#btn_phone:hover, #btn_insert:hover{
+    color: #555;
+    font-weight: bold;
+}
+
+#email {
+    width: 100%;
+}
+
+
+
+#sub_img01 {
+    
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="Join">
+  
+  <insert id="insert">
+  	insert into testuser values(#{beuid},
+								  	 #{upw},
+								  	 #{sex},
+								  	 #{birth},
+								  	 #{uname},SYSDATE,NULL,NULL,'01062683365','AA@NAVER.COM',sysdate,null,null,null)
+  	 <!-- insert into testuser values(#{beuid},
+								  	 #{upw},
+								  	 #{sex},
+								  	 #{birth},
+								  	 #{uname},
+								  	 sysdate,
+								  	 #{addr1},
+								  	 #{addr2},
+								  	 #{uphone},
+								  	 #{email},
+								  	 sysdate,
+								  	 ${pf1},
+								  	 ${pf2},
+								  	 ${pf3})  -->
+  	<!-- insert into testuser values(#{beuid},#{upw},${gender},'19980127',#{uname},sysdate,null,null,'01062683365',#{email},sysdate,${pf1},${pf2},${pf3}) -->
+  </insert>
+  </mapper>

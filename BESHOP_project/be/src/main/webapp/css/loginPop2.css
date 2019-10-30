@@ -1,0 +1,90 @@
+ *:focus { outline:none; }
+.loginPg{
+	border: 0.5px solid rgba(0, 0, 0, 0.2);;
+	width: 500px;
+	height: 700px;
+	margin: 0 auto;
+	margin-top: 130px;
+
+}
+.logoBox{
+	text-align: center;
+}
+.logo{
+	text-align: center;
+	width: 23s0px;
+	height: 100px;
+	margin-top: 70px;
+	margin-bottom: 20px;
+}
+.login{
+	text-align: center;
+}
+.idpwd{
+	width: 350px;
+	height: 50px;
+	margin-top: 10px;
+}
+.btnLogin{
+	width: 350px;
+	height: 50px;
+	margin-top: 10px;
+	background-color: #00a8b3;
+	font-family: 나눔스퀘어;
+	border: 1px solid #00a8b3;
+}
+.snsLogin{
+	margin-top: 40px;
+}
+.kakaoLogin{
+	width: 350px;
+	height: 50px;
+	margin-top: 10px;
+	font-family: 나눔스퀘어;
+	background-color: white;
+	border: 0.5px solid gray;
+}
+.naverLogin{
+	width: 350px;
+	height: 50px;
+	margin-top: 10px;
+	font-family: 나눔스퀘어;
+	background-color: white;
+	border: 0.5px solid gray;
+}
+.kakao{
+	width: 50px;
+	height: 15px;
+	
+}
+.naver{
+	width: 60px;
+	height: 13px;
+	
+}
+.loginPg2{
+	text-align: center;
+	margin-top: 40px;
+	
+}
+.login_find{
+	font-family: 나눔스퀘어;
+	font-weight: lighter;
+	font-size: 12px;
+	text-align:center;  padding:10px;
+	
+}
+.login_find:link{
+	color: black; text-decoration: none;
+}
+.login_find:visited{
+	color: black; text-decoration: none;
+}
+.login_find:hover{
+	color: black; text-decoration: none;
+}
+.bar{
+	color: gray;
+	font-weight: 100;
+	 opacity: 0.5;
+}
