@@ -4,8 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="point">
   <select id="getPoint" resultType="balanceVo">
- 	SELECT BEUID, PBALNOW FROM (SELECT MIN(BALANCENUM) BALANCENUM, BEUID FROM PBALANCE WHERE BEUID = #{beuid} GROUP BY BEUID) A, 
-	(SELECT PBALNOW, BALANCENUM FROM PBALANCE WHERE BEUID = #{beuid}) B WHERE A.BALANCENUM = B.BALANCENUM
+ 	SELECT BEUID, PBALNOW FROM PBALANCE WHERE BEUID = #{BEUID}
   </select>
   <select id="PlusPointList" resultType="payVo">
   	SELECT CHARGELIST, CHARGEDATE, CHARGEMETHOD FROM PCHARGE WHERE BEUID = #{BEUID} 
