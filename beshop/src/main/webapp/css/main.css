@@ -1,0 +1,428 @@
+*{font-family: "나눔스퀘어"; box-sizing: border-box;}
+body{margin: 0;}
+a{text-decoration: none; color:black;}
+header {
+    margin: 0 auto;
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    padding: 10px;
+    padding-bottom: 0px;
+    overflow: hidden;
+}
+
+.top_up {
+    margin: 0 auto;
+    width: 1200px;
+    height: 115px;
+    display: block;
+    padding: 10px 0 0 20px; 
+    box-sizing: border-box;
+   
+}
+.search {
+    width: 480px;
+    display: inline;
+    float: left;
+    padding: 30px 10px 0 10px;
+    box-sizing: border-box;
+    margin-left: 20px;
+}
+
+.logo {
+    width:230px;
+    display: inline;
+    float: left;
+    margin-right: 40px;
+}
+.logo a {margin-right: 0;}
+.logo img{width:230px;}
+
+
+.top_menu {
+    width: 350px;
+    padding: 30px 0 0 0;
+    display: inline;
+    float: left;
+    text-align: left;
+    margin-left: 20px;
+}
+.top_menu ul{
+    list-style: none;
+    width: 350px;
+    text-align: left;
+    padding-top:10px;
+   
+}
+.top_menu ul li {
+    display: inline;
+    float: left;
+    margin: 0px 10px;
+    text-align: center;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+.top_menu ul li:hover{
+    color:gray;
+    cursor: pointer;
+}
+
+#s_bar {
+    width: 370px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    border: 2px solid #00a8b3;
+    float: left;
+}
+
+#s_btn {
+    display: inline;
+    float: left;
+    width: 51px;
+    height: 40px;
+    border: 0;
+    background: url(img/btn_sc.png) no-repeat;
+}
+
+.menu {width: 50%; margin: 0 auto;}
+.menu ul{
+    width: 100%;
+    height: 40px; 
+    list-style-type: none;
+    overflow: hidden;
+    text-align: center;
+}
+.menu ul li{
+    text-align: center;
+    display: inline;
+    float:left;
+    font-size: 18px;
+}
+.menu ul li a{text-decoration: none; color:#fff; }
+
+section{width:1200px; margin: 0 auto; clear: both; margin-top:30px;}
+.m_img {
+    width: 1000px;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.m_title {
+   width:1000px;
+    display: block;
+}
+.m_title #title{
+    width: 120px;
+    margin-bottom: 15px;
+}
+.m_title #subtitle{}
+.m_img iframe{width: 100%;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+}
+#title span{color:red; font-weight: 900;}
+
+
+#main_img {
+   width: 1000px;
+    height: 500px;
+    margin: 20px;
+    display: block;       
+}
+
+.s_img {
+     width: 1000px;
+    margin: 70px auto;
+    clear: both;
+    display: block;
+
+}
+
+#sub {
+    width:1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#sub img{text-align: center;}
+
+.today {
+    width: 1000px;
+    margin: 50px auto;
+    clear: both;
+}
+
+#title {
+    font-weight: bold;
+    font-size: 20px;
+    display: inline;
+    float: left;
+    margin-top:10px;
+}    
+
+#today_slide {
+    width : 1000px;
+    height: 140px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+#today_slide_ul{
+    list-style: none;
+    position: absolute;
+    top:0;
+    left:0;
+    margin:0;
+    padding:0;
+ 
+}
+#today_slide_ul li {
+   float:left;list-style:none;margin-left:10px
+}
+#today_slide_ul li:first-child {margin:0}
+#today_slide_ul li img{
+    width:230px; 
+}
+
+
+#subtitle {
+    display: inline;
+    float: left;
+    font-size: 13px;
+    margin-left: 13px;
+    margin-top:18px;
+
+}
+#s_title{
+    font-size: 20px;
+    font-weight: bold;
+}
+#sub_img01 {
+    display: inline;
+    float: left;
+    overflow: hidden;
+}
+
+#sub_img01 img{width: 750px;  }
+
+#sub_img02 {
+    display: inline;
+    float: left;
+}
+#sub_img02 img{width: 250px;}
+/* mega 메뉴 */
+
+.navbar {
+  overflow: hidden;
+  background-color: #00a8b3;
+  font-family: "나눔고딕";
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.navbar a {
+  float: left;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;;
+    margin : 0 20px;
+    transition: all 0.5s;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font: inherit;
+  margin: 0 20px;
+  transition: all 0.5s;
+    position: relative;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: darkcyan;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  z-index: 1;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  background-color: #fff;
+  
+}
+
+.column a {
+  float: none;
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+    font-weight:500;
+    font-size: 15px;
+}
+
+.column a:hover {
+  background-color: #ddd;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/*footer */
+.context-dark, .bg-gray-dark, .bg-primary {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+    color: #ffffff;
+}
+.nav-list li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.nav-list li a:hover:before {
+    margin-left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 23px;
+    font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+.social-container .col {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.nav-list li a:before {
+    content: "\f14f";
+    font: 400 21px/1 "Material Design Icons";
+    color: #4d6de6;
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: -28px;
+    margin-right: 7px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .22s ease;
+}
+.footer {
+    display: block;
+    background: #777;
+    height: 130px;
+    color:white;
+    font-size:30px;
+    margin-top:50px;
+}
+
+/* 햄버거 메뉴 */
+
+#hamburger-wrapper {
+  float: right;
+  margin-top: -20px;
+ 
+}
+#hamburger {
+  cursor: pointer;
+  font-size: 3em;
+}
+#close-sidenav {
+  cursor: pointer;
+  font-size: 3em;
+  margin-top: -10px;
+  float: right;
+}
+#sidenav {
+  height: 100%; width: 300px;
+  top: 0px; right: -350px;
+  background: white;
+  position: fixed;
+  transition: 0.4s;
+    border: 2px solid #00a8b3;
+    box-sizing: border-box;
+    padding-left: 30px
+}
+#sidenav ul { margin-top: 10px; padding: 0; list-style-type: none; }
+.second li{display: inline; float: left; }
+.second li a {text-decoration: none; font-size: 12px; margin-right: 15px; color: black; transition: all 0.4s}
+#login, #pwd {margin: 10px auto; width: 230px; height: 35px;}
+#btn_login{ 
+    margin-top: 20px;
+    width: 230px;
+    background-color: #00a8b3;
+    height: 40px;
+    border: 0px;
+    font-size: 15px;
+    color: white;
+    transition: all 0.4s;
+}
+
+#btn_login:hover{
+    color: #555;
+    font-weight: bold;
+    cursor: pointer;
+}
+    
+#sidenav header{
+  color: #555;
+  display: block;
+  text-decoration: none;
+    margin-top: 120px;
+    font-weight: bold;
+   
+
+}
+//#sidenav header { background: #93ddd3; }
+#sidenav a:hover { color: #93ddd3; }
+    #login_form {cursor: pointer;}

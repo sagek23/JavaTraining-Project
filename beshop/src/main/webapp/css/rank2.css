@@ -1,0 +1,214 @@
+ *:focus { outline:none; }
+.ranking{
+	font-weight: 5px;
+	margin: 0px;
+}
+.shop_rank{
+	width: 350px;
+	height: 300px;
+	text-align: center;
+	
+}
+.shop_top1{
+	display: flex;
+	align-content: space-around;
+	margin: 10px;
+
+}
+.shop_rankSmall{
+	width: 1140px;
+	height: 100px;
+	
+}
+.proicon{
+	width: 150px;
+	height: 150px;
+	margin-top: 50px;
+	right: 50%;
+	left: 50%;
+}
+.proiconSmall{
+	width: 70px;
+	height: 70px;
+	margin-top:5px;
+	float: left;
+}
+.checked {
+  color: orange;
+}
+.proimg{
+	text-align: center;
+	margin-top: -30px;
+}
+.proimgSmall{
+	float: left;
+	margin-top: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+	
+}
+.shop_box{
+	margin-top: 60px;
+	background-color: #F1F1F1;
+}
+.shop_box_small{
+	margin-left: -15px;
+	margin-top: 30px;
+	background-color: #F1F1F1;
+}
+#first{
+	
+		margin-left: -25px;
+	border-radius: 2px;
+	width: 350px;
+	height: 300px;
+
+	
+}
+#second{
+	
+	margin:auto;
+	margin-top: 60px;
+	border-radius: 2px;
+	width: 350px;
+	height: 300px;
+}
+#third{
+	
+	margin-top: 60px;
+
+	
+	border-radius: 2px;
+	width: 350px;
+	height: 300px;
+
+	
+}
+#fourth{
+	<!--margin: auto;-->
+	margin-top: 10px;
+	border-radius: 2px;
+	width: 1140px;
+	height: 100px;
+	
+}
+#fifth{
+	<!--margin: auto;-->
+	margin-top: 10px;
+	border-radius: 2px;
+	width: 1140px;
+	height: 100px;
+	
+}
+#sixth{
+	<!--margin: auto;-->
+	margin-top: 10px;
+	border-radius: 2px;
+	width: 1140px;
+	height: 100px;
+	
+}
+#seventh{
+	<!--margin: auto;-->
+	margin-top: 10px;
+	border-radius: 2px;
+	width: 1140px;
+	height: 100px;
+	
+}
+#eighth{
+	<!--margin: auto;-->
+	margin-top: 10px;
+	border-radius: 2px;
+	width: 1140px;
+	height: 100px;
+	
+}
+#nineth{
+	<!--margin: auto;-->
+	margin-top: 10px;
+	border-radius: 2px;
+	width: 1140px;
+	height: 100px;
+	
+}
+#tenth{
+	<!--margin: auto;-->
+	margin-top: 10px;
+	border-radius: 2px;
+	width: 1140px;
+	height: 100px;
+	
+}
+
+.icon2{
+	width: 13px;
+	height: 13px;
+	position: static;
+}
+.ranking{
+	text-align: center;
+	font-size: 30px;
+}
+.rank{
+
+}
+
+.rate{
+	text-align: center;
+	margin-top: -5px;
+}
+.rateSmall{
+	float: right;
+	margin-top: -35px;
+	margin-right: 40px;
+	position: static;
+}
+
+.ranknum{
+	font-size: 30px;
+	float:left;
+	padding-left: 20px;
+	position: static;
+}
+.ranknumSmallt{
+	font-size: 20px;
+	float: left;
+	padding-left: 20px;
+	padding-top: 33px;
+	position: static;
+}
+.ranknumSmall{
+	font-size: 20px;
+	float: left;
+	padding-left: 20px;
+	padding-right: 10px;
+	padding-top: 33px;
+	position: static;
+}
+.storeName{
+	text-align: center;
+	padding-right: 25px;
+	padding-left: 5px;
+	position: static;
+}
+.storeNameSmall{
+	padding-top: 20px;
+	position: static;
+	font-size: 20px;
+}
+.storeIdTop{
+	color: gray;
+	text-align:center;
+	position: static;
+	
+}
+.storeId{
+	color: gray;
+	position: static;
+}
+
+ a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+ a:hover { color: gray; text-decoration: none;}
+

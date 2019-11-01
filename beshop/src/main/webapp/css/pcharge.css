@@ -1,0 +1,114 @@
+#logo {
+            float: left;
+			width: 200px;
+            height: 80px;
+}
+#top{
+     margin: 0 auto;
+     width: 1000px;
+     height: 100px;
+
+}
+#cbox{
+	margin: 0 auto;
+     width: 1000px;
+     height: 80px;
+
+}
+#ccharge{
+	font-size: 40px;
+	font-family: �굹�닎�뒪�섏뼱;
+	float: left;
+	color: gray;
+}
+#pointPg{
+	border: 0.5px solid rgba(0, 0, 0, 0.2);
+	width: 1000px;
+	height: 550px;
+	margin: 0 auto;
+	margin-top: 0px;	
+}
+#charge{
+	text-align: left;
+	width: 950px;
+	font-size: 30px;
+	font-family: �굹�닎�뒪�섏뼱;
+	background-color: white;
+	border-bottom: 1px solid #bebebe;
+	margin-left: 25px;
+	margin-top: 30px;
+}
+.payBox{
+	margin-top: 60px;
+}
+#amountCash{
+	margin-bottom: 30px;
+	margin-left: 25px;
+}
+#amount{
+	width: 950px;
+	height: 30px;
+	border: 1px solid #bebebe;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	margin-bottom: 20px;
+	margin-left: 25px;
+	font-size: 20px;
+}
+input:focus {outline:none;}
+#btnBox{
+	margin-left: 25px;
+	width: 950px;
+}
+.money{
+	float: left;
+	width: 20%;
+	height: 50px;
+	background-color: white;
+	border: 0.5px solid #bebebe;
+	
+	font-size: 20px;
+}
+#pmethod{
+	width: 1000px;
+	margin-left: 25px;
+	display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 30px;
+}
+#pay{
+	margin-top: 15px;
+	margin-left: 25px;
+	width: 950px;
+	height: 30px;
+}
+#paymethod{
+	width: 950px;
+	height: 50px;
+	font-size: 20px;
+	border: 0.5px solid #bebebe;
+	font-size: 20px
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+#charging{
+	margin-top: 70px;
+	margin-left: 25px;
+	margin-bottom: 30px
+}
+#chgBtn{
+	width: 950px;
+	height: 50px;
+	font-size: 20px;
+	border: 0.5px solid #bebebe;
+	background-color: #00a8b3;
+}

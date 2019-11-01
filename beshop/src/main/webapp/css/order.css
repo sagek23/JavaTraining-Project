@@ -1,0 +1,205 @@
+ *:focus { outline:none; }
+ #logo {
+            text-align: left;
+            width: 250px;
+            height: 100px;
+        }
+        .top{
+        	margin-left: 330px;
+        	margin-top: 10px;
+        }
+        #order{
+        	margin-top: 30px;
+
+        	font-size: 50px;
+        	text-align: left;
+        	font-family: 나눔스퀘어;
+        	color: gray;
+        	
+        }
+        #adrCol{
+        	border-top: 1px solid gray;
+        }
+        .odrStatus{
+        	color: #bebebe;
+        	float: right;
+        	width: 400px;
+        	display: flex;
+        	justify-content: space-between;
+        }
+        .sts{
+        	padding-top: 24px;
+        }
+        #nstatus{
+        	color: #00a8b3;
+        }
+        
+        .adrBtn{
+        	width: 120px;
+        	height: 30px;
+        	background-color: white;
+        	border: 0.5px solid gray;
+        	margin-right: 15px;
+        }
+        .oinfo{
+        	margin-left: 330px;
+        	margin-top: 15px;
+        	width: 1000px; height: 60px;
+        }
+        #adrs{
+        	margin-top: 30px;
+        	margin-bottom: 20px;
+        	font-size: 30px;
+        	float: left;
+        	font-family: 나눔스퀘어;
+        	
+        }
+        #adrr{
+        	border-top: 0.5px solid gray;
+        }
+        #adr{
+        	border-top: 0.5px solid gray;
+        }
+        .colname{
+        	font-weight: bold;
+        	margin-top: 10px;
+        	text-align: left;
+        	font-family: 나눔스퀘어;
+        	height: 30px;
+        	width: 150px;
+        	margin-left: 30px;
+        	
+        }
+        #oderer{
+        	padding-top: 0px;
+        	height: 20px;
+        	float: left;
+        	margin-top: 5px;
+
+        }
+        .info{
+        	margin-left: 20px;
+        	margin-top: 10px;
+        	text-align: left;
+        	font-family: 나눔스퀘어;       
+        	width: 500px; height: 30px;
+        	margin-bottom: 10px;
+        }
+        #odrq{
+        	margin-top: 5px;
+        }
+       #name{
+       		width: 400px; height: 20px;
+       }
+       .tel{
+       		width: 80px; height: 20px;
+       }
+       #zip{
+       		width: 130px; height: 20px;
+       		
+       }
+       #zipcode{
+       		width: 100px; height: 30px;
+       		background-color: white;
+       		border: 0.5px solid gray;
+       }
+       #addr1{
+       		width: 240px; height: 20px;
+       }
+       #addr2{
+       		width: 200px; height: 20px;
+       }
+       #addr{
+       		width: 500px; height: 80px;
+       }
+       #add{
+       		height: 80px;
+       }
+       .col{
+       		background-color: #dcdcdc;
+			border-right: 1px solid #dcdcdc;
+			border-left: 1px solid #dcdcdc;
+       		border-bottom: 0.5px solid #bebebe;
+       		border-top: 0.5px solid #bebebe;
+       }
+       .colinfo{
+       		border-bottom: 0.5px solid #bebebe;
+       }
+       .pinfo{
+        	margin-left: 330px;
+        	margin-top: 30px;
+        	margin-bottom: 30px;
+        	width: 1000px; height: 60px;
+        	border-collapse: collapse;
+        	
+        }
+        .oinf{
+        	border-bottom: 0.5px solid #bebebe;
+        	border-collapse: collapse;
+        }
+        #infoTable{
+        	border-collapse: collapse;
+        }
+        #qty{
+        border-right: 0.5px solid #bebebe;
+        }
+        #totpri{
+        border-right: 0.5px solid #bebebe;
+        }
+        #oinf{
+        	border-bottom: 0.5px solid #bebebe;
+        }
+        #proInfo{
+        	width: 600px;
+        	border-right: 0.5px solid #bebebe;
+        }
+        .opinfo{
+        	margin-top: 10px;
+        	margin-bottom: 15px;
+        	width: 200px; height: 20px;
+        	text-align: center;
+        	font-family: 나눔스퀘어;
+        	font-size: 20px;
+        	
+        }
+        .ocont{
+        	height: 100px;
+        	align: center;
+        	
+        	
+        }
+        .ocont2{
+        	height: 100px;
+        	align: center;
+        	margin-top: 65px;
+        	
+        }
+        #goods{
+        	float: right;
+        	text-align: left;
+        	margin-right: 15px;
+        	margin-top: 15px;
+        	width:230px;
+        }
+        .BuyProd{
+        	text-align: center;
+			
+        	height: 130px;
+        }
+        #proImg{
+        	float: left;
+        	margin-left: 15px;
+        	margin-top:15px;
+        }
+        #obtn1{
+        	width: 200px; height: 50px;
+        	margin-left: 635px;
+        	margin-top: 20px;
+        	background-color: #dcdcdc;
+        	border: 0;
+        }
+        #obtn2{
+        	width: 200px; height: 50px;
+        	background-color: white;
+        	border: 0.5px solid #dcdcdc;
+        }

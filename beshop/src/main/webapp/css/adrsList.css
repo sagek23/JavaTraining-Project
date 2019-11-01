@@ -1,0 +1,114 @@
+ *:focus { outline:none; }
+#title{
+	background-color: #00a8b3;
+	width: 1010px;
+	height: 50px;
+	float: left;
+	display: flex;
+	align-content:flex-start;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+}
+h3{
+	position: absolute;
+	top: -7px;
+	left: 25px;
+	color: white;
+}
+.adrsBox{
+	width: 1000px;
+	text-align: center;
+	
+}
+.col{
+	text-align: center;
+}
+.rowCont{
+		height: 80px; 
+}
+.adrsTable{
+	margin: auto;
+	border-bottom: 0.5px solid #dcdcdc;
+	border-top: 0.5px solid #dcdcdc;
+	width: 950px;
+	position: absolute;
+	top: 90px;
+	left: 28px;
+	border-collapse: collapse;
+}
+#shipto{
+	background-color: #dcdcdc;
+	width: 100px;
+}
+#tel{
+	width: 150px;
+	background-color: #dcdcdc;
+}
+#adrs{
+	width: 570px;
+	background-color: #dcdcdc;
+	
+}
+#select{
+	width: 80px;
+	background-color: #dcdcdc;
+
+}
+.row1{
+	height: 50px;
+	text-align: center;
+	
+	
+}
+
+#shipList{
+	border-right: 1px solid #dcdcdc;
+	width: 100px;
+}
+#telList{
+	border-right: 1px solid #dcdcdc;
+	width: 150px;
+}
+}
+#addrList{
+	
+	width: 570px;
+}
+#select2{
+	border-left: 1px solid #dcdcdc;
+	width: 80px;
+}	
+
+#selectBtn{
+	background-color: white;
+	border: 0.5px solid gray;
+	width: 60px;
+	height: 30px;
+}
+.btnBox{
+	position: absolute;
+	bottom: 30px;
+	left: 25px;
+	padding-right: 20px;
+	margin-left:5px;
+}
+#addBtn{
+	background-color: #00a8b3;
+	height: 30px;
+	border: 0.5px solid gray;
+	width: 100px;
+}
+#updBtn{
+	background-color: white;
+	height: 30px;
+	width: 50px;
+	border: 0.5px solid gray;
+}
+#delBtn{
+	background-color: white;
+	height: 30px;
+	width: 60px;
+	border: 0.5px solid gray;
+}
