@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-    // 인코딩
-    request.setCharacterEncoding("UTF-8");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +18,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://han3283.cafe24.com/js/lightslider/js/lightslider.js"></script> 
     <script type="text/javascript" src="js/slick.min.js"></script>
-    <link href="css/rank2.css?ver=1" rel='stylesheet' type='text/css' />
+    <link href="css/rank2.css?ver=1" rel='stylesheet' type='text/css' />s
 </head>
 
 <body>

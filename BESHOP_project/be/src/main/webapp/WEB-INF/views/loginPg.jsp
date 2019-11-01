@@ -3,37 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/>
+<link href="css/loginPop2.css" rel='stylesheet' type='text/css' />
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 <script src="https://apis.google.com/js/api:client.js"></script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<title>Login</title>
+<title>Insert title here</title>
 
-<style type="text/css">
-   
-    #customBtn:hover {
-      cursor: pointer;
-    }
-    #googleLogin{
-    	width: 100px;
-    	height: 100px;
-    }
-    #naverLogin{
-    	width: 100px;
-    	height: 100px;
-    }
-  </style>
-</head>
-<body>
-
-<a id="custom-login-btn" href="javascript:loginWithKakao()">
-<img src="img/kakaoLogin.png" width="300"/>
-</a>
 <script type='text/javascript'>
+//카카오로그인
   //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    // 사용할 앱의 JavaScript 키를 설정
     Kakao.init('3fc37ff4b17fd3a8918da187f484255f');
     function loginWithKakao() {
       // 로그인 창을 띄웁니다.
@@ -47,7 +28,7 @@
                console.log(res);
                
                var id = res.id;      //유저의 카카오톡 고유 id
-               //var userEmail = res.kaccount_email;   //유저의 이메일
+               //var userEmail = res.kaccount_email;   //유저의 이메일 - 카톡로그인으로는 로그인 안받와짐
                var userNickName = res.properties.nickname; //유저가 등록한 별명
                var profileImage = res.properties.profile_image;
                console.log("ID: "+id);
@@ -56,7 +37,7 @@
                console.log("ProfileImage: "+profileImage);
                //console.log("Access Token: "+authObj.access_token);
                location.href = '/joinpage';
-               localStorage.setItem('id', id);
+               localStorage.setItem('id', id); //아이디 전송
                
                   }
 
@@ -70,9 +51,8 @@
 
   //]]>
 </script>
-
- <!-- 구글 -->
 <script type="text/javascript">
+//구글 로그인
 	var googleUser = {};
 	var startApp = function() {
 	  gapi.load('auth2', function(){
@@ -103,78 +83,41 @@
 	            console.log("Email: " + profile.getEmail());
 				
 	            var access_token = googleUser.getAuthResponse().id_token;
-	            //console.log("Access Token: "+ access_token)
+	            //console.log("Access Token: "+ access_token)액세스토큰
 	            location.href = '/joinpage';
-	            localStorage.setItem('id', id);
+	            localStorage.setItem('id', id); //아이디 전송
 	            
 	      }, function(error) {
 	        alert(JSON.stringify(error, undefined, 2));
 	      });
 	}	
 </script>
+</head>
+<body>
+    <div class="loginPg">
+      <div class="logoBox"><img src="img/beShop3.png"  class="logo"/></div>
+       <div class="login">
+        <input type="text" name="id" class="idpwd" placeholder="아이디"/><br>
+        <input type="password" name="pwd" class="idpwd" placeholder="패스워드"><br>
+        <button class="btnLogin">로그인</button><br>
+        <div class="snsLogin">
+         <a id="custom-login-btn" href="javascript:loginWithKakao()">
+		<button class="kakaoLogin"><img src="img/kakao.png" class="kakao"/>로그인</button><br>
+		</a>
+     	
+	    <div id="gSignInWrapper">
+	        <span class="label"></span>
+	      <button id="customBtn" class="customGPlusSignIn"><img src="img/google.png" id="googleLogin" class="google">로그인</button>
+	    </div>
 
-    <div id="gSignInWrapper">
-        <span class="label"></span>
-        <div id="customBtn" class="customGPlusSignIn">
-          <img src="img/googleLogin.png" id="googleLogin">
+	    <script>startApp();</script>
+
+        </div>
+        </div>
+         <div class="loginPg2">
+        <a href="#" class="login_find">아이디찾기</a>&nbsp;&nbsp;<span class="bar" >|</span>&nbsp;&nbsp;
+        <a href="#" class="login_find">비밀번호찾기</a>&nbsp;&nbsp;<span class="bar">|</span>&nbsp;&nbsp;<a href="#" class="login_find">회원가입</a>
         </div>
     </div>
-    <div id="name"></div>
-    <script>startApp();</script>
-    
- <!-- 네이버로그인 -->
- <div id="naverIdLogin">
- </div>
-<script type="text/javascript">
-	
-   var naverLogin = new naver.LoginWithNaverId(
-			{
-				clientId: "izje4O3kf_B_jykImcq9",
-				callbackUrl: "http://localhost:8082/naverlogin",
-				isPopup: false, /* 팝업을 통한 연동처리 여부 */
-				loginButton: {color: "green", type: 1, height: 60} /* 로그인 버튼의 타입을 지정 */
-			}
-		);
-		
-		/* 설정정보를 초기화하고 연동을 준비 */
-		naverLogin.init();
-
-   window.addEventListener('load', function () {
-	   naverLogin.getLoginStatus(function (status) {
-			if (status) {
-				/* 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-				var email = naverLogin.user.getEmail();
-				var email = naverLogin.user.getEmail();
-	 			var nickname = naverLogin.user.getNickName();
-	 			var profileImage = naverLogin.user.getProfileImage();
-	 			var birthday = naverLogin.user.getBirthday();			
-	 			var id = naverLogin.user.getId();
-	 			var age = naverLogin.user.getAge();
-	 	       console.log('id: ' + id);
-	 	       console.log('NickName: ' + nickname);
-	            console.log('Age: ' + age);
-	            console.log('Birthday: ' + birthday);
-	            console.log("Image URL: " + profileImage);
-	            console.log("Email: " + email);
-
-				
-				if( email == undefined || email == null) {
-					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-					/* 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-					naverLogin.reprompt();
-					return;
-				}
-			
-				window.location.replace("http://localhost:8082/joinpage"); //callback 처리후 이동페이지
-				localStorage.setItem('id', id);
-			} else {
-				console.log("callback 처리에 실패하였습니다.");
-			}
-		});
-    
-   });
-	    
-</script>
-
 </body>
 </html>
