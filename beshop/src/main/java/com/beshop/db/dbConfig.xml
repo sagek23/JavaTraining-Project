@@ -8,9 +8,9 @@
 	<typeAlias type="com.beshop.vo.Be_NoticeVo" alias="Be_NoticeVo"/>
 	<typeAlias type="com.beshop.vo.Be_QnaVo" alias="Be_QnaVo"/>
 <<<<<<< HEAD
-	<typeAlias type="com.beshop.vo.ChargePointVo" alias="Be_ChargeVo"/>
-  	<typeAlias type="com.beshop.vo.PayPointVo" alias="Be_pPayVo"/>
-  	<typeAlias type="com.beshop.vo.PointBalanceVo" alias="Be_BalanceVo"/>
+	<typeAlias type="com.beshop.vo.Be_ChargePointVo" alias="Be_ChargeVo"/>
+  	<typeAlias type="com.beshop.vo.Be_PayPointVo" alias="Be_PayVo"/>
+  	<typeAlias type="com.beshop.vo.Be_PointBalanceVo" alias="Be_BalanceVo"/>
   	 <typeAlias type="com.beshop.vo.UserVo" alias="Be_uservo"/>
 =======
 	<typeAlias type="com.beshop.vo.BE_ProductVo" alias="pvo"/>
