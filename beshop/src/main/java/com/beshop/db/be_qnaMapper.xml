@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qna">
+	
+	<delete id="delete">
+		delete notice where noticenum = #{noticenum}
+	</delete>
+	
+	<update id="update">
+		update notice set notice_ca=#{notice_ca},notice_con=#{notice_con}, notice_name=#{notice_name} where noticenum=#{noticenum}  
+	</update>
+	
+	
+	<select id="getQna" resultType="Be_QnaVo">
+		select * from qna where qnanum = #{qnanum}
+	</select>
+
+	<insert id="insert">
+		insert into notice values(#{noticenum}, #{notice_ca}, sysdate, #{notice_con}, #{notice_name})
+	</insert>	
+	
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(*) from qna
+	</select>
+
+
+	<select id="selectAll" resultType="Be_QnaVo">
+			select qnanum, sec_pw, qna_title, qna_con, qna_answer, beuid, pnum, answer_time, regist_date, qna_category from
+			(select rownum n, qnanum , sec_pw, qna_title, qna_con, qna_answer, beuid, pnum, answer_time, regist_date, qna_category from qna)
+			a where a.n between ${start} and #{end}
+    </select>   
+ 
+		
+			
+
+
+</mapper>

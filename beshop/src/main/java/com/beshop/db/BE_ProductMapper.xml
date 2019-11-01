@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+  
+  <insert id="insert" >
+  	insert into product values((select max(pnum)+1 from product),1,sysdate,#{as_info},TO_DATE(#{p_cdate},'yyyy-mm-dd hh24:mi'),#{pname},#{detail},#{stock},'더미',#{p_video},#{p_sangse},#{option},#{select_op},0,0,#{p_price},null,null)
+  </insert>
+</mapper>

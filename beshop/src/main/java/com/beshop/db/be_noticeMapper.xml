@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+	
+	<delete id="delete">
+		delete notice where noticenum = #{noticenum}
+	</delete>
+	
+	<update id="update">
+		update notice set notice_ca=#{notice_ca},notice_con=#{notice_con}, notice_name=#{notice_name} where noticenum=#{noticenum}  
+	</update>
+	
+	
+	<select id="getNotice" resultType="Be_NoticeVo">
+		select * from notice where noticenum = #{noticenum}
+	</select>
+
+	<insert id="insert">
+		insert into notice values(#{noticenum}, #{notice_ca}, sysdate, #{notice_con}, #{notice_name})
+	</insert>	
+	
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		select count(*) from notice
+		<!-- <if test="keyword != null and keyword != ''">
+			<if test="searchField == 'NOTICENUM'">
+				where NOTICENUM ${oper} #{keyword}
+			</if>
+			<if test="searchField != 'NOTICENUM'">
+				where ${searchField} like '%' || #{keyword} || '%'
+			</if>
+		</if>
+		<if test="sortName != null and sortName !='' ">
+			order by ${sortName}
+
+		</if> -->
+	</select>
+
+
+
+	<!-- <select id="selectNotice" resultType="Be_NoticeVo">
+		select * from notice where NOTICENUM=#{NOTICENUM}
+	</select> -->
+
+	<select id="selectAll" resultType="Be_NoticeVo">
+		select noticenum, notice_ca, noticedate, notice_con, notice_name from
+        (select rownum n, noticenum, notice_ca, noticedate, notice_con, notice_name from notice)
+        a where a.n between ${start} and #{end}
+
+    </select>   
+ 
+		
+		<!-- select NOTICENUM, NOTICE_CA, NOTICEDATE, NOTICE_CON, NOTICE_NAME from
+		
+		select NOTICENUM, NOTICE_CA, NOTICEDATE, NOTICE_CON, NOTICE_NAME from
+		(select rownum n, NOTICENUM, NOTICE_CA, NOTICEDATE, NOTICE_CON,
+		NOTICE_NAME
+		from
+		(select NOTICENUM, NOTICE_CA, NOTICEDATE, NOTICE_CON, NOTICE_NAME from notice
+		<if test="keyword != null and keyword!= ''">
+			where NOTICENUM $(oper) #{keyword}
+		</if>
+		<if test="searchField != 'NOTICENUM'">
+			where ${searchfield} like '%' || #{keyword} || '%'
+		</if>
+		<if test="sortName != null and sortName != ''">
+			order by ${sortName}
+		</if>
+		)) a
+		where a.n between #{start} and #{end}
+ -->	
+
+
+</mapper>

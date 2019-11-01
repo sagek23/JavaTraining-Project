@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="point">
+  <select id="getPoint" resultType="be_BalanceVo">
+ 	SELECT BEUID, PBALNOW FROM PBALANCE WHERE BEUID = #{BEUID}
+  </select>
+  <select id="PlusPointList" resultType="be_PayVo">
+  	SELECT CHARGELIST, CHARGEDATE, CHARGEMETHOD FROM PCHARGE WHERE BEUID = #{BEUID} 
+  </select>
+  <select id="MinusPointList" resultType="be_ChargeVo">
+  	SELECT PAYLIST, PAYDATE FROM PPAY WHERE BEUID = #{BEUID}
+  </select>
+  <insert id="chargeP">
+  	INSERT INTO PCHARGE VALUES ( (SELECT NVL(MAX(CHARGENUM) , 0)+1 FROM PCHARGE), #{beuid}, SYSDATE, #{chargelist}, #{chargemethod})
+  </insert>
+  <insert id="payP">
+  	INSERT INTO PPAY  VALUES( (SELECT NVL( MAX(PAYNUM) , 0)+1 FROM PPAY),  #{beuid}, SYSDATE, #{paylist})
+  </insert>
+</mapper>
