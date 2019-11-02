@@ -34,7 +34,7 @@
 <script type='text/javascript'>
   //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('3fc37ff4b17fd3a8918da187f484255f');
+    Kakao.init('JavaScript 키');
     function loginWithKakao() {
       // 로그인 창을 띄웁니다.
       Kakao.Auth.login({
@@ -80,7 +80,7 @@
 	    auth2 = gapi.auth2.init({
 	        
 	      // 클라이언트 ID 설정하기
-	      client_id: '383971103206-b6p2npdt5smrcrorj1naq8smlos9s3v8.apps.googleusercontent.com',
+	      client_id: '클라이언트 ID',
 	      
 	      cookiepolicy: 'single_host_origin',
 	    });
@@ -122,59 +122,6 @@
     <div id="name"></div>
     <script>startApp();</script>
     
- <!-- 네이버로그인 -->
- <div id="naverIdLogin">
- </div>
-<script type="text/javascript">
-	
-   var naverLogin = new naver.LoginWithNaverId(
-			{
-				clientId: "izje4O3kf_B_jykImcq9",
-				callbackUrl: "http://localhost:8082/naverlogin",
-				isPopup: false, /* 팝업을 통한 연동처리 여부 */
-				loginButton: {color: "green", type: 1, height: 60} /* 로그인 버튼의 타입을 지정 */
-			}
-		);
-		
-		/* 설정정보를 초기화하고 연동을 준비 */
-		naverLogin.init();
-
-   window.addEventListener('load', function () {
-	   naverLogin.getLoginStatus(function (status) {
-			if (status) {
-				/* 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-				var email = naverLogin.user.getEmail();
-				var email = naverLogin.user.getEmail();
-	 			var nickname = naverLogin.user.getNickName();
-	 			var profileImage = naverLogin.user.getProfileImage();
-	 			var birthday = naverLogin.user.getBirthday();			
-	 			var id = naverLogin.user.getId();
-	 			var age = naverLogin.user.getAge();
-	 	       console.log('id: ' + id);
-	 	       console.log('NickName: ' + nickname);
-	            console.log('Age: ' + age);
-	            console.log('Birthday: ' + birthday);
-	            console.log("Image URL: " + profileImage);
-	            console.log("Email: " + email);
-
-				
-				if( email == undefined || email == null) {
-					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-					/* 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-					naverLogin.reprompt();
-					return;
-				}
-			
-				window.location.replace("http://localhost:8082/joinpage"); //callback 처리후 이동페이지
-				localStorage.setItem('id', id);
-			} else {
-				console.log("callback 처리에 실패하였습니다.");
-			}
-		});
-    
-   });
-	    
-</script>
 
 </body>
 </html>
