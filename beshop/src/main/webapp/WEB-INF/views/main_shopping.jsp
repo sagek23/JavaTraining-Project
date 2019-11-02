@@ -208,8 +208,9 @@
         <li><input type="button" value="로그인" id="btn_login"></li>
         <li><div id="kakaoBtn"><a id="custom-login-btn" href="javascript:loginWithKakao()"><img src="img/kakaoLogin.png" width="233" height="40"/></a></div></li>
         <li><div id="customBtn" class="customGPlusSignIn"><img src="img/google.png" id="googleLogin" width="233" height="40"></div></li>
+        <li><div id="naverIdLogin"><a id="naverIdLogin_loginButton" href="#" role="button"><img src="https://static.nid.naver.com/oauth/big_g.PNG" width="233" height="40"></a></div></li>
       </ul>
-      <div id="naverIdLogin"><a id="naverIdLogin_loginButton" href="#" role="button"><img src="https://static.nid.naver.com/oauth/big_g.PNG" width="233" height="40"></a></div>
+      
        <ul class="second">
           <li><a href="#">아이디/비밀번호 찾기</a></li> 
            <li><a href="insert.html">회원가입</a></li>
