@@ -15,7 +15,7 @@
 //카카오로그인
   //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정
-    Kakao.init('3fc37ff4b17fd3a8918da187f484255f');
+    Kakao.init('JavaScript 키');
     function loginWithKakao() {
       // 로그인 창을 띄웁니다.
       Kakao.Auth.login({
@@ -60,7 +60,7 @@
 	    auth2 = gapi.auth2.init({
 	        
 	      // 클라이언트 ID 설정하기
-	      client_id: '383971103206-b6p2npdt5smrcrorj1naq8smlos9s3v8.apps.googleusercontent.com',
+	      client_id: '클라이언트 ID',
 	      
 	      cookiepolicy: 'single_host_origin',
 	    });
