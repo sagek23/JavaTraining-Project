@@ -8,7 +8,6 @@
 
 
 <title>Insert title here</title>
-<<<<<<< HEAD
 	<style type="text/css">
 		input[type="number"]::-webkit-outer-spin-button,
 		input[type="number"]::-webkit-inner-spin-button { 
@@ -16,42 +15,31 @@
 	    margin: 0;
 	}
 	</style>
-=======
->>>>>>> 81fbed5f244ad09c119c8cb07d683050a86dbb26
 	<link type="text/css" href="css/insert.css" rel="stylesheet">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
-<<<<<<< HEAD
 		var snsid = localStorage.getItem('id'); //sns로그인 시 가져오는 아이디
+		var profileImg = localStorage.getItem('profileImg');
 		//alert(snsid);
 		$("#snsId").val(snsid);  //snsId에 값을 넣어줘야되서 추가할 것.
+		
 		//alert($("#snsId").val()); 
 		var snsId = $("#snsId").val(); //snsId
 		console.log(snsId);
-
+		console.log(profileImg);
 		
-=======
->>>>>>> 81fbed5f244ad09c119c8cb07d683050a86dbb26
 		$("#btn_Auth").hide();
 		$("#emailcode").hide();
 		$("#btn_email").click(function(){
 			$("#btn_email").hide();
 			$("#btn_Auth").show();
 			$("#emailcode").show();
-<<<<<<< HEAD
 			
 			var email=$("#email").val();
 			
 			$.ajax({url:"mail.go",dataType:"GET",data:{"email":email},success:function(r){
 				alert(r);
-=======
-			var email=$("#email").val();
-			
-			$.ajax({url:"mail.go",Type:"GET",data:{"email":email},success:function(r){
-				alert(r);
-				$("#key_a").val(r);
->>>>>>> 81fbed5f244ad09c119c8cb07d683050a86dbb26
 			}});
 			
 			
@@ -60,7 +48,6 @@
 		$("#btn_Auth").click(function(){
 			
 			var emailcode=$("#emailcode").val();
-<<<<<<< HEAD
 			$.ajax({
 				url:"mailok.go",
 				data:{"emailcode":emailcode},
@@ -69,23 +56,6 @@
 				}
 				
 			})
-=======
-			var origincode=$("#key_a").val();
-			if(emailcode!=origincode)
-				{
-				$("#email").val('');
-				$("#emailcode").val('');
-				alert("인증코드가 일치하지않습니다");
-				$("#btn_Auth").hide();
-				$("#emailcode").hide();
-				$("#btn_email").show();
-				}
-			else if(emailcode==origincode)
-			{
-				alert("인증에 성공하였습니다");
-			}
-			
->>>>>>> 81fbed5f244ad09c119c8cb07d683050a86dbb26
 			
 			
 		})
@@ -240,12 +210,8 @@
 <body>
 	<h1 id="logo">BESHOP</h1>
     <div id="f_insert">
-<<<<<<< HEAD
         <form method="post" action="/be/joinpage"  name="f" onsubmit="return sendIt();">
         	<input id="snsId" type="hidden"> <!-- snsId를 입력해야하므로 추가할 것-->
-=======
-        <form method="post" action="joinpage"  name="f" onsubmit="return sendIt();">
->>>>>>> 81fbed5f244ad09c119c8cb07d683050a86dbb26
              <p>아이디</p><span><input type="text" name="beuid" id="beuid"  maxlength="12" ></span><br>
             <div class="check_font" id="id_check"></div>
 			
@@ -275,11 +241,7 @@
              <div class="check_font" id="email_check"></div> 
              <input type="button" id="btn_email" value="인증번호받기">
              <input type="button" id="btn_Auth" value="인증확인">
-<<<<<<< HEAD
              <div class="check_font" id="code_check"></div> 
-=======
-           	 <input type="hidden" id="key_a">
->>>>>>> 81fbed5f244ad09c119c8cb07d683050a86dbb26
               
              
             <br>

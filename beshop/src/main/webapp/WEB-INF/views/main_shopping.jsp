@@ -132,14 +132,15 @@
                var id = res.id;      //유저의 카카오톡 고유 id
                //var userEmail = res.kaccount_email;   //유저의 이메일
                var userNickName = res.properties.nickname; //유저가 등록한 별명
-               var profileImage = res.properties.profile_image;
+               var profileImg = res.properties.profile_image;
                console.log("ID: "+id);
                //console.log(userEmail);
                console.log("Nickname: "+userNickName);
-               console.log("ProfileImage: "+profileImage);
+               console.log("ProfileImg : "+profileImg);
                //console.log("Access Token: "+authObj.access_token);
                location.href = '/joinpage';
                localStorage.setItem('id', id);
+               localStorage.setItem('profileImg', profileImg);
                
                   }
 
@@ -178,6 +179,7 @@
 	            googleUser.getBasicProfile().getName();
 	            var profile = googleUser.getBasicProfile();
 	            var id = profile.getId()
+	            var profileImg = profile.getImageUrl();
 	            console.log("ID: " + id); 
 	            console.log('Full Name: ' + profile.getName());
 	            console.log('Given Name: ' + profile.getGivenName());
@@ -189,6 +191,7 @@
 	            //console.log("Access Token: "+ access_token)
 	            location.href = '/joinpage';
 	            localStorage.setItem('id', id);
+	            localStorage.setItem('profileImg', profileImg);
 	            
 	      }, function(error) {
 	        alert(JSON.stringify(error, undefined, 2));

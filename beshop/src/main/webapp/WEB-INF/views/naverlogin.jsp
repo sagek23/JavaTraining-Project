@@ -31,7 +31,7 @@
             if (status) {
                var email = naverLogin.user.getEmail();
 	 			var nickname = naverLogin.user.getNickName();
-	 			var profileImage = naverLogin.user.getProfileImage();
+	 			var profileImg = naverLogin.user.getProfileImage();
 	 			var birthday = naverLogin.user.getBirthday();			
 	 			var id = naverLogin.user.getId();
 	 			var age = naverLogin.user.getAge();
@@ -41,7 +41,7 @@
 	            console.log('NickName: ' + nickname);
 	            console.log('Age: ' + age);
 	            console.log('Birthday: ' + birthday);
-	            console.log("Image URL: " + profileImage);
+	            console.log("Image URL: " + profileImg);
 	            console.log("Email: " + email);
                if( email == undefined || email == null) {
                   alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
@@ -50,13 +50,14 @@
                }
              
                window.close();
-             //callback처리 되면 이동 할 페이지
+             //callback처리 되면 이동 할 페이지. 맨뒤의 주소를 가려는 페이지로 변경할 것
                opener.parent.location = "http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/joinpage";
               // var newWindow = window.open("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/joinpage","_blank");
 				
                //window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/joinpage");
 				
 			   localStorage.setItem('id', id); //id 상태유지
+			   localStorage.setItem('profileImg', profileImg); //profileImg 상태유지
             } else {
                console.log("callback 처리에 실패하였습니다.");
             }
