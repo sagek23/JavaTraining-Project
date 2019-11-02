@@ -117,7 +117,7 @@
 	<script type='text/javascript'>
   //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('3fc37ff4b17fd3a8918da187f484255f');
+    Kakao.init('javascript키입력');
     function loginWithKakao() {
       // 로그인 창을 띄웁니다.
       Kakao.Auth.login({
@@ -164,7 +164,7 @@
 	    auth2 = gapi.auth2.init({
 	        
 	      // 클라이언트 ID 설정하기
-	      client_id: '383971103206-b6p2npdt5smrcrorj1naq8smlos9s3v8.apps.googleusercontent.com',
+	      client_id: '구글클라이언트id입력',
 	      
 	      cookiepolicy: 'single_host_origin',
 	    });
@@ -406,7 +406,7 @@ google_ad_height = 90;
 <script type="text/javascript">
    var naverLogin = new naver.LoginWithNaverId(
 			{
-				clientId: "izje4O3kf_B_jykImcq9",
+				clientId: "api키입력",
 				callbackUrl: "http://localhost:8082/naverlogin", 
 				//로그인하면 callback처리 되서 naverlogin으로 이동한 후 로그인 정보가 있으면 가입페이지로
 				isPopup: true, //로그인창 팝업

@@ -17,8 +17,8 @@
    <script>
       var naverLogin = new naver.LoginWithNaverId(
          {
-            clientId: "izje4O3kf_B_jykImcq9",
-            callbackUrl: "http://localhost:8082/naverlogin",
+            clientId: "클라이언트id입력",
+            callbackUrl: "리다이렉트url입력",
             isPopup: true,
             callbackHandle: true
          }
