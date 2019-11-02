@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
-	Kakao.init('3fc37ff4b17fd3a8918da187f484255f');
+	Kakao.init('api키');
 	function kakaologout(){
 		Kakao.Auth.logout(function(){
 			setTimeout(function(){
