@@ -11,7 +11,26 @@
 		<title>Electro - HTML Ecommerce Template</title>
 <link rel="stylesheet" href="css/reset.css" /> 
   <style>
- 
+ #kakaoBtn:hover {
+      cursor: pointer;
+    }
+ #naverIdLogin:hover {
+      cursor: pointer;
+    }
+ #customBtn:hover{
+  	cursor: pointer;
+  }
+  #kakaoBtn {
+ 	margin-top: 10px; 
+  }
+  
+  #naverIdLogin {
+ 	margin-top: 10px; 
+  }
+  
+  #customBtn {
+ 	margin-top: 10px; 
+  }
   
      
   img { border-radius:5px;}
@@ -75,7 +94,10 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
      <script>
     function slide(){
       $("#today_slide_ul").animate({left:"-=187px"},1000,function(){
@@ -89,6 +111,93 @@
     
     </head>
 	<body>
+	
+
+	<!-- 카카오로그인 -->
+	<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('3fc37ff4b17fd3a8918da187f484255f');
+    function loginWithKakao() {
+      // 로그인 창을 띄웁니다.
+      Kakao.Auth.login({
+        success: function(authObj) {
+          //alert(JSON.stringify(authObj));
+          Kakao.API.request({
+
+        	  url: '/v2/user/me',
+              success: function(res) {
+               console.log(res);
+               
+               var id = res.id;      //유저의 카카오톡 고유 id
+               //var userEmail = res.kaccount_email;   //유저의 이메일
+               var userNickName = res.properties.nickname; //유저가 등록한 별명
+               var profileImage = res.properties.profile_image;
+               console.log("ID: "+id);
+               //console.log(userEmail);
+               console.log("Nickname: "+userNickName);
+               console.log("ProfileImage: "+profileImage);
+               //console.log("Access Token: "+authObj.access_token);
+               location.href = '/joinpage';
+               localStorage.setItem('id', id);
+               
+                  }
+
+                });
+        },
+        fail: function(err) {
+          alert(JSON.stringify(err));
+        }
+      });
+    };
+
+  //]]>
+</script>
+	
+ <!-- 구글 -->
+<script type="text/javascript">
+	var googleUser = {};
+	var startApp = function() {
+	  gapi.load('auth2', function(){
+	    // Retrieve the singleton for the GoogleAuth library and set up the client.
+	    auth2 = gapi.auth2.init({
+	        
+	      // 클라이언트 ID 설정하기
+	      client_id: '383971103206-b6p2npdt5smrcrorj1naq8smlos9s3v8.apps.googleusercontent.com',
+	      
+	      cookiepolicy: 'single_host_origin',
+	    });
+	    attachSignin(document.getElementById('customBtn'));
+	  });
+	};
+	
+	function attachSignin(element) {
+	  console.log(element.id);
+	  auth2.attachClickHandler(element, {},
+	      function(googleUser) {
+	            googleUser.getBasicProfile().getName();
+	            var profile = googleUser.getBasicProfile();
+	            var id = profile.getId()
+	            console.log("ID: " + id); 
+	            console.log('Full Name: ' + profile.getName());
+	            console.log('Given Name: ' + profile.getGivenName());
+	            console.log('Family Name: ' + profile.getFamilyName());
+	            console.log("Image URL: " + profile.getImageUrl());
+	            console.log("Email: " + profile.getEmail());
+				
+	            var access_token = googleUser.getAuthResponse().id_token;
+	            //console.log("Access Token: "+ access_token)
+	            location.href = '/joinpage';
+	            localStorage.setItem('id', id);
+	            
+	      }, function(error) {
+	        alert(JSON.stringify(error, undefined, 2));
+	      });
+	}	
+</script>
+<script>startApp();</script>
+
+
 	 <!--햄버거 로그인 영역 -->
       <nav id="sidenav">
       <span id="close-sidenav">&times;</span>
@@ -97,7 +206,10 @@
         <li><input type="text" id="login" placeholder="  아이디"></li>
         <li><input type="text" id="pwd" placeholder="  비밀번호"></li>
         <li><input type="button" value="로그인" id="btn_login"></li>
+        <li><div id="kakaoBtn"><a id="custom-login-btn" href="javascript:loginWithKakao()"><img src="img/kakaoLogin.png" width="233" height="40"/></a></div></li>
+        <li><div id="customBtn" class="customGPlusSignIn"><img src="img/google.png" id="googleLogin" width="233" height="40"></div></li>
       </ul>
+      <div id="naverIdLogin"><a id="naverIdLogin_loginButton" href="#" role="button"><img src="https://static.nid.naver.com/oauth/big_g.PNG" width="233" height="40"></a></div>
        <ul class="second">
           <li><a href="#">아이디/비밀번호 찾기</a></li> 
            <li><a href="insert.html">회원가입</a></li>
@@ -284,6 +396,24 @@ google_ad_width = 728;
 google_ad_height = 90;
 
 </script>
+
+<!-- 네이버 -->	
+
+<script type="text/javascript">
+   var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "izje4O3kf_B_jykImcq9",
+				callbackUrl: "http://localhost:8082/naverlogin", 
+				//로그인하면 callback처리 되서 naverlogin으로 이동한 후 로그인 정보가 있으면 가입페이지로
+				isPopup: true, //로그인창 팝업
+				callbackHandle: true
+			}
+		);
+
+		//naverlogin페이지로 넘어가서 callback 처리됨 naverlogin페이지 반드시 필요
+		naverLogin.init();
+</script>
+
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script></div>
