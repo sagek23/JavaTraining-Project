@@ -39,7 +39,7 @@
     		</tr>
     	</table>
     </div>
-    <div id="btnBox"><button type="button" id="ok" onclick = "return self.close ()">확인</button></div>
+    <div id="btnBox"><button type="button" id="ok" onclick="location.href='/main'">확인</button></div> <!-- 확인 클릭 시 메인으로 이동 -->
     <div id="chargeMore"><a href="/charge">추가 충전하기</a></div>
  </div>
 </body>

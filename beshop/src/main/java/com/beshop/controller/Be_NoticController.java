@@ -144,19 +144,19 @@ public class Be_NoticController {
 	public void user_del() {
 
 	}
-
+	/*
 	@RequestMapping("shopping")
 	public void shopping() {
 
 	}
-
+	*/
 	@RequestMapping("review")
 	public void review() {
 
 	}
 
 	
-
+	/*
 	@RequestMapping("mypage")
 	public void mypage() {
 
@@ -166,7 +166,7 @@ public class Be_NoticController {
 	public void header() {
 
 	}
-
+	*/
 	@RequestMapping("faq")
 	public void faq() {
 
@@ -191,7 +191,7 @@ public class Be_NoticController {
 	public void cart() {
 
 	}
-
+	/*
 	@RequestMapping("/orderlist")
 	public void orderlist() {
 
@@ -200,12 +200,12 @@ public class Be_NoticController {
 	
 
 	
-
+	
 	@RequestMapping("/index")
 	public void index() {
 
 	}
-
+	*/
 	@RequestMapping("/main_shopping")
 	public void main_shopping() {
 

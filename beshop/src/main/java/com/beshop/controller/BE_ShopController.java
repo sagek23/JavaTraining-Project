@@ -46,26 +46,27 @@ public class BE_ShopController {
 	 * 
 	 * return list; }
 	 */
+	/*
 	@RequestMapping("/index")
 	public void index() {
 
 	}
-
+	
 	@RequestMapping("/main")
 	public void main() {
 
 	}
-
+	*/
 	@RequestMapping("/shopping")
 	public void shopping() {
 
 	}
-
+	/*
 	@RequestMapping("/mypage")
 	public void mypage() {
 
 	}
-
+*/
 	@RequestMapping("/orderlist")
 	public void orderlist() {
 

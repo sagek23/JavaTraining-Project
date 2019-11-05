@@ -132,6 +132,7 @@
                 text-align: center;
             }
             .sub{text-align: center;}
+           
         </style>
     </head>
 
@@ -199,17 +200,22 @@
                 <table class="table orderlist">
                     <thead>
                         <tr>
-                            <td style="width: 40%">상품명</td>
+                            <td style="width: 10%">주문번호</td>
+                            <td style="width: 30%">상품명</td>
+                            <td style="width: 10%">수량</td>
                             <td style="width: 20%">상품가격</td>
-                            <td style="width: 20%">배송비</td>
+                            <td style="width: 10%">배송비</td>
                             <td style="width: 20%">진행사항</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="width: 40%">LG노트북 오버워치 에디션 SSD128 탑재</td>
+                            <td style="width: 10%"><a href="#" role="button">1111</a><br>
+                            </td>
+                            <td style="width: 30%">LG노트북 오버워치 에디션 SSD128 탑재</td>
+                            <td style="width: 10%">1</td>
                             <td style="width: 20%">325,000원</td>
-                            <td style="width: 20%">무료</td>
+                            <td style="width: 10%">무료</td>
                             <td style="width: 20%">상품 준비중</td>
                         </tr>
                     </tbody>
