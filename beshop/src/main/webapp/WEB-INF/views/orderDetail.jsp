@@ -23,6 +23,13 @@
 	</table>	
 	<table  class="oinfo" id="infoTable">
 		<tr>
+			<td colspan="5">
+			<div  id="adrs">
+			배송지정보
+			</div>
+			</td>
+		</tr>
+		<tr>
 			<td class="col"><div class="colname">받는사람</div></td>
 			<td colspan="5" class="colinfo" id="firstline"><div class="info" id="recipient"></div></td>
 		</tr>
