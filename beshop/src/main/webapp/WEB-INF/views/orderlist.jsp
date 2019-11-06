@@ -4,7 +4,7 @@
    <html>
 
     <head>
-       
+   
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
          <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
     <!-- Bootstrap -->
@@ -24,6 +24,66 @@
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <!-- datepicker 한국어로 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
+        <script type="text/javascript">
+			$(function(){
+				//alert("ok");
+				$.getJSON("orderedList", function(data){
+					//console.log(data);
+					$.each(data, function(idx, item){
+						var tr = $("<tr></tr>");
+						var a = $("<a></a>").attr({href:"/orderDetail?onum="+item.onum, role:"button", type:"submit"});
+						var a2 = $("<a></a>").attr({href:"/shoppingDetail?"+item.pnum, role:"button", id:"rbtn"});
+						var btn = $("<button></button>").attr("id","review");
+						$(a).html(item.onum);
+						$(btn).html("리뷰작성");
+						var td1 = $("<td></td>");
+						var td2 = $("<td></td>").html(item.oname);
+						var td3 = $("<td></td>").html(item.ocount);
+						var td4 = $("<td></td>").html(item.oprice);
+						var td5 = $("<td></td>").html(item.dprice);
+						var td6 = $("<td></td>").html(item.dstatus+"<br>");
+						$(a2).append(btn);
+						$(td1).attr("width", "10%");
+						$(td2).attr("width", "30%");
+						$(td3).attr("width", "10%");
+						$(td4).attr("width", "20%");
+						$(td5).attr("width", "10%");
+						$(td6).attr("width", "20%");
+						$(td6).addClass("status");
+						$(td6).append(a2);
+						$(td1).append(a);
+						$(tr).append(td1, td2, td3, td4, td5, td6);
+						$("#tb").append(tr);
+
+						var status = $(td6).html();
+						substring = "배송완료";
+						var onum = item.onum;
+						console.log(onum);
+						$("#onum").val(onum);
+
+						
+						if(status.indexOf(substring) == 0){
+							$(btn).show();
+							//console.log(status.indexOf(substring));
+							//console.log(status);
+						}
+						else if(status.indexOf(substring) == -1)
+						{
+							$(btn).hide();
+							//console.log(status.indexOf(substring));
+							//console.log(status);
+						}
+						
+						
+						
+					});
+					
+				});
+				
+			});
+			
+
+  </script>
         <script>
             $(document).ready(function () {
                 //datepicker 한국어로 사용하기 위한 언어설정
@@ -111,6 +171,12 @@
             }
         </script>
         <style>
+        #review{
+        	border: 0.5px solid gray;
+        	width: 20%;
+        	height: 40%;
+        	margin-top: 2%;
+        }
             .del_state{
                 width: 85%;
                 height: 210px;
@@ -134,10 +200,9 @@
             .sub{text-align: center;}
            
         </style>
+    
     </head>
-
     <body>
-  
         <div id="mainFram">
             <h3>주문/배송조회</h3>
             <div id="orderSearch">
@@ -208,18 +273,13 @@
                             <td style="width: 20%">진행사항</td>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td style="width: 10%"><a href="#" role="button">1111</a><br>
-                            </td>
-                            <td style="width: 30%">LG노트북 오버워치 에디션 SSD128 탑재</td>
-                            <td style="width: 10%">1</td>
-                            <td style="width: 20%">325,000원</td>
-                            <td style="width: 10%">무료</td>
-                            <td style="width: 20%">상품 준비중</td>
-                        </tr>
+                    <tbody id="tb">
+                      
                     </tbody>
                 </table>
+                <form action="/orderDetail" method="POST">
+                	<input type="hidden" id="onum" name="onum">
+                </form>
             </div>
             <div class="sangtae" style="margin-top:100px;">
                 <h3>주문상태 및 취소기간 안내</h3>

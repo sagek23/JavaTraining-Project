@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ordered">
+  <select id="orderList" resultType="Be_OrderVo">
+ 	select * from orderdelivery where beuid = #{beuid} order by onum desc
+  </select>
+ 
+  <select id="orderDetail" resultType="Be_OrderVo">
+  	select onum, pnum, dcnum, oname, ocount, oprice, ophone, odzip, odate, dstatus, dprice,
+  	CONCAT(CONCAT(oaddr1, ' '), oaddr2) addr, oprice+dprice totpri
+  	 from orderdelivery where beuid = #{beuid} and onum = #{onum}
+  </select>
+  
+</mapper>

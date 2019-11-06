@@ -1,0 +1,175 @@
+  *:focus { outline:none; }
+ 		
+ 		#order{
+        	margin-top: 30px;
+
+        	font-size: 30px;
+        	text-align: left;
+        	font-family: 나눔스퀘어;
+        	color: gray;
+        	
+        }
+ 		.oinfo{
+        	margin-left: 330px;
+        	margin-top: 15px;
+        	width: 1000px; height: 60px;
+        }
+        #firstline{
+        	border-top: 0.5px solid #bebebe;
+        }
+        #adrs{
+        	margin-top: 30px;
+        	margin-bottom: 20px;
+        	font-size: 30px;
+        	float: left;
+        	font-family: 나눔스퀘어;
+        	color: gray;
+        	
+        }
+        #adrr{
+        	border-top: 0.5px solid gray;
+        }
+        #adr{
+        	border-top: 0.5px solid gray;
+        }
+        .colname{
+        	font-weight: bold;
+        	margin-top: 10px;
+        	text-align: left;
+        	font-family: 나눔스퀘어;
+        	height: 30px;
+        	width: 150px;
+        	margin-left: 30px;
+        	
+        }
+        #recipient{
+        	padding-top: 0px;
+        	height: 20px;
+        	float: left;
+        	margin-top: 5px;
+
+        }
+        .info{
+        	margin-left: 20px;
+        	margin-top: 10px;
+        	text-align: left;
+        	font-family: 나눔스퀘어;       
+        	width: 500px; height: 30px;
+        	margin-bottom: 10px;
+        }
+        #odrq{
+        	margin-top: 5px;
+        }
+       #name{
+       		width: 400px; height: 20px;
+       }
+       .tel{
+       		width: 80px; height: 20px;
+       }
+       #zip{
+       		width: 130px; height: 20px;
+       		
+       }
+      
+       #addr{
+       		width: 500px; height: 80px;
+       }
+       #add{
+       		height: 80px;
+       }
+        .colinfo{
+       		border-bottom: 0.5px solid #bebebe;
+       }
+       #fl{
+       		border-top: 0.5px solid #bebebe;
+       }
+ .col{
+       		background-color: #dcdcdc;
+			border-right: 1px solid #dcdcdc;
+			border-left: 1px solid #dcdcdc;
+       		border-bottom: 0.5px solid #bebebe;
+       		border-top: 0.5px solid #bebebe;
+       		text-align: center;
+       }
+       .colinfo{
+       		border-bottom: 0.5px solid #bebebe;
+       }
+       .payinfo{
+       		border-bottom: 0.5px solid #bebebe;
+       }
+.pinfo{
+        	margin-left: 330px;
+        	margin-top: 30px;
+        	margin-bottom: 30px;
+        	width: 1000px; height: 60px;
+        	border-collapse: collapse;
+        	
+        }
+        .oinf{
+        	border-bottom: 0.5px solid #bebebe;
+        	border-collapse: collapse;
+        }
+        #infoTable{
+        	border-collapse: collapse;
+        }
+        #qty{
+        border-right: 0.5px solid #bebebe;
+       
+        }
+        #totpri{
+        border-right: 0.5px solid #bebebe;
+       
+        }
+        #dprice{
+        border-right: 0.5px solid #bebebe;
+       
+        }
+        #dstatus{
+        
+        }
+        #oinf{
+        	border-bottom: 0.5px solid #bebebe;
+        }
+        #proInfo{
+        	
+        	border-right: 0.5px solid #bebebe;
+        }
+        .opinfo{
+        	margin-top: 10px;
+        	margin-bottom: 15px;
+        	height: 20px;
+        	text-align: center;
+        	font-family: �굹�닎�뒪�섏뼱;
+        	font-size: 20px;
+        	
+        }
+        .ocont{
+        	height: 100px;
+        	align: center;
+        	
+        	
+        }
+        .ocont2{
+        	height: 100px;
+        	align: center;
+        	margin-top: 65px;
+        	
+        }
+        #goods{
+        	text-align:center;
+        	
+        	margin-left: 40px;
+        	width: 300px;
+        }
+        .BuyProd{
+        	text-align: center;
+			margin-top: -10px;
+        	height: 130px;
+        }
+        #proImg{
+        	float: left;
+        	margin-left: 15px;
+        	margin-top:15px;
+        }
+        
+      
