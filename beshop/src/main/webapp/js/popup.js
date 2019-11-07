@@ -136,25 +136,7 @@
                  .focus();
              this.$modalContent.attr('tabindex', -1)
          },
-         '_setDimmed': function () {
-             this.detect.$body.append('<div class="dim-layer">');
-             this.$dimLayer = $('.dim-layer');
-             var dimLayerConfig = {
-                 'display': 'none',
-                 'position': 'fixed',
-                 'left': 0,
-                 'right': 0,
-                 'top': 0,
-                 'bottom': 0,
-                 'background': '#000',
-                 'z-index': 9999
-             };
-             this.$dimLayer
-                 .css(dimLayerConfig)
-                 .css({
-                     opacity: this.config.dimOpacity
-                 });
-         },
+         
          '_dimFadeIn': function () {
              this.config.dimmed && this.$dimLayer.fadeIn();
          },
@@ -215,16 +197,7 @@
 
  }(window, window.jQuery));
 
- $(function () {
+/* $(function () {
      // 모달 팝업 보기 버튼에 data 설정하기 data-layer-btn="#layer01", 앵커 해쉬값과 동일하게 설정하는 것을 권장
-     $('.layer-popup').dialog({
-         modalClose: '.btnp-close', // 레이어 팝업 콘텐츠내의 닫기 버튼 클래스를 변경할 경우에 사용
-         fade: false, // 페이드 이펙트를 사용할 경우에 사용
-         fadeSpeed: 400, // 페이드 이펙트를 사용할 때 페이드 속도를 제어
-         dimmed: true, // 딤드 사용을 제어
-         dimOpacity: .8, // 딤드 효과를 사용할 경우에 opacity를 제어
-         escKey: false, // esc 키를 눌러서 레이어를 닫고자 할 경우에 사용
-         clickDimmed: false, // 딤드 영역을 클릭해서 레이어를 닫고자 할 경우에 사용
-         bodyScroll: false // 레이어 팝업 시 콘텐츠 스크롤 여부 제어
-     })
- });
+    
+ });*/

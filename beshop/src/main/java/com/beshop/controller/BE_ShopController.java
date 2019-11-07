@@ -89,6 +89,10 @@ public class BE_ShopController {
 	public void shoppingDetail() {
 		
 	}
+	@RequestMapping("/auctionDetail")
+	public void auctionDetail() {
+		
+	}
 
 	@RequestMapping(value="/addProduct",method = RequestMethod.GET)
 	public void addProductGet() {

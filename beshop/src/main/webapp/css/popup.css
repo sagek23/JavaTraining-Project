@@ -3,39 +3,10 @@
      padding: 0;
  }
 
- [class^="pop-wrap"] {
-     overflow: hidden;
-     position: fixed;
-     top: 50%;
-     left: 50%;
-     width: 700px;
-     background: #fff;
-     z-index: 10001;
-     border: 2px solid #00a8b3;
- }
-
- .pop-header {
-     position: relative;
-     height: 
-        60px;
-     padding-left: 15px;
-     color: #000;
-     font-size: 22px;
-     line-height: 240%;
- }
-
- .pop-header .btnp-close {
-     position: absolute;
-     right: 15px;
-     font-size: 16px;
-    
- }
 #daychk01
 {
-margin-left: 15px;
+	margin-left: 15px;
 }
-
-
 
  .layer-scroll {
      overflow: hidden;
@@ -57,7 +28,7 @@ margin-left: 15px;
         padding-right: 2%;
         
     }
-    .price_part p input{
+    .price_part input{
         float: left;
         width: 30.2%;
         height: 40px;
@@ -72,7 +43,7 @@ margin-left: 15px;
         margin-top: 10px
         
     }
-     .btn_a
+    .btn_a
     {
         width:  70%;
         height: 45px;
