@@ -110,6 +110,6 @@
 			<td align=center class="oinf"  width="40%"><div class="ocont2">${o.totpri}</div></td>
 		</tr>
 	</table>
-	<div id="btnBox"><button type="button" id="ok" onclick="location.href='/main'">확인</button></div>
+	<div id="btnBox"><button type="button" id="ok" onclick="location.href='/mypage'">확인</button></div>
 </body>
 </html>

@@ -33,7 +33,7 @@
 						var tr = $("<tr></tr>");
 						var a = $("<a></a>").attr({href:"/orderDetail?onum="+item.onum, role:"button", type:"submit"});
 						var a2 = $("<a></a>").attr({href:"/shoppingDetail?"+item.pnum, role:"button", id:"rbtn"});
-						var btn = $("<button></button>").attr("id","review");
+						var btn = $("<button></button>").attr("id","reviewBtn");
 						$(a).html(item.onum);
 						$(btn).html("리뷰작성");
 						var td1 = $("<td></td>");
@@ -58,8 +58,11 @@
 						var status = $(td6).html();
 						substring = "배송완료";
 						var onum = item.onum;
+						var pnum = item.pnum;
 						console.log(onum);
+						console.log(pnum);
 						$("#onum").val(onum);
+						$("#pnum").val(onum);
 
 						
 						if(status.indexOf(substring) == 0){
@@ -171,9 +174,9 @@
             }
         </script>
         <style>
-        #review{
+        #reviewBtn{
         	border: 0.5px solid gray;
-        	width: 20%;
+        	width: 30%;
         	height: 40%;
         	margin-top: 2%;
         }
@@ -279,6 +282,9 @@
                 </table>
                 <form action="/orderDetail" method="POST">
                 	<input type="hidden" id="onum" name="onum">
+                </form>
+                <form action="/shoppingDetail" method="POST">
+                	<input type="hidden" id="pnum" name="pnum">
                 </form>
             </div>
             <div class="sangtae" style="margin-top:100px;">
