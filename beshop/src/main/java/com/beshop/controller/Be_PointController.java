@@ -27,6 +27,7 @@ public class Be_PointController {
 		this.dao = dao;
 	}
 	
+	
 	@RequestMapping(value = "/charge", method = RequestMethod.POST)
 	public String  chargePoint2(Be_ChargePointVo c, RedirectAttributes rttr)
 	{

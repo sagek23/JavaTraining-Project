@@ -34,6 +34,7 @@ public class BE_UserController {
 		
 	}
 	
+	
 	@RequestMapping(value = "/joinpage",method = RequestMethod.POST)
 	public ModelAndView Join(BE_UserVo v,HttpServletRequest request)
 	{	
@@ -46,6 +47,8 @@ public class BE_UserController {
 		String phone2=request.getParameter("phone2");
 		String phone3=request.getParameter("phone3");
 		String uphone=phone1+phone2+phone3;
+		String snsid=request.getParameter("snsid");
+		v.setSnsid(snsid);
 		v.setUphone(uphone);
 		v.setBirth(birth);
 		v.setAddr1(null);

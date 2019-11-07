@@ -8,26 +8,17 @@
 
 
 <title>Insert title here</title>
-	<style type="text/css">
-		input[type="number"]::-webkit-outer-spin-button,
-		input[type="number"]::-webkit-inner-spin-button { 
-	    -webkit-appearance: none;
-	    margin: 0;
-	}
-	</style>
 	<link type="text/css" href="css/insert.css" rel="stylesheet">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
 		var snsid = localStorage.getItem('id'); //sns로그인 시 가져오는 아이디
-		var profileImg = localStorage.getItem('profileImg');
 		//alert(snsid);
-		$("#snsId").val(snsid);  //snsId에 값을 넣어줘야되서 추가할 것.
 		
+		$("#snsId").val(snsid);  //snsId에 값을 넣어줘야되서 추가할 것.
 		//alert($("#snsId").val()); 
 		var snsId = $("#snsId").val(); //snsId
 		console.log(snsId);
-		console.log(profileImg);
 		
 		$("#btn_Auth").hide();
 		$("#emailcode").hide();
@@ -35,11 +26,11 @@
 			$("#btn_email").hide();
 			$("#btn_Auth").show();
 			$("#emailcode").show();
-			
 			var email=$("#email").val();
 			
-			$.ajax({url:"mail.go",dataType:"GET",data:{"email":email},success:function(r){
+			$.ajax({url:"mail.go",Type:"GET",data:{"email":email},success:function(r){
 				alert(r);
+				$("#key_a").val(r);
 			}});
 			
 			
@@ -48,14 +39,21 @@
 		$("#btn_Auth").click(function(){
 			
 			var emailcode=$("#emailcode").val();
-			$.ajax({
-				url:"mailok.go",
-				data:{"emailcode":emailcode},
-				success:function(r){
-					
+			var origincode=$("#key_a").val();
+			if(emailcode!=origincode)
+				{
+				$("#email").val('');
+				$("#emailcode").val('');
+				alert("인증코드가 일치하지않습니다");
+				$("#btn_Auth").hide();
+				$("#emailcode").hide();
+				$("#btn_email").show();
 				}
-				
-			})
+			else if(emailcode==origincode)
+			{
+				alert("인증에 성공하였습니다");
+			}
+			
 			
 			
 		})
@@ -210,11 +208,10 @@
 <body>
 	<h1 id="logo">BESHOP</h1>
     <div id="f_insert">
-        <form method="post" action="/be/joinpage"  name="f" onsubmit="return sendIt();">
-        	<input id="snsId" type="hidden"> <!-- snsId를 입력해야하므로 추가할 것-->
+        <form method="post" action="/beshop/joinpage"  name="f" onsubmit="return sendIt();">
              <p>아이디</p><span><input type="text" name="beuid" id="beuid"  maxlength="12" ></span><br>
             <div class="check_font" id="id_check"></div>
-			
+			<input id="snsId" name="snsid" type="text"> 
 
             
            <p>비밀번호</p><span><input type="password" name="upw" id="upw" maxlength="12" ></span><br>
@@ -241,7 +238,7 @@
              <div class="check_font" id="email_check"></div> 
              <input type="button" id="btn_email" value="인증번호받기">
              <input type="button" id="btn_Auth" value="인증확인">
-             <div class="check_font" id="code_check"></div> 
+           	 <input type="text" id="key_a">
               
              
             <br>

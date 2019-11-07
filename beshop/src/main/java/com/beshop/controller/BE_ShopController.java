@@ -1,4 +1,4 @@
-package com.beshop.controller;
+﻿package com.beshop.controller;
 
 
 import java.awt.Dialog;
@@ -46,27 +46,41 @@ public class BE_ShopController {
 	 * 
 	 * return list; }
 	 */
-	/*
+
+	@ResponseBody
+	@RequestMapping("/nowAuction")
+	public BE_AuctionVo auction(){
+		BE_AuctionVo ao = pao.nowAuction();
+		return ao;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/insertAuction",method = RequestMethod.POST)
+	public int insertAuction(BE_AuctionVo ao,HttpSession session) {
+		int r = pao.insertAuction(ao);
+		return r;
+	}
+
 	@RequestMapping("/index")
 	public void index() {
 
 	}
-	
+
 	@RequestMapping("/main")
 	public void main() {
 
 	}
-	*/
+
 	@RequestMapping("/shopping")
 	public void shopping() {
 
 	}
-	/*
+
 	@RequestMapping("/mypage")
 	public void mypage() {
 
 	}
-*/
+
 	@RequestMapping("/orderlist")
 	public void orderlist() {
 

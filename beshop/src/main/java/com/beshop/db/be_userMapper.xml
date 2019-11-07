@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="beuser">
+<insert id="insert">
+  	insert into be_user values(#{beuid},#{upw},#{sex},#{birth},#{uname},SYSDATE,NULL,NULL,#{uphone},#{email},sysdate,#{pf1},#{pf2},#{pf3},#{snsid})	
+  </insert>
+  <select id="selectAll" resultType="userVo">
+    select * from be_user
+  </select>
+  <select id="searchId"  resultType="String">
+  	select beuid from be_user where uname = #{uname} and email = #{email}
+  </select>
+  <select id="loginUser" resultType="userVo">
+  	select * from be_user where beuid = #{beuid} and upw = #{upw}
+  </select>
+    <update id="updatePwd"  >
+  	update be_user set upw = #{new_pwd} where upw = #{pwd} and beuid = #{beuid}
+  </update>
+  <update id="newPwd">
+  	update be_user set upw = #{new_pwd} where beuid = #{beuid}
+  </update>
+  <delete id="deleteUser">
+  delete be_user where beuid =#{beuid} and upw = #{upw}
+  </delete>
+</mapper>

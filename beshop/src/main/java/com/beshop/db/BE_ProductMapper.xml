@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -7,4 +7,15 @@
   <insert id="insert" >
   	insert into product values((select max(pnum)+1 from product),1,sysdate,#{as_info},TO_DATE(#{p_cdate},'yyyy-mm-dd hh24:mi'),#{pname},#{detail},#{stock},'더미',#{p_video},#{p_sangse},#{option},#{select_op},0,0,#{p_price},null,null)
   </insert>
+<select id="nowAuction" resultType="avo">
+  	select * from auction where anum = (select max(anum) from auction)
+  </select>
+  
+  <insert id="insertAuction" >
+  	insert into auction values((select nvl(max(anum),0)+1 from auction), #{beuid},#{price},sysdate,(select nvl(max(cnt),0)+1 from auction),sysdate+1)
+  </insert>
+  
+  <select id="getTime" resultType="pvo">
+  	select * from product where pnum = #{pnum} 
+  </select>
 </mapper>

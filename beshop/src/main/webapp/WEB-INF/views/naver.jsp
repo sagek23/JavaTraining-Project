@@ -16,7 +16,7 @@
 <script type="text/javascript">
    var naverLogin = new naver.LoginWithNaverId(
 			{
-				clientId: "클라이언트키",
+				clientId: "izje4O3kf_B_jykImcq9",
 				callbackUrl: "http://localhost:8082/naverlogin", //로그인하면 callback처리 되서 naverlogin으로 이동한 후 로그인 정보가 있으면 가입페이지로
 				isPopup: true, //로그인창 팝업
 				callbackHandle: true

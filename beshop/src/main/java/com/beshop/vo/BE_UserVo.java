@@ -1,8 +1,9 @@
 package com.beshop.vo;
 
+
 import java.sql.Date;
 
-public class BE_UserVo {
+public class Be_UserVo {
 	private String beuid;
 	private String upw;
 	private String sex;
@@ -17,27 +18,11 @@ public class BE_UserVo {
 	private String pf1;
 	private String pf2;
 	private String pf3;
-	public BE_UserVo() {
+	private String snsid;
+
+	public Be_UserVo() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	public BE_UserVo(String beuid, String upw, String sex, String birth, String uname, Date loginlog, String addr1,
-			String addr2, String uphone, String email, Date joindata, String pf1, String pf2, String pf3) {
-		super();
-		this.beuid = beuid;
-		this.upw = upw;
-		this.sex = sex;
-		this.birth = birth;
-		this.uname = uname;
-		this.loginlog = loginlog;
-		this.addr1 = addr1;
-		this.addr2 = addr2;
-		this.uphone = uphone;
-		this.email = email;
-		this.joindata = joindata;
-		this.pf1 = pf1;
-		this.pf2 = pf2;
-		this.pf3 = pf3;
 	}
 	public String getBeuid() {
 		return beuid;
@@ -123,5 +108,33 @@ public class BE_UserVo {
 	public void setPf3(String pf3) {
 		this.pf3 = pf3;
 	}
-
+	public String getSnsid() {
+		return snsid;
+	}
+	public void setSnsid(String snsid) {
+		this.snsid = snsid;
+	}
+	
+	public Be_UserVo(String beuid, String upw, String sex, String birth, String uname, Date loginlog, String addr1,
+			String addr2, String uphone, String email, Date joindata, String pf1, String pf2, String pf3, String snsid
+			) {
+		super();
+		this.beuid = beuid;
+		this.upw = upw;
+		this.sex = sex;
+		this.birth = birth;
+		this.uname = uname;
+		this.loginlog = loginlog;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.uphone = uphone;
+		this.email = email;
+		this.joindata = joindata;
+		this.pf1 = pf1;
+		this.pf2 = pf2;
+		this.pf3 = pf3;
+		this.snsid = snsid;
+		
+	}
+	
 }
