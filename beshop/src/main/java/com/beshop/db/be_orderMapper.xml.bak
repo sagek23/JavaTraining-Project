@@ -8,8 +8,7 @@
   </select>
  
   <select id="orderDetail" resultType="Be_OrderVo">
-  	select onum, pnum, dcnum, oname, ocount, oprice, ophone, odzip, odate, dstatus, 
-  	dprice, omemo, receivename, paymethod,
+  	select onum, pnum, dcnum, oname, ocount, oprice, ophone, odzip, odate, dstatus, dprice,
   	CONCAT(CONCAT(oaddr1, ' '), oaddr2) addr, oprice+dprice totpri
   	 from orderdelivery where beuid = #{beuid} and onum = #{onum}
   </select>

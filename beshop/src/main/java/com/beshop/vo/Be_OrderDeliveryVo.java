@@ -20,7 +20,9 @@ public class Be_OrderDeliveryVo {
 	String dstatus;
 	String addr;
 	int totpri;
-	
+	String omemo;
+	String receivename;
+	String paymethod;
 
 	public int getOnum() {
 		return onum;
@@ -180,12 +182,41 @@ public class Be_OrderDeliveryVo {
 	public void setTotpri(int totpri) {
 		this.totpri = totpri;
 	}
-	
+
+
+	public String getOmemo() {
+		return omemo;
+	}
+
+
+	public void setOmemo(String omemo) {
+		this.omemo = omemo;
+	}
+
+
+	public String getReceivename() {
+		return receivename;
+	}
+
+
+	public void setReceivename(String receivename) {
+		this.receivename = receivename;
+	}
+
+
+	public String getPaymethod() {
+		return paymethod;
+	}
+
+
+	public void setPaymethod(String paymethod) {
+		this.paymethod = paymethod;
+	}
 	
 
 	public Be_OrderDeliveryVo(int onum, String beuid, int pnum, int dcnum, String oname, int ocount, int oprice,
 			String oaddr1, String oaddr2, String ophone, String odzip, Date odate, int dprice, String dstatus,
-			String addr, int totpri) {
+			String addr, int totpri, String omemo, String receivename, String paymethod) {
 		super();
 		this.onum = onum;
 		this.beuid = beuid;
@@ -203,6 +234,9 @@ public class Be_OrderDeliveryVo {
 		this.dstatus = dstatus;
 		this.addr = addr;
 		this.totpri = totpri;
+		this.omemo = omemo;
+		this.receivename = receivename;
+		this.paymethod = paymethod;
 	}
 
 

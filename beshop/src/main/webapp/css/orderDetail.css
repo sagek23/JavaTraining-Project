@@ -139,7 +139,7 @@
         	margin-bottom: 15px;
         	height: 20px;
         	text-align: center;
-        	font-family: �굹�닎�뒪�섏뼱;
+        	font-family: 나눔스퀘어;
         	font-size: 20px;
         	
         }
@@ -171,5 +171,19 @@
         	margin-left: 15px;
         	margin-top:15px;
         }
-        
+        #btnBox{
+			margin: 0 auto;
+			text-align: center;
+		}
+		button{
+			width: 200px; 
+			height:50px;
+			margin-top: 10px;
+			/*background-color: #00a8b3;*/
+			background-color: #bebebe;
+			border: none;
+			font-size: 15px;
+			font-family: 나눔스퀘어;
+			cursor: pointer;	
+		}
       

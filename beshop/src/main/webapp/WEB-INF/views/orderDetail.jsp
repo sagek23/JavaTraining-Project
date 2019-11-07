@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="css/orderDetail.css" rel='stylesheet' type='text/css' />
+<link href="css/orderDetail.css?ver=1" rel='stylesheet' type='text/css' />
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 
@@ -31,7 +31,9 @@
 		</tr>
 		<tr>
 			<td class="col"><div class="colname">받는사람</div></td>
-			<td colspan="5" class="colinfo" id="firstline"><div class="info" id="recipient"></div></td>
+			<td colspan="5" class="colinfo" id="firstline"><div class="info" id="recipient">
+			${o.receivename }
+			</div></td>
 		</tr>
 		
 		<tr>
@@ -52,6 +54,7 @@
 		<tr>
 			<td  class="col"><div class="colname">배송시 요청사항</div></td>
 			<td colspan="5" class="colinfo"><div class="info">
+			${o.omemo}
 			</div>
 			</td>
 		</tr>		
@@ -101,12 +104,12 @@
 
 		</tr>
 		<tr>
-			<td align=center class="oinf" id="qty" width="20%"><div class="ocont2"></div></td>
+			<td align=center class="oinf" id="qty" width="20%"><div class="ocont2">${o.paymethod}</div></td>
 			<td align=center class="oinf" id="qty" width="20%"><div class="ocont2">${o.oprice}</div></td>
 			<td align=center class="oinf" id="totpri" width="20%"><div class="ocont2">${o.dprice}</div></td>
 			<td align=center class="oinf"  width="40%"><div class="ocont2">${o.totpri}</div></td>
 		</tr>
 	</table>
-	
+	<div id="btnBox"><button type="button" id="ok" onclick="location.href='/main'">확인</button></div>
 </body>
 </html>
