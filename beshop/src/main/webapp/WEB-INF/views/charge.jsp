@@ -59,7 +59,12 @@ $(function(){
 		alert($("#beuid").val()+","+$("#payment").val()+" and "+$("#amount").val())
 		});
 	*/
-
+	/*
+		로그인 후 id 상태유지
+	*/
+	var id = "<%=session.getAttribute("beuid") %>" 
+	$("#beuid").val((id));
+	
 });
 </script>
 </head>
@@ -73,8 +78,8 @@ $(function(){
 		<div id="charge">포인트 충전</div>
             <div class="payBox">
                  <div id="amountCash">충전금액</div>
-					<input id="beuid" type="hidden" value="one" name="beuid"> <!-- 테스트로 넣은 것. 나중에 값 유지해서 오도록 하기 -->
-					<input id="beuid" type="hidden" value="010-1111-2222" name="phone"> <!-- 테스트로 넣은 것. 나중에 값 유지해서 오도록 하기 -->
+					<input id="beuid" type="hidden" name="beuid" > <!-- 테스트로 넣은 것. 나중에 값 유지해서 오도록 하기 -->
+					<!-- <input id="beuid" type="hidden" value="010-1111-2222" name="phone"> <!-- 테스트로 넣은 것. 전화번호 안넣어도 됨 -->
 					<input type="number" name="chargelist" id="amount" placeholder="충전할 금액을 입력하세요.">
                 <div id="btnBox"><button class="money" type="button" name="chargelist" value=10000 id="10000">+10,000P</button><button class="money" type="button" name="chargelist" value=50000 id="50000">+50,000P</button><button class="money" name="chargelist" value=100000 id="100000" type="button">+100,000P</button><button class="money" name="chargelist" value=150000 id="150000" type="button">+150,000P</button><button class="money" name="chargelist" value=200000 id="200000" type="button">+200,000P</button></div>
                 <span id="pmethod">충전수단</span>
@@ -94,7 +99,7 @@ $(function(){
     	if($("#paymethod").val()=="카카오페이"){
     		$(function(){
     			 var IMP = window.IMP; 
-                 IMP.init('가맹점식별코드입력'); // 부여받은 가맹점 식별코드 입력
+                 IMP.init('imp91760461'); // 부여받은 가맹점 식별코드 입력
                  var msg;
 
                  IMP.request_pay({
@@ -104,8 +109,8 @@ $(function(){
                      name: 'BeShop 포인트 충전',
    	
    	              amount: $("#amount").val(),
-   	              buyer_name: $("#beuid").val(),
-   	              buyer_tel: $("#phone").val()
+   	              buyer_name: $("#beuid").val()
+   	              //buyer_tel: $("#phone").val()
 
                  }, function (rsp) {
                 	 console.log(rsp);
@@ -132,7 +137,7 @@ $(function(){
     	else if($("#paymethod").val()=="삼성페이"){
     		$(function(){
     			 var IMP = window.IMP; 
-                 IMP.init('가맹점식별코드입력'); // 부여받은 가맹점 식별코드 입력
+                 IMP.init('imp63840957'); // 부여받은 가맹점 식별코드 입력
                  var msg;
 
                  IMP.request_pay({
@@ -145,8 +150,8 @@ $(function(){
                      merchant_uid : 'merchant_' + new Date().getTime(),
                      name: 'BeShop 포인트 충전',
    	              amount: $("#amount").val(),
-   	              buyer_name: $("#beuid").val(),
-   	              buyer_tel: $("#phone").val()
+   	              buyer_name: $("#beuid").val()
+   	             //buyer_tel: $("#phone").val()
 
                  }, function (rsp) {
                 	 console.log(rsp);
