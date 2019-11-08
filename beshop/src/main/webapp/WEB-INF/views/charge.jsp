@@ -98,7 +98,7 @@ $(function(){
     	if($("#paymethod").val()=="카카오페이"){
     		$(function(){
     			 var IMP = window.IMP; 
-                 IMP.init('imp91760461'); // 부여받은 가맹점 식별코드 입력
+                 IMP.init('가맹점코드'); // 부여받은 가맹점 식별코드 입력
                  var msg;
 
                  IMP.request_pay({
@@ -136,7 +136,7 @@ $(function(){
     	else if($("#paymethod").val()=="삼성페이"){
     		$(function(){
     			 var IMP = window.IMP; 
-                 IMP.init('imp63840957'); // 부여받은 가맹점 식별코드 입력
+                 IMP.init('가맹점코드'); // 부여받은 가맹점 식별코드 입력
                  var msg;
 
                  IMP.request_pay({
