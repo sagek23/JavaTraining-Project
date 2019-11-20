@@ -25,6 +25,12 @@
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <style type="text/css">
+    .container {
+    	margin-top: 30px;
+    	text-align: center;
+    }
+    </style>
     </head>
     <body>
     	<div class="container">
@@ -47,7 +53,7 @@
                 <label>내용</label>
                 <p>${i.regist_date}</p>
                 </div>
-                <button type="submit" class="btn btn-primary" >목록</button>
+                <button type="submit" class="btn btn-primary" ><a href="inquiry">목록</a></button>
     	</form>
             </div>
 </body>

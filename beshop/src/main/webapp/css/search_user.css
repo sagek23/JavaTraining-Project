@@ -1,6 +1,6 @@
 h2{text-align: center;}
 a{text-decoration: none; color: #00a8b3;
-    font-family: "나눔스퀘어"; }
+    font-family: "�굹�닎�뒪�섏뼱"; }
 #search_id {
     width: 460px;
     margin: 50px auto;
@@ -31,7 +31,7 @@ p {
     text-align: center;
     font-size: 50px;
     color: #00a8b3;
-    font-family: "나눔스퀘어";
+    font-family: "나눔고딕";
     font-weight: 1000;
 }
 
@@ -40,12 +40,11 @@ input {
 }
 
 
-#beuid, #pwd, #pwd_check, #uname {
+#pbeuid, #pemail,#uname,#puname{
     width: 100%;
 }
 
-
-#btn_insert {
+#btn_id, #btn_pwd {
     width: 100%;
     margin-top: 25px;
     background-color: #00a8b3;
@@ -54,7 +53,7 @@ input {
     color: white;
     transition: all 0.7s;
 }
-#btn_insert:hover{
+#btn_id:hover, #btn_pwd:hover{
     color: #555;
     font-weight: bold;
 }

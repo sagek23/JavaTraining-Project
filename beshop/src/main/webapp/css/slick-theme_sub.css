@@ -16,7 +16,6 @@
     src: url('./fonts/slick.eot?#iefix') format('embedded-opentype'), url('./fonts/slick.woff') format('woff'), url('./fonts/slick.ttf') format('truetype'), url('./fonts/slick.svg#slick') format('svg');
 }
 /* Arrows */
-
 .slick-prev,
 .slick-next
 {
@@ -70,8 +69,8 @@
     font-family: 'slick';
     font-size: 20px;
     line-height: 1;
-	
-    opacity: .50;
+
+    opacity: .75;
     color: gray;
 	
     -webkit-font-smoothing: antialiased;

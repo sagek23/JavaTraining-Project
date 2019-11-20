@@ -29,8 +29,19 @@
         $(function() {
             var i = 2;
             $(".add").click(function() {
-                $(".option").append("<div><label class='op'>옵션" + i + " : </label><input class='title form-control input-md op"+i+"' type='text' value='옵션" + i + "' style='width: 90%; float:right;'></div>")
+                if(i >= 4){
+                    alert("옵션은 3개까지만 추가 가능합니다.");
+                    return false;
+                }else{
+                $(".option").append("<div class='op_name' style='width:30%; float:left'><label class='title col-md-4 control-label op2' style='display:flow-root; text-align:left'>옵션"+i+"</label><input class='form-control opname' name='option"+i+"' type='text'></div><div class='optionlist' style='width:63%; float:left; text-align: left; margin-left: 50px;'><label class='op' style='padding-top: 5px;'>옵션 상세</label><input class='title form-control input-md op1' name='select_op"+i+"' type='text' placeholder='옵션상세명을 ,로 구분해주세요.' ></div>")
                 i++;
+                }
+                
+            });
+            $(".del").click(function(){
+              $(".op_name").last().remove();
+              $(".optionlist").last().remove();
+                i--;
             });
             var n = 1;
             $(".delInfo").hide();
@@ -61,13 +72,15 @@
             
             $("#auction").toggle(function(){
                 $(".auctionOK").val(1); 
-                $(".now").show(); 
+                $(".spricename").text("즉시구매가");
+                $(".salePrice").show();
                 $(".dayname").text("경매 시작일");
                 $(".pricename").text("초기 금액");
                 
             },function(){
                 $(".auctionOK").val(0);
-                $(".now").hide(); 
+                $(".spricename").text("할인전 금액");
+                $(".salePrice").hide();
                 $(".dayname").text("게시 날짜");
                 $(".pricename").text("가 격");
                 
@@ -120,7 +133,7 @@
         .upload {
             background-position: center;
             
-            background-image: url(img/upload-image-icon2.jpg);
+            background-image: url(img/upload-image-icon.jpg);
             background-repeat: no-repeat;
         }
 
@@ -194,9 +207,7 @@
             margin: 1px;
         }
 
-        .op {
-            padding: 5px;
-        }
+        
         .myinfo div{
            float:left;
             padding-right: 30px;
@@ -251,7 +262,8 @@
           color: red;
            
         }
-       
+       .btn-group a{margin: 95px 10px;}
+       .ca_select{float:left; width:100%; height:40px; margin:0 0 20px 0;}
     </style>
 </head>
 
@@ -259,8 +271,8 @@
    
     <div class = "container myinfo">
         <div class="row-fluid">
-            <div class="span2" >
-                <img src="http://imgnews.naver.net/image/018/2019/10/20/0004495762_001_20191020000127820.jpg" style="width:140px; height: 140px;" class="img-circle imgC" id="imgC">
+            <%-- <div class="span2" >
+                <img src="img/${sessionScope.ch_img }" style="width:140px; height: 140px;" class="img-circle imgC" id="imgC">
                 <div class="overlay">
                     <a href="#" class="icon" title="User Profile" style="width:140px; height: 140px;">
                         <i class="fa fa-camera"></i>
@@ -268,19 +280,34 @@
                     <input type="file" class="addr" onchange="document.getElementById('imgC').attr('src',this.value);" >
                 </div>
             </div>
-            <div class="span8">
-                <h2><i class="oldname">킴 해리 </i> <input type="text" name="cname" class="cname"></h2>
-                <h6><i>Email: </i><i name="cemail" class="cemail">goflrhdwn1@gmail.com</i></h6>
-                <h6><i>지역: </i><i name="caddr" class="caddr">인천</i></h6>
+            --%>
+           <div class="span2" >
+                <img src="img/${sessionScope.ch_img }" style="width:140px; height: 140px;" class="img-circle imgC" id="imgC">
+                
+            </div>
+           <input type="hidden" id="msg" value="${msg}">
+           <div class="span8">
+            <input type="hidden" name="beuid" id="beuid" value="${sessionScope.beuid}">
+                <h2><i class="oldname">${sessionScope.ch_name}</i> </h2>
+                <h3><i class="oldname">${sessionScope.uname}님의 채널</i> </h3>
+                <h6><i>Email: </i><i name="email" class="cemail">${sessionScope.email}</i></h6>
+   
+            </div>
+           <%--  <div class="span8">
+                <h2><a href="channel"><i class="oldname">${sessionScope.ch_name }님의 채널 </i></a></h2>
+                <h6><i>Email: </i><i name="email" class="cemail">${sessionScope.email }</i></h6>
                 <h6><i>나이: </i><i name="cage" class="cage">비공개</i></h6>
               	<h6><i name="cdetail" class="cdetail">나는 누구이며 누구다</i></h6>
-            </div>
+            </div> --%>
 
 
             <div class="span3">
-                <div class="btn-group">
-                    <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
-                       	수정하기
+              <div class="btn-group">
+                    <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="/beshop/addProduct">
+                       	상품 등록하기
+                    </a>
+                     <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="/beshop/main">
+                       	메인으로 가기
                     </a>
                     
                 </div>
@@ -296,6 +323,7 @@
 	                    <div class="tab-content">
 	                        <div class="tab-pane fade in active" id="Tabs-Keempat">
 	                            <div class="col-md-12">
+	                             <input type="hidden" name="beuid" value="${sessionScope.beuid}">
 	                                <!---->
 	                                <div class="form-group files" style="width:100%; height: 330px;">
 	                                    <label>영상 파일 업로드 </label>
@@ -304,8 +332,9 @@
 	                                <div class="col-md-12" style="text-align:right;">
 	                                    <label class="title col-md-4 control-label" style="text-align: left">상품명 </label>
 	                                    <input type="text" class="title form-control input-md pname" name="pname" style="width: 100%;"><br>
-	                                    <label class="title col-md-4 control-label" style="text-align: left">설 명</label>
-	                                    <input type="text" class="text form-control input-md explain" name="detail" style="width: 100%;"><br>
+	                                    <label class="title col-md-4 control-label" style="text-align: left">상품 설명</label>
+	                                    <!-- <input type="text" class="text form-control input-md explain" name="detail" style="width: 100%;"><br> -->
+	                                    <textarea rows="10" cols="" name="detail" style="width: 100%;" class="text form-control input-md explain"></textarea>
 	                                    <div class="" style="display:flex;">
 	                                        <div style="display:flow-root; text-align:left " class="control">
 	                                            <label class="title col-md-4 control-label" style="width:100px;">수량 </label><br><input class="form-control input-md qty" type="number" name="stock" style="width: 130px;">
@@ -313,11 +342,11 @@
 	                                        <div style="display:flow-root; text-align:left" class="control">
 	                                            <label class="title col-md-4 control-label pricename" style="width:100px;">가 격 </label><br><input class="form-control input-md price" type="number" min="5000" name="p_price" style="width: 130px;">
 	                                        </div>
-	                                        <div style="display:flow-root; text-align:left" class="control now">
-	                                            <label class="title col-md-4 control-label" style="width:100px;">즉시구매가 </label><br><input class="form-control input-md nowprice" type="number" min="5000" name="p_price" style="width: 130px;">
-	                                        </div>
+	                                      <!--   <div style="display:flow-root; text-align:left" class="control now">
+	                                            <label class="title col-md-4 control-label" style="width:100px;">즉시구매가 </label><br><input class="form-control input-md nowprice" type="number" min="5000" name="p_sprice" style="width: 130px;">
+	                                        </div> -->
 	                                        <div class="salePrice control" style=" display:flow-root; text-align: left">
-	                                            <label class="title col-md-7 control-label" style="width:130px;">할인전 금액</label> <br><input class="form-control input-md sprice" type="number" min="5000" name="p_sprice" style="width: 130px;">
+	                                            <label class="title col-md-7 control-label spricename" style="width:130px;">할인전 금액</label> <br><input class="form-control input-md sprice" type="number" min="5000" name="p_sprice" style="width: 130px;" value=0>
 	                                        </div>
 	                                        <div>
 	                                            <label class="control-label" style="margin-top: 5px;">할인 적용</label><br>
@@ -335,25 +364,51 @@
                                                 </label>
                                             </div>
                                             <div>
-                                                <input type="number" class="auctionOK"> 
+                                                <input type="number" class="auctionOK" name="auction"> 
                                             </div>
 	                                    </div> <br>
-	                                    <label class="title col-md-4 control-label" style=" display:flow-root; text-align:left">옵션명 </label>
-	                                    <a class="add btn btn-dark" name="add" style="float:right">옵션 추가</a><input class="form-control opname" name="select_op" type="text" style="width:100%;">
-	
-	                                    <div class="option">
-	                                        <label class="op">옵션1 : </label><input class='title form-control input-md op1' name="option" type="text" value="옵션1" style="width: 90%; float: right;">
-	                                    </div><br>
+	                                    <div class="option" style="width:100%;">
+	                                    <div class="op_name" style="width:30%; float:left">
+	                                    <label class="title col-md-4 control-label op2" style=" display:flow-root; text-align:left">옵션1 </label>
+	                                    <input class="form-control opname" name="option1" type="text">
+										</div>
+	                                    <div class="optionlist" style="width:63%; float:left; text-align: left; margin-left: 50px;">
+	                                        <label class="op" style="padding-top: 5px;">옵션 상세</label><input class='title form-control input-md op1' name="select_op1" type="text" placeholder="옵션상세명을 ,로 구분해주세요." >
+	                                    </div>
+	                                    
+	                                    </div>
+	           
+	                                    <a class="add btn btn-dark" name="add" style="width:100%; text-align: right;">옵션 추가</a>
+	                                    <a class="del btn btn-dark" name="del" style="width:100%; text-align: right;">옵션 삭제</a>
+										<div class="category">
+											 <label class="title col-md-4 control-label" style="text-align: left" >카테고리</label>
+											 <select name="p_category" class="ca_select  form-control">
+											 	<option value="브랜드패션">브랜드패션</option>
+											 	<option value="패션의류">패션의류</option>
+											 	<option value="잡화/뷰티">잡화/뷰티</option>
+											 	<option value="유아동">유아동</option>
+											 	<option value="식품">식품</option>
+											 	<option value="생필품">생필품</option>
+											 	<option value="홈데코">홈데코</option>
+											 	<option value="건강/렌탈">건강/렌탈</option>
+											 	<option value="문구/취미/반려">문구/취미/반려</option>
+											 	<option value="스포츠">스포츠</option>
+											 	<option value="디지털/가전">디지털/가전</option>
+											 	<option value="영상기기/카메라">영상기기/카메라</option>
+											 	<option value="컴퓨터">컴퓨터</option>
+											 	<option value="여행/도서">여행도서</option>
+											 </select>
+										</div>
 	                                    <div class="info">
-	                                        <label class="title col-md-4 control-label" style="text-align: left">상세정보</label>
-	                                        <label class="title col-md-2 control-label"> 상세정보 이미지 </label>
+	                                        <label class="title col-md-4 control-label" style="text-align: left; width:100%">상세정보</label>
+	                                        <textarea class="sangsetext form-control" type="text" style="width: 100%; height: auto;"> 이미지만 넣으셔도 됩니다.</textarea>
+	                                           <label class="title col-md-2 control-label" style="text-align: left; width:100%"> 상세정보 이미지 </label>
 	                                        <input class="sangse" type="file" name="sangse" style="width: auto;">
-	                                        <textarea class="sangsetext" type="text" style="width: 100%; height: auto;"> 이미지만 넣으셔도 됩니다.</textarea>
-	                                        <a class="btn btn-dark addInfo" name="addInfo">정보추가</a>
+	                                        <a class="btn btn-dark addInfo" name="addInfo">상세 이미지 추가</a>
 	                                        <a class="btn btn-dark delInfo" name="delInfo">삭제</a><br>
 	                                    </div>
 	                                    <div class="form-group clearfix">
-	                                        <label class="title col-md-4 control-label dayname" style="text-align: left">게시 날짜</label>
+	                                        <label class="title col-md-4 control-label dayname" style="text-align: left">게시일을 정해주세요</label>
 	                                        <div class="col-xs-13">
 	                                            <input readonly class="form-control p_cdate" type="text" id="date-group1-4" name="p_cdate" placeholder="YYYY-MM-DD hh:mm">
 	                                        </div>

@@ -32,7 +32,7 @@
 					$.each(data, function(idx, item){
 						var tr = $("<tr></tr>");
 						var a = $("<a></a>").attr({href:"/orderDetail?onum="+item.onum, role:"button", type:"submit"});
-						var a2 = $("<a></a>").attr({href:"/shoppingDetail?"+item.pnum, role:"button", id:"rbtn"});
+						var a2 = $("<a></a>").attr({href:"/addReview?pnum="+item.pnum, role:"button", id:"rbtn"});
 						var btn = $("<button></button>").attr("id","reviewBtn");
 						$(a).html(item.onum);
 						$(btn).html("리뷰작성");

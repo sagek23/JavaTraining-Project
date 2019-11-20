@@ -35,85 +35,87 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="js/popup.js"></script>
 	<script type="text/javascript" src="js/jquery-ui.js"></script>
-	<script type="text/javascript">
-var SetTime = 1800;			//최초 설정 시간(기본 : 초)
-function msg_time() {	// 1초씩 카운트
-		
-		m = Math.floor(SetTime / 60) + "분 " + (SetTime % 60) + "초";	// 남은 시간 계산
-		
-		var msg = "현재 남은 시간은 " + m + "</font> 입니다.";
-		
-		document.all.ViewTimer.innerHTML = msg;		// div 영역에 보여줌 
-				
-		SetTime--;					// 1초씩 감소
-		
-	if (SetTime < 60) {			// 시간이 종료 되었으면..
-			
-			clearInterval(msg_time());		// 타이머 해제
-			alert("경매가 종료되기 1분 전 입니다");
-		}
-		if (SetTime <= 0) {			// 시간이 종료 되었으면..
-			
-			clearInterval(msg_time());		// 타이머 해제
-			alert("경매가 종료되었습니다");
-			
-		}
-		
-	}
-	setInterval(function(){
-		msg_time();
-	},1000);
-$(function(){
-	
-	
-	$("#btn1").click(function(){
-		var priceval1 = $(this).attr('value');
-		$('.price').val(priceval1);
-		alert(priceval1);
-		
-	});
-	$("#btn2").click(function(){
-		var priceval2 = $(this).attr('value');
-		$('.price').val(priceval2);
-		alert(priceval2);
-	});
-	$("#btn3").click(function(){
-		var priceval3 = $(this).attr('value');
-		$(".price").val(priceval3);
-		alert(priceval3);
-	});
 
-	function now(){
-		$.ajax({url:"nowAuction",success:function(data){
-			//alert(data.cnt); 
-			$("#startprice").html(data.price);
-			$(".btn_1").val(data.price+10000);
-			$(".btn_2").val(data.price+20000);
-			$(".btn_3").val(data.price+30000);
-			$("#cnt").html(data.cnt);
-		}});
-	}
-	now();
-	setInterval(function(){
-		now();
-		
-	},5000);
-	$(".modalWin").hide();
-	$(".beuid").hide();
-	$(".btn_b").click(function(){
-		var data = $(".f").serialize();
-		alert(data);
-		$.ajax({
-			url:"insertAuction",
-			type:"post",
-			data:data,
-			success:function(r){
-				alert("입찰되었습니다."+r)
+	<script type="text/javascript">
+	var SetTime = 60;			//최초 설정 시간(기본 : 초)
+	function msg_time() {	// 1초씩 카운트
+			
+			m = Math.floor(SetTime / 60) + "분 " + (SetTime % 60) + "초";	// 남은 시간 계산
+			
+			var msg = "현재 남은 시간은 " + m + "</font> 입니다.";
+			
+			document.all.ViewTimer.innerHTML = msg;		// div 영역에 보여줌 
+					
+			SetTime--;					// 1초씩 감소
+			
+			if (SetTime < 60) {			// 시간이 종료 되었으면..
+				
+				clearInterval(msg_time());		// 타이머 해제
+				alert("경매가 종료되기 1분 전 입니다");
 			}
-		}); 
-	});
-     
-});
+			if (SetTime < 0) {			// 시간이 종료 되었으면..
+				
+				clearInterval(msg_time());		// 타이머 해제
+				alert("경매가 종료되었습니다");
+				$(".btn_b").prop('disabled', true);
+				//$("#btn_b").prop('disabled', true);
+			}
+			
+		}
+		setInterval(function(){
+			msg_time();
+		},1000);
+		
+		$(function(){
+			
+			
+			$("#btn1").click(function(){
+				var priceval1 = $(this).attr('value');
+				$('.price').val(priceval1);
+				alert(priceval1);
+				
+			});
+			$("#btn2").click(function(){
+				var priceval2 = $(this).attr('value');
+				$('.price').val(priceval2);
+				alert(priceval2);
+			});
+			$("#btn3").click(function(){
+				var priceval3 = $(this).attr('value');
+				$(".price").val(priceval3);
+				alert(priceval3);
+			});
+			function now(){
+				$.ajax({url:"nowAuction",success:function(data){
+					//alert(data.cnt); 
+					$("#startprice").html(data.price);
+					//$(".btn_1").val(data.price+10000);
+					//$(".btn_2").val(data.price+20000);
+					//$(".btn_3").val(data.price+30000);
+					//$("#cnt").html(data.cnt);
+				}});
+			}
+			now();
+			setInterval(function(){
+				now();
+				
+			},5000);
+			$(".modalWin").hide();
+			$(".beuid").hide();
+			$(".btn_b").click(function(){
+				var data = $(".f").serialize();
+				alert(data);
+				$.ajax({
+					url:"insertAuction",
+					type:"post",
+					data:data,
+					success:function(r){
+						alert("입찰되었습니다."+r)
+					}
+				}); 
+			});
+		     
+		});
 </script>
  		
 <style type="text/css">
@@ -133,7 +135,6 @@ $(function(){
   .flowplayer {
   	max-width: 1000px;
 }
-
 #qual {
   position: absolute; left: 1000px; top: 10px;
   font-family: courier, monospace;
@@ -144,30 +145,90 @@ $(function(){
   padding: 2em; 
   z-index: 1;  
 }
-
 #qual h3 {
   margin: 0 0 10px;
   color: #eee;
 }
-
 #qual label {
   display: inline-block;
   color: lime;
   width: 100px;
 }
-
 #qual strong {
   font-weight: 500;
   color: #fff;
 }
-
 #qual.switching {
   background-color: #ff0083;
   transform: scale(1.05);
 }
+#reviews{
+	margin-left: 80px;
+	margin-top: 30px;
+} 
+#rdate{
+	color: gray;
+	font-size: 10px;
+} 
+#con{
+
+	font-size: 15px;
+} 
 </style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//alert("ok");
+	$.getJSON("reviewList", function(data){
+		console.log(data);
+		$.each(data, function(idx, item){
+		
+			var date = new Date(item.redate);
+			/*
+			var dy = date.getFullYear();
+			var dm = date.getMonth();
+			var dd = date.getDate();
+			var dday = date.getDate();
+			var dh = date.getHours();
+			var dm = date.getMinutes();
+			var ds = date.getSeconds();
+			*/
+			var h4 = $("<h4></h4>").html(item.beuid);
+			var p2 = $("<p></p>").html(date);
+			var p1 = $("<p></p>").html(item.re_con);
+
+			$(h4).attr('id', 'beuidR');
+			$(p2).attr('id', 'rdate');
+			$(p1).attr('id', 'con');
+			var tr1 = $("<tr></tr>").append(h4);
+			var tr2 = $("<tr></tr>").append(p1);
+			var tr3 = $("<tr></tr>").append(p2);
+
+			$("#reviews").append(tr1, tr2, tr3);
+			
+			
+	
+		});
+		
+	});
+	
+});
+
+
+</script>
 </head>
 <body>
+	<script type="text/javascript">
+		$(function(){
+			$.getJSON("getPoint",function(data){
+					//console.log(data);
+					//alert(data.pbalnow);
+					var p = $("<p></p>").html(data.pbalnow);
+					$(".mypoint").append(p);
+					});
+			});
+			//로그인 시 포인트 불러오기
+	</script>	
 		<!-- BREADCRUMB -->
 		<div id="breadcrumb" class="section">
 			<!-- container -->
@@ -218,7 +279,8 @@ $(function(){
 					<!-- Product details -->
 					<div class="col-md-5">
 						<div class="product-details">
-							<h2 class="product-name">Apple 2019년 맥북 프로 터치바 13 8세대 MUHQ2KH/A (i5-1.4GHz quad-core 8GB MAC OS SSD 128GB) </h2>
+							<h2 class="product-name">${de.pname } </h2>
+							<!--  
 							<div>
 								<div class="product-rating">
 									<i class="fa fa-star"></i>
@@ -229,12 +291,12 @@ $(function(){
 								</div>
 								<a class="review-link" href="#">3개 리뷰 | 리뷰 달기</a>
 							</div>
+							-->
 							<div>
-								<h3 class="product-price">599,000원 <del class="product-old-price">700,000원</del></h3>
-								<span class="product-available">재고 5</span>
+								<h3 class="product-price">${de.p_price }원 <del class="product-old-price">${de.p_sprice }원</del></h3>
+								<span class="product-available">재고 ${de.stock }개</span>
 							</div>
-							<p><h5>HD 디스플레이가 제공하는 고화질의 세계</h5> 16:9의 넓은 화면은 동영상이나 영화를 볼때 잘림현상이 없어 더욱 실감나는 영상을 감상하실수
-							있습니다. 또한 컨텐츠의 디테일한 재현은 물론 아이콘, 사진및 게임등의 그래픽을 완벽하게 표현해냅니다.</p>
+							<p><h5>${de.detail }</h5> ${de.p_sangse }</p>
 
 							<div class="product-options"><br>
 								<!-- <a href="#layer01" data-popup="#layer01" class="layer-popup">레이어팝업 보기</a>  style="display:none"-->
@@ -244,7 +306,7 @@ $(function(){
 						        	<form class="f">
 						                <div class="modal-content" style="width:700px;">
 						                	<!-- <h5 class="modal-title" id="exampleModalLabel">경매</h5> -->
-						                	<div class="modal-header"><span id="startprice">1,230,000</span> 원ㅣ무료배송 
+						                	<div class="modal-header"><span id="startprice">${de.p_price}</span> 원ㅣ무료배송 
 							                	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									          	<span aria-hidden="true">&times;</span>
 									        	</button>
@@ -253,21 +315,23 @@ $(function(){
 						            		<div class="pop-box">
 							                    <div class="pop-msg">
 													<input type="text" class="beuid" id="beuid" name="beuid" value="${sessionScope.beuid}">
-							                        <p class="start" id="time">경매종료까지 <span id="ViewTimer"></span> 남았습니다ㅣ<span id="cnt" name="cnt">2</span>번의 입찰 진행중</p>
+							                        <p class="start" id="time">경매종료까지 <span id="ViewTimer"></span> 남았습니다ㅣ<span id="cnt" name="cnt">${a.cnt}</span>번의 입찰 진행중</p>
 							                        <p class="bar"><em style="width:1242%;height: 3px;"></em></p>
 							                        <p class="start" id="notice" style="margin-bottom: 15px;">보유하신 포인트의 금액만큼 입찰가를 제시해주세요</p>
 							                        <div class="colorpart">
 							                            <p class="start" id="per">입찰가ㅣ만원 단위</p> 
+							                            <!--  
 							                            <div class="price_part">
-							                                <input type="button" class="btn btn_1" id="btn1" value="1220000">
-							                                <input type="button" class="btn btn_2" id="btn2" value="1320000">
-							                                <input type="button" class="btn btn_3" id="btn3" value="1420000">
+							                                <input type="button" class="btn btn_1" id="btn1" value=10000>
+							                                <input type="button" class="btn btn_2" id="btn2" value=20000>
+							                                <input type="button" class="btn btn_3" id="btn3" value=30000>
 							                            </div>
+							                            -->
 							                            <p class="bar"><em style="width:1242%;height: 3px;"></em></p>
-							                            <p class="start">보유포인트<span class="mypoint">1,220,000</span>원 <a href="#">충전하기</a></p>
+							                            <p class="start">보유포인트<span class="mypoint"></span><a href="/charge">충전하기</a></p>
 							                            <div class="box">
 							                                <input type="number" class="price btn_a" name="price" id="price" value=" " placeholder="입찰하고 싶은 금액을 입력해주세요.">
-							                                <input type="button" class="btn_b" value="입찰하기">
+							                                <input type="button" class="btn_b" id="btn_b" value="입찰하기">
 							                            </div>
 							
 							                            <p class="start">경매가 끝나거나 판매자가 입찰종료시 가장 높은 금액을 제시한 입찰자가 입찰됩니다</p>
@@ -318,7 +382,7 @@ $(function(){
 							<ul class="tab-nav">
 								<li class="active"><a data-toggle="tab" href="#tab1">상세정보</a></li>
 								<li><a data-toggle="tab" href="#tab2">A/S정보</a></li>
-								<li><a data-toggle="tab" href="#tab3">리뷰보기 (3)</a></li>
+								<li><a data-toggle="tab" href="#tab3">리뷰</a></li>
 							</ul>
 							<!-- /product tab nav -->
 
@@ -328,7 +392,7 @@ $(function(){
 								<div id="tab1" class="tab-pane fade in active">
 									<div class="row">
 										<div class="col-md-12">
-											<img src="http://gi.esmplus.com/sycnicom/11st_shokingdill/s550_ati/lg_s550_ati_11st_page.jpg" style="width: 100%">
+											<img src="img/${de.p_sangse }" style="width: 100%">
 										</div>
 									</div>
 								</div>
@@ -338,7 +402,7 @@ $(function(){
 								<div id="tab2" class="tab-pane fade in">
 									<div class="row">
 										<div class="col-md-12">
-											<img src="http://gi.esmplus.com/sycnicom/2nd_notebook/2nd-notebook-besong.jpg" style="width: 100%">
+											<img src="img/${de.as_info }" style="width: 100%">
 										</div>
 									</div>
 								</div>
@@ -347,7 +411,7 @@ $(function(){
 								<!-- tab3  -->
 								<div id="tab3" class="tab-pane fade in">
 									<div class="row">
-										<!-- Rating -->
+										<!-- Rating 
 										<div class="col-md-3">
 											<div id="rating">
 												<div class="rating-avg">
@@ -429,11 +493,12 @@ $(function(){
 												</ul>
 											</div>
 										</div>
-										<!-- /Rating -->
+									
 
-										<!-- Reviews -->
+										-->
 										<div class="col-md-6">
 											<div id="reviews">
+											<!--
 												<ul class="reviews">
 													<li>
 														<div class="review-heading">
@@ -491,11 +556,12 @@ $(function(){
 													<li><a href="#">4</a></li>
 													<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
 												</ul>
+												-->
 											</div>
 										</div>
 										<!-- /Reviews -->
 
-										<!-- Review Form -->
+										<!-- Review Form 
 										<div class="col-md-3">
 											<div id="review-form">
 												<form class="review-form">
@@ -517,6 +583,7 @@ $(function(){
 											</div>
 										</div>
 										<!-- /Review Form -->
+										
 									</div>
 								</div>
 								<!-- /tab3  -->

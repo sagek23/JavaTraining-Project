@@ -36,6 +36,24 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript">
+		  $(function() {
+			$("#submit").click(function(event){
+                var radioYn = $("input:radio[name='jb-radio']:checked").val(); //$('#radioExample:checked').val()
+	            	
+                // var check = "?qna_category=" + radioYn;
+				var data = $("#f").serialize();
+				//var data2 = data + check; 
+					
+				
+			});
+			
+		});  
+		
+		</script>
+        	
+        
         <style>
             .custom-control, custom-radio {
                 text-align: left;
@@ -61,10 +79,11 @@
 	<body>
    <div class="container">
       
-    <form class="form-horizontal" role="form" method="post" action="index.php">
+    
      <div class="inquiry_Write_name">
        <h3>1:1문의 쓰기</h3>
    </div>
+	<form class="inquiry_write" role="form" id="f" method="post" action="inquiry_write" id="inquiry_write">
 	<div class="form-group hr_tag">
 		<label for="name" class="col-sm-2 control-label">구매관련문의</label>
 		<div class="row">
@@ -72,27 +91,27 @@
 					<div class="row">
 				    
 					<div class="custom-control custom-radio">
-						<input type="radio" name="jb-radio" id="jb-radio-1" class="custom-control-input">
+						<input type="radio" name="jb-radio" id="jb-radio-1" class="custom-control-input" value="1">
 						<label class="custom-control-label" for="jb-radio-1">배송문의</label>
-					
-						<input type="radio" name="jb-radio" id="jb-radio-2" class="custom-control-input">
+						
+						<input type="radio" name="jb-radio" id="jb-radio-2" class="custom-control-input" value="2">
 						<label class="custom-control-label" for="jb-radio-2">주문문의</label>										
-						<input type="radio" name="jb-radio" id="jb-radio-3" class="custom-control-input">
+						<input type="radio" name="jb-radio" id="jb-radio-3" class="custom-control-input" value="3">
 						<label class="custom-control-label" for="jb-radio-3">취소문의</label>
 						
-						<input type="radio" name="jb-radio" id="jb-radio-4" class="custom-control-input">
+						<input type="radio" name="jb-radio" id="jb-radio-4" class="custom-control-input" value="4">
 						<label class="custom-control-label" for="jb-radio-4">반품문의</label>
 						
-						<input type="radio" name="jb-radio" id="jb-radio-5" class="custom-control-input">
+						<input type="radio" name="jb-radio" id="jb-radio-5" class="custom-control-input" value="5">
 						<label class="custom-control-label" for="jb-radio-5">교환문의</label>
 						
-						<input type="radio" name="jb-radio" id="jb-radio-6" class="custom-control-input">
+						<input type="radio" name="jb-radio" id="jb-radio-6" class="custom-control-input" value="6">
 						<label class="custom-control-label" for="jb-radio-6">환불문의</label>
 						
-						<input type="radio" name="jb-radio" id="jb-radio-7" class="custom-control-input">
-						<label class="custom-control-label" for="jb-radio-7">사운품문의</label>
+						<input type="radio" name="jb-radio" id="jb-radio-7" class="custom-control-input" value="7">
+						<label class="custom-control-label" for="jb-radio-7">사은품문의</label>
 						
-						<input type="radio" name="jb-radio" id="jb-radio-8" class="custom-control-input">
+						<input type="radio" name="jb-radio" id="jb-radio-8" class="custom-control-input" value="8">
 						<label class="custom-control-label" for="jb-radio-8">입금문의</label>
 					</div>
 					
@@ -101,55 +120,32 @@
 				</div>
 				
 	</div>
-	<div class="form-group">
-		<label for="name" class="col-sm-2 control-label">일반상담문의</label>
-		<div class="row">
-				    
-					<div class="custom-control custom-radio">
-						<input type="radio" name="jb-radio" id="jb-radio-9" class="custom-control-input">
-						<label class="custom-control-label" for="jb-radio-9">회원정보문의</label>
-					
-						<input type="radio" name="jb-radio" id="jb-radio-10" class="custom-control-input">
-						<label class="custom-control-label" for="jb-radio-10">회원제도문의</label>										
-						<input type="radio" name="jb-radio" id="jb-radio-11" class="custom-control-input">
-						<label class="custom-control-label" for="jb-radio-11">결제방법문의</label>
-						
-						<input type="radio" name="jb-radio" id="jb-radio-12" class="custom-control-input">
-						<label class="custom-control-label" for="jb-radio-12">상품문의</label>
-				
-					</div>
-					
-				</div>
-	</div>
 	
 	<div class="form-group">
-		<label for="name" class="col-sm-2 control-label">성명</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
-		</div>
 	</div>
+	<!-- <input type="hidden" class="form-control" id="qnanum" name="qnanum" value=0> -->
 	<div class="form-group">
 		<label for="email" class="col-sm-2 control-label">아이디</label>
 		<div class="col-sm-10">
-			<input type="email" class="form-control" id="email" name="email" placeholder="godkkoo" value="">
+			<input type="text" class="form-control" id="beuid" name="beuid"  value="${sessionScope.beuid }">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="email" class="col-sm-2 control-label">이메일</label>
 		<div class="col-sm-10">
-			<input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" value="">
+			<input type="email" class="form-control" id="qna_email" name="qna_email"  value="${sessionScope.email }">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="email" class="col-sm-2 control-label">제목</label>
 		<div class="col-sm-10">
-			<input type="email" class="form-control" id="email" name="email" placeholder="제목을 입력하세요." value="">
+			<input type="text" class="form-control" id="qna_title" name="qna_title" placeholder="제목을 입력하세요." value="">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="message" class="col-sm-2 control-label">내용</label>
 		<div class="col-sm-10">
-			<textarea class="form-control" rows="4" name="message"  placeholder="내용을 입력하세요" ></textarea>
+			<textarea class="form-control" rows="4" name="qna_con" id="qna_con"  placeholder="내용을 입력하세요" ></textarea>
 		</div>
 	</div>
 	
@@ -160,7 +156,7 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-10 col-sm-offset-2">
-			<! Will be used to display an alert to the user>
+			
 		</div>
 	</div>
 </form>

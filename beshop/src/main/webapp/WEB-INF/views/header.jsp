@@ -38,6 +38,9 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <script>
 $(function(){
  	function check(){
@@ -59,21 +62,19 @@ $(function(){
 	 if(msg == "실패"){
 		alert("로그인 정보를 확인해주세요!");
 	}
-
 });
 </script>
 <!-- 카카오로그인 -->
 	<script type='text/javascript'>
   //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('javascript키입력');
+    Kakao.init('0340ee560f2747b0b20a53bcd86631f8');
     function loginWithKakao() {
       // 로그인 창을 띄웁니다.
       Kakao.Auth.login({
         success: function(authObj) {
           //alert(JSON.stringify(authObj));
           Kakao.API.request({
-
         	  url: '/v2/user/me',
               success: function(res) {
                console.log(res);
@@ -87,12 +88,25 @@ $(function(){
                console.log("Nickname: "+userNickName);
                console.log("ProfileImg : "+profileImg);
                //console.log("Access Token: "+authObj.access_token);
-               location.href = '/joinpage';
-               localStorage.setItem('id', id);
-               localStorage.setItem('profileImg', profileImg);
                
+	               $.ajax({url:"snsId_ck", data:{snsid : id}, success:function(r){
+							
+							if(r == "1"){
+								var data = "snsid="+id;
+								$.ajax({url:"main", type:"POST", data:data, success:function(){
+									window.location.href = "main";	
+									
+								}});
+							}else{
+								
+								location.href = 'joinpage';
+				               localStorage.setItem('id', id);
+				               localStorage.setItem('profileImg', profileImg);
+							}
+			           } 
+	               })
+          
                   }
-
                 });
         },
         fail: function(err) {
@@ -100,12 +114,12 @@ $(function(){
         }
       });
     };
-
   //]]>
 </script>
 	
  <!-- 구글 -->
 <script type="text/javascript">
+
 	var googleUser = {};
 	var startApp = function() {
 	  gapi.load('auth2', function(){
@@ -159,7 +173,6 @@ $(function(){
 				callbackHandle: true
 			}
 		);
-
 		//naverlogin페이지로 넘어가서 callback 처리됨 naverlogin페이지 반드시 필요
 		naverLogin.init();
 </script>
@@ -206,7 +219,6 @@ $(function(){
     color: white;
     transition: all 0.4s;
 }
-
 #btn_login:hover{
     color: #555;
     font-weight: bold;
@@ -240,11 +252,14 @@ $(function(){
 					});
 			});
 			//로그인 시 포인트 불러오기
-				
+		function showCharge() {
+			window.open("charge", "포인트충전하기",
+			"width=1100, height=620, left=100, top=50");
+			}	
 </script>
 	<body>
 	 <!--햄버거 로그인 영역 -->
-      
+      <%-- <input type='text' value='${session }'> --%>
       <c:choose>
 			<c:when test="${empty sessionScope.beuid}">
 			<!-- 로그인이 안되어 있으면 -->
@@ -252,11 +267,15 @@ $(function(){
       <span id="close-sidenav">&times;</span>
       <input type="hidden" id="msg" value="${msg }">
        <header>로그인</header>
-       <form id="fs" action="login.do" method="post" onsubmit="return check()">
+       <form id="fs" action="main" method="post" onsubmit="return check()">
        <ul>
         <li><input type="text" name="beuid" id="beuid" placeholder="  아이디"></li>
-        <li><input type="text" name ="upw" id="upw" placeholder="  비밀번호"></li>
+        <li><input type="password" name ="upw" id="upw" placeholder="  비밀번호"></li>
         <li><input type="submit" value="로그인" id="btn_login"></li>
+        <li><div id="kakaoBtn"><a id="custom-login-btn" href="javascript:loginWithKakao()"><img src="img/kakaoLogin.png" width="233" height="40"/></a></div></li>
+        <li><div id="customBtn" class="customGPlusSignIn"><img src="img/google.png" id="googleLogin" width="233" height="40"></div></li>
+        <li><div id="naverIdLogin"><a id="naverIdLogin_loginButton" href="#" role="button"><img src="https://static.nid.naver.com/oauth/big_g.PNG" width="233" height="40"></a></div></li>
+        
       </ul>
       </form>
        <ul class="second">
@@ -269,10 +288,10 @@ $(function(){
        <c:otherwise>
        <nav id="sidenav" style="padding-left:0px">
       <span id="close-sidenav">&times;</span>
-       	 <header class="myheader" style="font-size: 20px;">${sessionScope.uname }님 환영합니다</header>
+       	 <header class="myheader" style="font-size: 20px;" style="margin-top:90px">${sessionScope.uname }님 환영합니다</header>
        	 <a href="logout.do" style="text-align: center; font-size:13px; margin:10px 0;" >로그아웃</a>
         <div class="userImg">
-            <img src="img/haeree.jpg">
+            <img src="img/${sessionScope.ch_img }">
         </div>
         <div class="userMenu">
             <header class="myheader" style="margin-top:50px; font-size:17px;">My 메뉴</header>
@@ -280,7 +299,6 @@ $(function(){
             <a>나의 주문내역</a>
             <a>고객센터</a>
             <a id="point">보유포인트</a>
-            <header class="myheader"  style="margin-top:50px; font-size:17px;]">최근 시청한 방송</header>
         </div>
        	</nav>
        	</c:otherwise>
@@ -307,7 +325,7 @@ $(function(){
 					</c:when>
 					 <c:otherwise>
 					 <ul class="header-links pull-right">
-						<li><a href="/charge"> <i class="fa fa-dollar" style="color: black"></i>point</a></li>
+						<li><a href="#" onclick="showCharge()" > <i class="fa fa-dollar" style="color: black"></i>point</a></li>
 						<li><a id="log"><i class="fa fa-user-o" style="color: black"></i> Logout</a></li>
 						<li><a href="mypage"><i class="fa fa-user-o" style="color: black"></i> My Page</a></li>
 					</ul>
@@ -337,7 +355,7 @@ $(function(){
 						<!-- LOGO -->
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="#" class="logo">
+								<a href="main" class="logo">
 									<img src="./img/logo.png" alt="" width="180px" height="70px">
 								</a>
 								</a>
@@ -378,7 +396,7 @@ $(function(){
 									<a class="dropdown-toggle"  href="cart.jsp">
 										<i class="fa fa-shopping-cart" style="color: black"></i>
 										<span style="color: black">장바구니</span>
-										<div class="qty">3</div>
+										
 									</a>
 									<div class="cart-dropdown">
 										<div class="cart-list">
@@ -444,12 +462,11 @@ $(function(){
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">쇼핑</a></li>
-						<li><a href="#">공동구매</a></li>
-						<li><a href="#">구독</a></li>
-						<li><a href="#">랭킹</a></li>
+						<li><a href="shopping">쇼핑</a></li>
+						<li><a href="sub">구독</a></li>
+						<li><a href="ranking">랭킹</a></li>
 						<li><a href="#">이벤트</a></li>
-						<li><a href="customer_center.jsp">고객센터</a></li>
+						<li><a href="customer_center">고객센터</a></li>
 					</ul>
 					<!-- /NAV -->
 				</div>

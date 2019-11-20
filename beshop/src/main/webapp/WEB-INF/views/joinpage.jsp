@@ -29,7 +29,7 @@
 			var email=$("#email").val();
 			
 			$.ajax({url:"mail.go",Type:"GET",data:{"email":email},success:function(r){
-				alert(r);
+				
 				$("#key_a").val(r);
 			}});
 			
@@ -211,7 +211,7 @@
         <form method="post" action="/beshop/joinpage"  name="f" onsubmit="return sendIt();">
              <p>아이디</p><span><input type="text" name="beuid" id="beuid"  maxlength="12" ></span><br>
             <div class="check_font" id="id_check"></div>
-			<input id="snsId" name="snsid" type="text"> 
+			<input id="snsId" name="snsid" type="hidden"> 
 
             
            <p>비밀번호</p><span><input type="password" name="upw" id="upw" maxlength="12" ></span><br>
@@ -238,7 +238,7 @@
              <div class="check_font" id="email_check"></div> 
              <input type="button" id="btn_email" value="인증번호받기">
              <input type="button" id="btn_Auth" value="인증확인">
-           	 <input type="text" id="key_a">
+           	 <input type="hidden" id="key_a">
               
              
             <br>

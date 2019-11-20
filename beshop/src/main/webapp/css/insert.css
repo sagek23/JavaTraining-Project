@@ -7,6 +7,12 @@
 
 }
 
+.check_font
+{
+	margin-top:5px;
+	color: #00a8b3; 
+}
+
 body {
     margin: 0 auto;
     background-color: #f5f6f7;
@@ -22,35 +28,40 @@ p {
     text-align: center;
     font-size: 50px;
     color: #00a8b3;
-    font-family: "나눔스퀘어";
+    font-family: "占쎄돌占쎈땸占쎈뮞占쎌꼷堉�";
     font-weight: 1000;
 }
 
-input {
+input ,select{
     height: 40px;
 }
 
 
-#beuid, #pwd, #pwd_check, #uname {
+#beuid, #upw, #upw_check, #uname ,#pf1,#pf2,#pf3{
     width: 100%;
 }
 
 /* #pwd{background: url(image/m_icon_pass.png) top right no-repeat;} */
-#b_year, #b_mon, #phone1, #phone2{
- width: 140px; 
+ #phone1, #phone2{
+ 	width: 140px; 
     margin-right: 8px;
     text-align: right;
 }
-#b_day, #phone3{
+ #phone3{
     width: 140px;
     text-align: right;
 }
-
+#year,#mon,#day
+{
+	width: 130px;
+    text-align: right;
+    margin-right: 4px;
+}
 #sex_f, #sex_m {
     height: 10px;
 }
 
-#btn_phone {
+#btn_email ,#btn_Auth{
     width: 100%;
     background-color: #00a8b3;
     border: 0px;
@@ -79,7 +90,11 @@ input {
     width: 100%;
 }
 
-
+#emailcode
+{
+	 width: 100%;
+	 margin-top: 5px;
+}
 
 #sub_img01 {
     

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,7 @@
 <%-- <%@include file="/WEB-INF/include/header.jsp"%>--%>
 <jsp:include page="header.jsp" flush="true"/> 
 	<!-- Bootstrap -->
-    <!-- <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	
     <link rel="stylesheet"  href="https://han3283.cafe24.com/js/lightslider/css/lightslider.css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="#" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/slick.css" />
@@ -100,22 +100,21 @@
     
     .btnR1{
         position:absolute;
-        top:115px;
-       right:20px;
+        top:104px;
+       right:0px;
 
     }
      .btnR2{
         position:absolute;
-        top:115px;
-       right:20px;
+           top:104px;
+       right:0px;
 
     }
     .sliderSlick{
-    	width:90%;
-    	margin-left: 50px;
-		margin-right: 50px; 
+    	width:100%;
+		margin-right: 70px; 
     }
-    .row{padding:30px;}
+    .row1{padding:30px;}
     .list1{position: relative;}
     .list2{position: relative;}
     /* 편성표 이미지 넣기 */
@@ -259,7 +258,7 @@
 		<div class="col-md-3 ">
 		     <div class="list-group ">
              <div>
-              <a href="#" class="list-group-item list-group-item-action active" style="background-color: #00a8b3">쇼핑페이지</a>   
+              <a href="#" class="list-group-item list-group-item-action active" style="background-color: #555; font-size:20px; margin:14px 0 5px 0; text-align:center; border-radius:0px;">쇼핑</a>   
              </div>
              <div >
               <a href="#" class="list-group-item list-group-item-action" id="100">브랜드패션</a>
@@ -313,7 +312,6 @@
                 <div class="card">
                     <div class="card-body">
                         <!--이미지 슬라이드 편성표-->
-                        <h5>편성표</h5>
                         <div class="slide-wrap">
                             <div class="slide-content">
                                 <ul id="slider" class="slider">
@@ -340,90 +338,61 @@
                         </div>
 						<div>
 	                        <div class="col-md-0">
-	                            <h4><a href="#">가방</a></h4>
+	                            <h4><a href="#">새로운 상품</a></h4>
 	                            <hr>
 	                        </div>
 	                        <div class="list1">
 								<div>                   
 	                            <i class="prev1 fa fa-angle-left fa-3x btnL"></i>
-		                        <div class="list-unstyled video-list-thumbs row sliderSlick sliderS1" style="width:300; height: 300px; padding:30;">
-		                            <div class="col-lg-3 col-sm-4 col-xs-6">
-		                                <a href="shoppingDetail" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-		                                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" width="200px" />
-		                                    <h3>가성비 내리는 스마트 캐주얼 백팩</h3>
-		                                    <h5>말이 필요없이 일단 가성비가 너무나 내림.</h5>
+		                        <div class="list-unstyled video-list-thumbs row1 sliderSlick sliderS1" style="width:300; height: 300px; padding:30;">
+		                         <c:forEach items="${list}" var="r">
+		                            
+		                           <div class="col-lg-3 col-sm-4 col-xs-6">
+		                            <c:if test="${r.auction == 0}">
+	
+		                             <a href="shoppingDetail?pnum=${r.pnum }">
+		                             <input type="hidden" value="${r.pnum }">
+		                                    <img src="img/${r.p_sangse }" alt="Barca" class="img-responsive" style="width:160px; height:140px;" />
+		                                    <h3 style="margin: 15px 0px;">${r.pname }</h3>
+		                                    <h5>${r.beuid}</h5>
 		                                    <span class="glyphicon glyphicon-play-circle"></span>
-		                                    <span class="duration">03:15</span>
+		                                    <span class="duration">${r.p_cdate }</span>
 		                                </a>
+		                            </c:if>
+
 		                            </div>
-		                            <div class="col-lg-3 col-sm-4 col-xs-6">
-		                                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-		                                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" width="200px" />
-		                                    <h3>가성비 내리는 스마트 캐주얼 백팩</h3>
-		                                    <h5>말이 필요없이 일단 가성비가 너무나 내림.</h5>
-		                                    <span class="glyphicon glyphicon-play-circle"></span>
-		                                    <span class="duration">03:15</span>
-		                                </a>
-		                            </div>
-		                            <div class="col-lg-3 col-sm-4 col-xs-6">
-		                                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-		                                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" width="200px" />
-		                                    <h3>가성비 내리는 스마트 캐주얼 백팩</h3>
-		                                    <h5>말이 필요없이 일단 가성비가 너무나 내림.</h5>
-		                                    <span class="glyphicon glyphicon-play-circle"></span>
-		                                    <span class="duration">03:15</span>
-		                                </a>
-		                            </div>
-		                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
-		                                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-		                                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" width="200px" />
-		                                    <h3>가성비 내리는 스마트 캐주얼 백팩</h3>
-		                                    <h5>말이 필요없이 일단 가성비가 너무나 내림.</h5>
-		                                    <span class="glyphicon glyphicon-play-circle"></span>
-		                                    <span class="duration">03:15</span>
-		                                </a>
-		                            </div>
-		                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
-		                                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-		                                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" width="200px"/>
-		                                    <h3>가성비 내리는 스마트 캐주얼 백팩</h3>
-		                                    <h5>말이 필요없이 일단 가성비가 너무나 내림.</h5>
-		                                    <span class="glyphicon glyphicon-play-circle"></span>
-		                                    <span class="duration">03:15</span>
-		                                </a>
-		                            </div>
-		                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
-		                                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-		                                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" width="200px"/>
-		                                    <h3>가성비 내리는 스마트 캐주얼 백팩</h3>
-		                                    <h5>말이 필요없이 일단 가성비가 너무나 내림.</h5>
-		                                    <span class="glyphicon glyphicon-play-circle"></span>
-		                                    <span class="duration">03:15</span>
-		                                </a>
-		                            </div>
-	                        	</div>
+		                            </c:forEach>
+		               
+                     	</div>
 								<i class="next1 fa fa-angle-right fa-3x btnR1"></i>
 	                        	</div>
 	                        </div>
                         </div>
                         <hr>
                         <div class="col-md-0">
-                            <h4><a href='#'>패션</a></h4>
+                            <h4><a href='#'>경매 상품</a></h4>
                             <hr>
                         </div>
                         <div class="list2">
                             <i class="prev2 fa fa-angle-left fa-3x btnL"></i>
                             <div>
-                            <div class="list-unstyled video-list-thumbs row sliderSlick sliderS2" style="width:300; height: 300px; padding:30px">
-                                <div class="col-lg-3 col-sm-4 col-xs-6">
-                                    <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                                        <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" width="200px" />
-                                        <h3>스탠다드에코백(중) 블랙36*37*10cm+</h3>
-                                        <h5>에코지퍼파우치 인도산세트.</h5>
-                                        <span class="glyphicon glyphicon-play-circle"></span>
-                                        <span class="duration">03:15</span>
-                                    </a>
+                            <div class="list-unstyled video-list-thumbs row1 sliderSlick sliderS2" style="width:300; height: 300px; padding:30px">
+                                 <c:forEach items="${list}" var="r">
+		                           <div class="col-lg-3 col-sm-4 col-xs-6">
+		                            <c:if test="${r.auction == 1}">
+		                            	<a href="auctionDetail?pnum=${r.pnum }">
+		                            	<input type="hidden" value="${r.pnum }">
+		                                <img src="img/${r.p_sangse }" alt="Barca" class="img-responsive" style="width:160px; height:140px;" />
+		                                <h3 style="margin: 15px 0px;">${r.pname }</h3>
+		                                <h5>${r.beuid}</h5>
+		                                <span class="glyphicon glyphicon-play-circle"></span>
+		                                <span class="duration">${r.p_cdate }</span>
+		                                </a>
+		                            </c:if>
+		                            </div>
+		                            </c:forEach>
                                 </div>
+                                <!--  
                                 <div class="col-lg-3 col-sm-4 col-xs-6">
                                     <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
                                         <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" width="200px" />
@@ -460,6 +429,7 @@
                                         <span class="duration">03:15</span>
                                     </a>
                                 </div>
+                                -->
                             </div>
                             <i class="next2 fa fa-angle-right fa-3x btnR2"></i>
                             </div>

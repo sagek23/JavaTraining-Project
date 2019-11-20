@@ -36,11 +36,13 @@
  		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
  		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
  		<![endif]-->
-<script language="javascript">
-	function showPopup() {
-		window.open("inquiry_write", "1:1문의",
-				"width=1000, height=600, left=100, top=50");
-	}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+function showPopup() {
+	window.open("inquiry_write", "1:1문의",
+			"width=1000, height=600, left=100, top=50");
+}
 </script>
 <style>
 th, td {
@@ -91,6 +93,7 @@ th, td {
 				<button type="button" class="btn btn-secondary btn-lg"
 					onclick="showPopup();">1:1문의쓰기</button>
 			</div>
+		
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -101,11 +104,42 @@ th, td {
 					</tr>
 				</thead>
 				<tbody>
+				
 				<c:forEach var="i" items="${ilist }">
+				
+				<input type="hidden" value="${i.qna_category }" id="h_category">
 					<tr>
-						<td>${i.qnanum }</td>
+						<td>${i.qnanum }</td>	
+						
 						<td><a href="inquiry_detail?qnanum=${i.qnanum}">${i.qna_title }</a></td>
-						<td>${i.qna_category }</td>
+						
+						<c:choose>
+							<c:when test="${i.qna_category ==1}">
+								<td id="category">배송조회</td>
+							</c:when>
+							<c:when test="${i.qna_category ==2}">
+								<td id="category">주문문의</td>
+							</c:when>
+							<c:when test="${i.qna_category ==3}">
+								<td id="category">취소문의</td>
+							</c:when>
+							<c:when test="${i.qna_category ==4}">
+								<td id="category">반품문의</td>
+							</c:when>
+							<c:when test="${i.qna_category ==5 }">
+								<td id="category">교환문의</td>
+							</c:when>
+							<c:when test="${i.qna_category ==6}">
+								<td id="category">환불문의</td>
+							</c:when>
+							<c:when test="${i.qna_category ==7}">
+								<td id="category">사은품문의</td>
+							</c:when>
+							<c:when test="${i.qna_category ==8 }">
+								<td id="category">입금문의</td>
+							</c:when>
+						</c:choose>
+						
 						<td>${i.regist_date }</td>
 					</tr>
 				</c:forEach>

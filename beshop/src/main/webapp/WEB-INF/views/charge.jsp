@@ -69,11 +69,7 @@ $(function(){
 </script>
 </head>
 <body>
-<div id="top">
-	<img id="logo" src="img/logo.png">
-</div>
-<div id="cbox"><span id="ccharge">충전</span></div>
-<form action="/charge"  method="POST" id="charging">
+<form action="charge"  method="POST" id="charging">
 <div id="pointPg">
 		<div id="charge">포인트 충전</div>
             <div class="payBox">
@@ -98,7 +94,7 @@ $(function(){
     	if($("#paymethod").val()=="카카오페이"){
     		$(function(){
     			 var IMP = window.IMP; 
-                 IMP.init('가맹점코드'); // 부여받은 가맹점 식별코드 입력
+                 IMP.init('imp91760461'); // 부여받은 가맹점 식별코드 입력
                  var msg;
 
                  IMP.request_pay({
@@ -136,7 +132,7 @@ $(function(){
     	else if($("#paymethod").val()=="삼성페이"){
     		$(function(){
     			 var IMP = window.IMP; 
-                 IMP.init('가맹점코드'); // 부여받은 가맹점 식별코드 입력
+                 IMP.init('imp63840957'); // 부여받은 가맹점 식별코드 입력
                  var msg;
 
                  IMP.request_pay({
