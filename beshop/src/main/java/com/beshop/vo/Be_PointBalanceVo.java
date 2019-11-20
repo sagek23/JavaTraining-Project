@@ -1,6 +1,6 @@
 package com.beshop.vo;
 
-public class Be_PointBalanceVo {
+public class BE_PointBalanceVo {
 	int balancenum;
 	int chargenum;
 	int paynum;
@@ -36,7 +36,7 @@ public class Be_PointBalanceVo {
 	public void setBeuid(String beuid) {
 		this.beuid = beuid;
 	}
-	public Be_PointBalanceVo(int balancenum, int chargenum, int paynum, int pbalnow, String beuid) {
+	public BE_PointBalanceVo(int balancenum, int chargenum, int paynum, int pbalnow, String beuid) {
 		super();
 		this.balancenum = balancenum;
 		this.chargenum = chargenum;
@@ -44,7 +44,7 @@ public class Be_PointBalanceVo {
 		this.pbalnow = pbalnow;
 		this.beuid = beuid;
 	}
-	public Be_PointBalanceVo() {
+	public BE_PointBalanceVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

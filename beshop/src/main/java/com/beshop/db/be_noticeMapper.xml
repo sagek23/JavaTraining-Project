@@ -18,9 +18,9 @@
 	</select>
 
 	<insert id="insert">
-		insert into notice values(#{noticenum}, #{notice_ca}, sysdate, #{notice_con}, #{notice_name})
+		insert into notice values((SELECT NVL(MAX(noticenum),0)+1 FROM notice), #{notice_ca}, sysdate, #{notice_con}, #{notice_name})
 	</insert>	
-	
+
 	
 	<select id="getCount" resultType="java.lang.Integer">
 		select count(*) from notice
@@ -48,7 +48,6 @@
 		select noticenum, notice_ca, noticedate, notice_con, notice_name from
         (select rownum n, noticenum, notice_ca, noticedate, notice_con, notice_name from notice)
         a where a.n between ${start} and #{end}
-
     </select>   
  
 		

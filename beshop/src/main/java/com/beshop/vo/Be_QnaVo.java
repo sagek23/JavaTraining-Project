@@ -4,7 +4,6 @@ import java.sql.Date;
 
 public class Be_QnaVo {
 	private int qnanum;
-	private String sec_pw;
 	private String qna_title;
 	private String qna_con;
 	private String qna_answer;
@@ -12,18 +11,31 @@ public class Be_QnaVo {
 	private int pnum;
 	private Date answer_time;
 	private Date regist_date;
-	private String  qna_category;
+	private int qna_category;
+	private String qna_email;
+	public Be_QnaVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Be_QnaVo(int qnanum, String qna_title, String qna_con, String qna_answer, String beuid, int pnum,
+			Date answer_time, Date regist_date, int qna_category, String qna_email) {
+		super();
+		this.qnanum = qnanum;
+		this.qna_title = qna_title;
+		this.qna_con = qna_con;
+		this.qna_answer = qna_answer;
+		this.beuid = beuid;
+		this.pnum = pnum;
+		this.answer_time = answer_time;
+		this.regist_date = regist_date;
+		this.qna_category = qna_category;
+		this.qna_email = qna_email;
+	}
 	public int getQnanum() {
 		return qnanum;
 	}
 	public void setQnanum(int qnanum) {
 		this.qnanum = qnanum;
-	}
-	public String getSec_pw() {
-		return sec_pw;
-	}
-	public void setSec_pw(String sec_pw) {
-		this.sec_pw = sec_pw;
 	}
 	public String getQna_title() {
 		return qna_title;
@@ -67,37 +79,23 @@ public class Be_QnaVo {
 	public void setRegist_date(Date regist_date) {
 		this.regist_date = regist_date;
 	}
-	public String getQna_category() {
+	public int getQna_category() {
 		return qna_category;
 	}
-	public void setQna_category(String qna_category) {
+	public void setQna_category(int qna_category) {
 		this.qna_category = qna_category;
 	}
-	public Be_QnaVo() {
-		super();
-		// TODO Auto-generated constructor stub
+	public String getQna_email() {
+		return qna_email;
 	}
-	public Be_QnaVo(int qnanum, String sec_pw, String qna_title, String qna_con, String qna_answer, String beuid,
-			int pnum, Date answer_time, Date regist_date, String qna_category) {
-		super();
-		this.qnanum = qnanum;
-		this.sec_pw = sec_pw;
-		this.qna_title = qna_title;
-		this.qna_con = qna_con;
-		this.qna_answer = qna_answer;
-		this.beuid = beuid;
-		this.pnum = pnum;
-		this.answer_time = answer_time;
-		this.regist_date = regist_date;
-		this.qna_category = qna_category;
+	public void setQna_email(String qna_email) {
+		this.qna_email = qna_email;
 	}
 	@Override
 	public String toString() {
-		return "Be_QnaVo [qnanum=" + qnanum + ", sec_pw=" + sec_pw + ", qna_title=" + qna_title + ", qna_con=" + qna_con
-				+ ", qna_answer=" + qna_answer + ", beuid=" + beuid + ", pnum=" + pnum + ", answer_time=" + answer_time
-				+ ", regist_date=" + regist_date + ", qna_category=" + qna_category + "]";
+		return "Be_QnaVo [qnanum=" + qnanum + ", qna_title=" + qna_title + ", qna_con=" + qna_con + ", qna_answer="
+				+ qna_answer + ", beuid=" + beuid + ", pnum=" + pnum + ", answer_time=" + answer_time + ", regist_date="
+				+ regist_date + ", qna_category=" + qna_category + ", qna_email=" + qna_email + "]";
 	}
-	
-	
-	
+
 }

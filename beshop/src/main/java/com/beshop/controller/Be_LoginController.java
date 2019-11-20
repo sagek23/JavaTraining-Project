@@ -4,13 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Be_LoginController {
+public class BE_LoginController {
 	
-	@RequestMapping("/login")
-	public String index()
-	{
-		return "login";
-	}
+	
 	
 	@RequestMapping("/kakaologin")
 	public String kakaologin()

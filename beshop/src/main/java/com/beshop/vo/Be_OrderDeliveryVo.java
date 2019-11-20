@@ -2,7 +2,7 @@ package com.beshop.vo;
 
 import java.util.Date;
 
-public class Be_OrderDeliveryVo {
+public class BE_OrderDeliveryVo {
 
 	int onum;
 	String beuid;
@@ -214,7 +214,7 @@ public class Be_OrderDeliveryVo {
 	}
 	
 
-	public Be_OrderDeliveryVo(int onum, String beuid, int pnum, int dcnum, String oname, int ocount, int oprice,
+	public BE_OrderDeliveryVo(int onum, String beuid, int pnum, int dcnum, String oname, int ocount, int oprice,
 			String oaddr1, String oaddr2, String ophone, String odzip, Date odate, int dprice, String dstatus,
 			String addr, int totpri, String omemo, String receivename, String paymethod) {
 		super();
@@ -240,7 +240,7 @@ public class Be_OrderDeliveryVo {
 	}
 
 
-	public Be_OrderDeliveryVo() {
+	public BE_OrderDeliveryVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -1,4 +1,4 @@
-package com.beshop.controller;
+﻿package com.beshop.controller;
 
 import java.util.HashMap;
 
@@ -9,13 +9,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.beshop.dao.BE_ChannelDao;
+import com.beshop.dao.BE_ProductDao;
 import com.beshop.dao.BE_UserDao;
+import com.beshop.vo.BE_ChannelVo;
+import com.beshop.vo.BE_ProductVo;
 import com.beshop.vo.BE_UserVo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -23,48 +28,81 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class BE_UserController {
 	@Autowired
 	private BE_UserDao dao;
-
 	public void setDao(BE_UserDao dao) {
 		this.dao = dao;
 	}
-	//회원가입
-	@RequestMapping(value = "/joinpage",method = RequestMethod.GET)
-	public void Joinget() 
-	{
-		
+	@Autowired
+	private BE_ChannelDao cdao;
+
+	public void setCdao(BE_ChannelDao cdao) {
+		this.cdao = cdao;
 	}
 	
+	@Autowired
+	private BE_ProductDao pao;
 	
-	@RequestMapping(value = "/joinpage",method = RequestMethod.POST)
-	public ModelAndView Join(BE_UserVo v,HttpServletRequest request)
-	{	
-		String year=request.getParameter("year");
-		String mon=request.getParameter("mon");
-		String day=request.getParameter("day");
-		String birth=year+mon+day;
-		
-		String phone1=request.getParameter("phone1");
-		String phone2=request.getParameter("phone2");
-		String phone3=request.getParameter("phone3");
-		String uphone=phone1+phone2+phone3;
-		String snsid=request.getParameter("snsid");
-		v.setSnsid(snsid);
-		v.setUphone(uphone);
-		v.setBirth(birth);
-		v.setAddr1(null);
-		v.setAddr2(null);
-		System.out.println(v);
-		ModelAndView mav=new ModelAndView();
-		int re=dao.insert(v);
-		if(re==1)
-		{
-			mav=new ModelAndView("redirect:/main");
+	public void setPao(BE_ProductDao pao) {
+		this.pao = pao;
+	}
+
+		@RequestMapping("footer")
+		public void footer() {
+			
 		}
-		return mav;
+		//회원가입
+		@RequestMapping(value = "/joinpage",method = RequestMethod.GET)
+		public void Joinget() 
+		{
+			
+		}
 		
-	}
-	
-	
+		@ResponseBody
+		@RequestMapping(value = "/joinpage",method = RequestMethod.POST)
+		public ModelAndView Join(BE_UserVo v,HttpServletRequest request)
+		{	
+			String year=request.getParameter("year");
+			String mon=request.getParameter("mon");
+			String day=request.getParameter("day");
+			String birth=year+mon+day;
+			
+			String phone1=request.getParameter("phone1");
+			String phone2=request.getParameter("phone2");
+			String phone3=request.getParameter("phone3");
+			String uphone=phone1+phone2+phone3;
+			String snsid=request.getParameter("snsid");
+			v.setSnsid(snsid);
+			v.setUphone(uphone);
+			v.setBirth(birth);
+			v.setAddr1(null);
+			v.setAddr2(null);
+			System.out.println(v);
+			ModelAndView mav=new ModelAndView();
+			int re=dao.insert(v);
+			if(re==1)
+			{
+				int r = dao.insertChannel(v);
+				System.out.println(r);
+				mav=new ModelAndView("redirect:/main");
+			}
+			return mav;
+			
+		}
+	//Sns 아이디 로그인 체크
+		@ResponseBody
+	@RequestMapping("snsId_ck")
+		public int snsId_ck(String snsid, HttpServletRequest request) {
+			System.out.println(snsid);
+			BE_UserVo vo = dao.snsCheck(snsid);
+		
+			int r = 0;
+			if(vo == null) {
+				r = 0;
+			}
+			else {
+				r =1;
+			}	        
+			return r;
+		}
 	
 	//아이디,비밀번호 찾기 페이지
 	@RequestMapping(value = "/search_user", method = RequestMethod.GET)
@@ -130,41 +168,69 @@ public class BE_UserController {
 	}
 	
 	//회원로그인 처리
-	@RequestMapping(value = "login.do", method=RequestMethod.GET)
-	public ModelAndView login() {
-		ModelAndView mav = new ModelAndView("redirect:/main");
-		return mav;
-	}
-	@RequestMapping(value="login.do", method=RequestMethod.POST)
-	public ModelAndView login_process(HttpServletRequest request, HttpServletResponse response) {
+	/*
+	 * @RequestMapping(value = "login.do", method=RequestMethod.GET) public
+	 * ModelAndView login() { ModelAndView mav = new ModelAndView("redirect:/main");
+	 * mav.setViewName("main"); return mav; }
+	 */
+	@RequestMapping(value="main", method=RequestMethod.POST)
+	public ModelAndView login_process(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("redirect:/main");
 		BE_UserVo vo = null;
 		String beuid = request.getParameter("beuid");
 		String upw = request.getParameter("upw");
-		
-		System.out.println("회원아이디 : "+beuid+" 회원 비밀번호 : "+upw);
-		HashMap map = new HashMap();
-		map.put("beuid",beuid);
-		map.put("upw", upw);
-	
-		vo = dao.getName(map);
+		String snsid = request.getParameter("snsid");
+		BE_ChannelVo cvo = null;
 		HttpSession session = request.getSession(true);
-
-		if(vo == null) {
-			System.out.println("실패");
-			mav.addObject("msg","실패");
+		System.out.println(snsid);
+		if(snsid != null) {
+			vo = dao.getSnsName(snsid);
+			cvo = cdao.getChannel(vo.getBeuid());
+			if(vo == null) {
+				System.out.println("실패");
+				mav.addObject("msg","실패");
+			}
+			else {
+				System.out.println(vo.getUname());
+				String name = vo.getUname();
+				mav.addObject("msg","성공");
+				session.setAttribute("beuid", vo.getBeuid());
+				session.setAttribute("upw", vo.getUpw());
+				session.setAttribute("uname", vo.getUname());
+				session.setAttribute("email", vo.getEmail());
+				session.setAttribute("ch_img", cvo.getCh_img());
+				session.setAttribute("ch_name", cvo.getCh_name());
+				System.out.println(vo.getBeuid()+vo.getUpw()+vo.getUname()+vo.getEmail());
+			}	        
 		}
 		else {
-			System.out.println(vo.getUname());
-			String name = vo.getUname();
-			mav.addObject("msg","성공");
-			session.setAttribute("beuid", beuid);
-			session.setAttribute("upw", upw);
-			session.setAttribute("uname", name);
-			session.setAttribute("email", vo.getEmail());
-		}	        
-		mav.setViewName("main");
-		return mav;
+			System.out.println("회원아이디 : "+beuid+" 회원 비밀번호 : "+upw);
+			HashMap map = new HashMap();
+			map.put("beuid",beuid);
+			map.put("upw", upw);
+		
+			vo = dao.getName(map);
+			cvo = cdao.getChannel(beuid);
+			if(vo == null) {
+				System.out.println("실패");
+				mav.addObject("msg","실패");
+			}
+			else {
+				System.out.println(vo.getUname());
+				String name = vo.getUname();
+				mav.addObject("msg","성공");
+				session.setAttribute("beuid", beuid);
+				session.setAttribute("upw", upw);
+				session.setAttribute("uname", name);
+				session.setAttribute("email", vo.getEmail());
+				session.setAttribute("ch_img", cvo.getCh_img());
+				session.setAttribute("ch_name", cvo.getCh_name());
+				System.out.println();
+			}	        
+			}
+		  mav.addObject("list", pao.videoList());
+		  mav.setViewName("main");
+		  return mav;
 	}
 	//회원 로그아웃
 	@RequestMapping("logout.do")
@@ -174,13 +240,7 @@ public class BE_UserController {
 		return mav;
 	}
 	
-	
-	
-	@RequestMapping("main")
-	public void be_main() {
-		
-		
-	}
+
 	@RequestMapping("customer_center")
 	public void custmoer() {
 		
@@ -252,4 +312,6 @@ public class BE_UserController {
 	public void user_del_ok() {
 		
 	}
+	
+	
 }

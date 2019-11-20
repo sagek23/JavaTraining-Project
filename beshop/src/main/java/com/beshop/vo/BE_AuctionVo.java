@@ -9,7 +9,21 @@ public class BE_AuctionVo {
 	Date day;
 	int cnt;
 	Date endday;
-	
+	int pnum;
+	public BE_AuctionVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public BE_AuctionVo(int anum, String beuid, int price, Date day, int cnt, Date endday, int pnum) {
+		super();
+		this.anum = anum;
+		this.beuid = beuid;
+		this.price = price;
+		this.day = day;
+		this.cnt = cnt;
+		this.endday = endday;
+		this.pnum = pnum;
+	}
 	public int getAnum() {
 		return anum;
 	}
@@ -46,23 +60,15 @@ public class BE_AuctionVo {
 	public void setEndday(Date endday) {
 		this.endday = endday;
 	}
-	public BE_AuctionVo(int anum, String beuid, int price, Date day, int cnt, Date endday) {
-		super();
-		this.anum = anum;
-		this.beuid = beuid;
-		this.price = price;
-		this.day = day;
-		this.cnt = cnt;
-		this.endday = endday;
+	public int getPnum() {
+		return pnum;
 	}
-	public BE_AuctionVo() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setPnum(int pnum) {
+		this.pnum = pnum;
 	}
 	@Override
 	public String toString() {
 		return "BE_AuctionVo [anum=" + anum + ", beuid=" + beuid + ", price=" + price + ", day=" + day + ", cnt=" + cnt
-				+ ", endday=" + endday + "]";
+				+ ", endday=" + endday + ", pnum=" + pnum + "]";
 	}
-	
 }

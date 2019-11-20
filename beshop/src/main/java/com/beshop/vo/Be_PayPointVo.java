@@ -2,7 +2,7 @@ package com.beshop.vo;
 
 import java.util.Date;
 
-public class Be_PayPointVo {
+public class BE_PayPointVo {
 	int paynum;
 	String beuid;
 	Date paydate;
@@ -31,14 +31,14 @@ public class Be_PayPointVo {
 	public void setPaylist(int paylist) {
 		this.paylist = paylist;
 	}
-	public Be_PayPointVo(int paynum, String beuid, Date paydate, int paylist) {
+	public BE_PayPointVo(int paynum, String beuid, Date paydate, int paylist) {
 		super();
 		this.paynum = paynum;
 		this.beuid = beuid;
 		this.paydate = paydate;
 		this.paylist = paylist;
 	}
-	public Be_PayPointVo() {
+	public BE_PayPointVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

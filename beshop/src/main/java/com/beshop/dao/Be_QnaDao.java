@@ -21,4 +21,7 @@ public class Be_QnaDao {
 	public List<Be_QnaVo> listQna(HashMap map) {
 		return DBManager.listAllQna(map);
 	}
+	public int insertQna(Be_QnaVo qvo) {
+		return DBManager.insertQna(qvo);
+	}
 }

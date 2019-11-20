@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+  <select id="reviewList" resultType="Be_ReviewVo">
+  	SELECT renum, beuid, re_con, redate FROM review where pnum = #{pnum}
+  </select>
+
+  <insert id="WritingReview">
+  	INSERT INTO review (renum, beuid, pnum, redate, retitle, re_con) VALUES ( (SELECT NVL(MAX(renum) , 0)+1 FROM review), #{beuid},#{pnum},SYSDATE,#{retitle}, #{re_con})
+  </insert>
+</mapper>

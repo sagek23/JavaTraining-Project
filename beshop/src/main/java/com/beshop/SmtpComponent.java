@@ -17,7 +17,7 @@ public class SmtpComponent {
 		r.setHost("smtp.naver.com");
 		r.setPort(587);
 		r.setUsername("gofl854@naver.com");
-		r.setPassword("SKSMSthffh23!");
+		r.setPassword("");
 		r.setDefaultEncoding("UTF-8");
 		
 		Properties prop = new Properties();

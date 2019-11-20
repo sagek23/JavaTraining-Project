@@ -1,21 +1,41 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="product">
-  
-  <insert id="insert" >
-  	insert into product values((select max(pnum)+1 from product),1,sysdate,#{as_info},TO_DATE(#{p_cdate},'yyyy-mm-dd hh24:mi'),#{pname},#{detail},#{stock},'더미',#{p_video},#{p_sangse},#{option},#{select_op},0,0,#{p_price},null,null)
-  </insert>
-<select id="nowAuction" resultType="avo">
+  <select id="nowAuction" resultType="avo">
   	select * from auction where anum = (select max(anum) from auction)
   </select>
   
   <insert id="insertAuction" >
-  	insert into auction values((select nvl(max(anum),0)+1 from auction), #{beuid},#{price},sysdate,(select nvl(max(cnt),0)+1 from auction),sysdate+1)
+  	insert into auction values((select nvl(max(anum),0)+1 from auction), #{beuid},#{price},sysdate,(select nvl(max(cnt),0)+1 from auction),sysdate+1,#{pnum})
   </insert>
   
-  <select id="getTime" resultType="pvo">
-  	select * from product where pnum = #{pnum} 
+  <insert id="insert" >
+  	insert into product values((select nvl(max(pnum),0)+1 from product),1,sysdate,#{as_info},TO_DATE(#{p_cdate},'yyyy-mm-dd hh24:mi'),#{pname},#{detail},#{stock},#{p_category},#{p_video},#{p_sangse},#{option1},#{select_op1},#{option2},#{select_op2},#{option3},#{select_op3},0,0,#{p_price},null,#{p_sprice},#{auction},#{beuid})
+  </insert>
+  <select id="list" resultType="pvo">
+  	select * from product where beuid=#{beuid}
+  </select>
+  <select id="videolist" resultType="pvo">
+  	select p_video, p_date from (select rownum r,p_video,p_date from product) where r <![CDATA[<=]]> 5 order by p_date
+  </select> 
+ <!--  <select id="shoplist" resultType="pvo">
+  select * from (select rownum r, pnum, p_date, p_cdate, p_sangse, pname, hits, p_price, beuid from 
+(select * from product where p_cdate <![CDATA[<=]]> sysdate 
+order by p_cdate desc)) where r <![CDATA[<=]]> 5
+  </select> -->
+  <select id="shoplist" resultType="pvo">
+  select * from (select  pnum, p_date, p_cdate, p_sangse, pname, hits, p_price, beuid, auction from 
+(select * from product where p_cdate <![CDATA[<=]]> sysdate order by p_cdate desc))
+  </select>
+  <select id="productDetail" resultType="pvo">
+  	select * from product where pnum = #{pnum}
+  </select>
+  <select id="successAuction" resultType="avo">
+  	select * from auction where pnum = #{pnum} and price = (select max(price) from auction where pnum = #{pnum})
+  </select>
+  <select id="auctionList"  resultType="auclistVo">
+  select a.pnum, p.pname, a.price from product p, auction a where p.pnum = a.pnum and a.beuid = #{beuid}
   </select>
 </mapper>

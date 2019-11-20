@@ -3,7 +3,7 @@ package com.beshop.vo;
 
 import java.sql.Date;
 
-public class Be_UserVo {
+public class BE_UserVo {
 	private String beuid;
 	private String upw;
 	private String sex;
@@ -20,7 +20,7 @@ public class Be_UserVo {
 	private String pf3;
 	private String snsid;
 
-	public Be_UserVo() {
+	public BE_UserVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -115,7 +115,7 @@ public class Be_UserVo {
 		this.snsid = snsid;
 	}
 	
-	public Be_UserVo(String beuid, String upw, String sex, String birth, String uname, Date loginlog, String addr1,
+	public BE_UserVo(String beuid, String upw, String sex, String birth, String uname, Date loginlog, String addr1,
 			String addr2, String uphone, String email, Date joindata, String pf1, String pf2, String pf3, String snsid
 			) {
 		super();
@@ -135,6 +135,13 @@ public class Be_UserVo {
 		this.pf3 = pf3;
 		this.snsid = snsid;
 		
+	}
+	@Override
+	public String toString() {
+		return "BE_UserVo [beuid=" + beuid + ", upw=" + upw + ", sex=" + sex + ", birth=" + birth + ", uname=" + uname
+				+ ", loginlog=" + loginlog + ", addr1=" + addr1 + ", addr2=" + addr2 + ", uphone=" + uphone + ", email="
+				+ email + ", joindata=" + joindata + ", pf1=" + pf1 + ", pf2=" + pf2 + ", pf3=" + pf3 + ", snsid="
+				+ snsid + "]";
 	}
 	
 }

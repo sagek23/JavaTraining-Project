@@ -144,7 +144,5 @@ public class MailController {
 		System.out.println("ok");
 		return keyCode;
 	}
-
-	
 }
 

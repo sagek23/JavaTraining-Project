@@ -1,12 +1,10 @@
 package com.beshop.vo;
 
-import java.util.Date;
-
-public class Be_ChargePointVo {
+public class BE_ChargePointVo {
 	
-	String beuid;
-	int chargelist;
-	String chargemethod;
+	private String beuid;
+	private int chargelist;
+	private String chargemethod;
 
 
 	public String getBeuid() {
@@ -45,7 +43,7 @@ public class Be_ChargePointVo {
 
 	
 	
-	public Be_ChargePointVo(String beuid, int chargelist, String chargemethod) {
+	public BE_ChargePointVo(String beuid, int chargelist, String chargemethod) {
 		super();
 		this.beuid = beuid;
 		this.chargelist = chargelist;
@@ -54,7 +52,7 @@ public class Be_ChargePointVo {
 
 
 
-	public Be_ChargePointVo() {
+	public BE_ChargePointVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

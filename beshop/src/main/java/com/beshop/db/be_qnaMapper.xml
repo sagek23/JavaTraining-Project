@@ -18,8 +18,12 @@
 	</select>
 
 	<insert id="insert">
-		insert into notice values(#{noticenum}, #{notice_ca}, sysdate, #{notice_con}, #{notice_name})
-	</insert>	
+		insert into qna values((SELECT NVL(MAX(Qnanum),0)+1 FROM Qna), #{qna_title}, #{qna_con}, null, #{beuid}, #{pnum}, sysdate, sysdate, #{qna_category}, #{qna_email})
+		<!-- <selectKey keyProperty="seq_qna" resultType="int" order="AFTER">
+			select seq_qna.nextval from dual
+			(SELECT NVL(MAX(Qnanum),0)+1 FROM Qna)
+		</selectKey> -->
+	</insert>
 	
 	
 	<select id="getCount" resultType="java.lang.Integer">
@@ -28,13 +32,11 @@
 
 
 	<select id="selectAll" resultType="Be_QnaVo">
-			select qnanum, sec_pw, qna_title, qna_con, qna_answer, beuid, pnum, answer_time, regist_date, qna_category from
-			(select rownum n, qnanum , sec_pw, qna_title, qna_con, qna_answer, beuid, pnum, answer_time, regist_date, qna_category from qna)
+			select qnanum,  qna_title, qna_con, qna_answer, beuid, pnum, answer_time, regist_date, qna_category, qna_email from
+			(select rownum n, qnanum , qna_title, qna_con, qna_answer, beuid, pnum, answer_time, regist_date, qna_category, qna_email from qna)
 			a where a.n between ${start} and #{end}
     </select>   
  
 		
-			
-
 
 </mapper>

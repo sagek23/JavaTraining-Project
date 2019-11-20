@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,34 +12,35 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.beshop.dao.Be_PointDao;
-import com.beshop.vo.Be_ChargePointVo;
-import com.beshop.vo.Be_PointBalanceVo;
+import com.beshop.dao.BE_PointDao;
+import com.beshop.vo.BE_ChargePointVo;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @Controller
-public class Be_PointController {
+public class BE_PointController {
+	
 	@Autowired
-	Be_PointDao dao = new Be_PointDao();
+	BE_PointDao podao = new BE_PointDao();
 
-	public void setDao(Be_PointDao dao) {
-		this.dao = dao;
+	public void setDao(BE_PointDao podao) {
+		this.podao = podao;
 	}
 	
-	
-	@RequestMapping(value = "/charge", method = RequestMethod.POST)
-	public String  chargePoint2(Be_ChargePointVo c, RedirectAttributes rttr)
+	@RequestMapping(value = "charge", method = RequestMethod.POST)
+	public String  chargePoint2(BE_ChargePointVo c, RedirectAttributes rttr)
 	{
 		int re = -1;
-		//System.out.println("동작controller");
+		System.out.println("동작controller");
 		String chargelist = Integer.toString(c.getChargelist());
 		String chargemethod = c.getChargemethod();
 		rttr.addFlashAttribute("chargelist", chargelist);
 		rttr.addFlashAttribute("chargemethod", chargemethod);
-		re = dao.charge(c);
+		re = podao.charge(c);
+		System.out.println(re +"포인트 충전 여부");
 		rttr.addFlashAttribute("re",re);
-		return "redirect:chargeCom";
+		return "redirect:/chargeCom";
 		
 	}
 	@ResponseBody
@@ -52,7 +53,7 @@ public class Be_PointController {
 		String point="";
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			point = mapper.writeValueAsString(dao.getPointBalance(beuid));
+			point = mapper.writeValueAsString(podao.getPointBalance(beuid));
 			System.out.println(point);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -64,7 +65,7 @@ public class Be_PointController {
 	}
 	
 	@RequestMapping("/chargeCom")
-	public void chargeCom(@ModelAttribute(value="vo") Be_ChargePointVo c, HttpServletRequest request)
+	public void chargeCom(@ModelAttribute(value="vo") BE_ChargePointVo c, HttpServletRequest request)
 	{
 		
 	}
@@ -74,12 +75,6 @@ public class Be_PointController {
 	{
     	
 	}
-	@RequestMapping("/mainShop")
-	public String main()
-	{
-		return "main_shopping";
-	}
-	
 
 	
 }

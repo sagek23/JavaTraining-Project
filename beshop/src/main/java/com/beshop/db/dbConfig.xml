@@ -3,20 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<properties resource="com/beshop/db/bit-properties"></properties>
+<properties resource="com/beshop/db/db.properties"/>
 <typeAliases>
-	<typeAlias type="com.beshop.vo.Be_NoticeVo" alias="Be_NoticeVo"/>
-	<typeAlias type="com.beshop.vo.Be_QnaVo" alias="Be_QnaVo"/>
-<<<<<<< HEAD
-	<typeAlias type="com.beshop.vo.Be_ChargePointVo" alias="Be_ChargeVo"/>
-  	<typeAlias type="com.beshop.vo.Be_PayPointVo" alias="Be_PayVo"/>
-  	<typeAlias type="com.beshop.vo.Be_PointBalanceVo" alias="Be_BalanceVo"/>
-  	 <typeAlias type="com.beshop.vo.Be_UserVo" alias="Be_uservo"/>
-	 <typeAlias type="com.beshop.vo.Be_OrderDeliveryVo" alias="Be_OrderVo"/>
-=======
+	<typeAlias type="com.beshop.vo.BE_UserVo" alias="userVo"/>
 	<typeAlias type="com.beshop.vo.BE_ProductVo" alias="pvo"/>
-	<typeAlias type="com.beshop.vo.BE_AuctionVo" alias="avo"/>
->>>>>>> 81fbed5f244ad09c119c8cb07d683050a86dbb26
+	<typeAlias type="com.beshop.vo.BE_SubVo" alias="subVo" />
+	<typeAlias type="com.beshop.vo.BE_Sub_ListVo" alias="sub_ListVo" />
+	<typeAlias type="com.beshop.vo.BE_ChargePointVo" alias="Be_ChargeVo"/>
+  	<typeAlias type="com.beshop.vo.BE_PayPointVo" alias="Be_PayVo"/>
+  	<typeAlias type="com.beshop.vo.BE_PointBalanceVo" alias="Be_BalanceVo"/>
+  	<typeAlias type="com.beshop.vo.BE_OrderDeliveryVo" alias="odvo"/>
+  	<typeAlias type="com.beshop.vo.BE_OrderPurchaseVo" alias="odpvo"/>
+  	<typeAlias type="com.beshop.vo.BE_PayVo" alias="payvo"/>
+  	<typeAlias type="com.beshop.vo.BE_AuctionVo" alias="avo"/>
+  	<typeAlias type="com.beshop.vo.BE_ChannelVo" alias="channelvo"/>
+  	<typeAlias type="com.beshop.vo.BE_AuctionListVo" alias="auclistVo"/>
+  	<typeAlias type="com.beshop.vo.Be_NoticeVo" alias="Be_NoticeVo"/>
+	<typeAlias type="com.beshop.vo.Be_QnaVo" alias="Be_QnaVo"/>
+	<typeAlias type="com.beshop.vo.Be_RankingVo" alias="rankVo"/>
+		<typeAlias type="com.beshop.vo.Be_ReviewVo" alias="Be_ReviewVo"/>
+	
+  	
 </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -30,13 +37,16 @@
     </environment>
   </environments>
   <mappers>
+    <mapper resource="com/beshop/db/be_userMapper.xml"/>
+    <mapper resource="com/beshop/db/BE_ProductMapper.xml"/>
+    <mapper resource="com/beshop/db/BE_SubMapper.xml"/>
+    <mapper resource="com/beshop/db/BE_pointMapper.xml"/>
+    <mapper resource="com/beshop/db/BE_OrderMapper.xml"/>
+    <mapper resource="com/beshop/db/BE_ChannelMapper.xml"/>
+    
     <mapper resource="com/beshop/db/be_noticeMapper.xml"/>
     <mapper resource="com/beshop/db/be_qnaMapper.xml"/>
-<<<<<<< HEAD
-    <mapper resource="com/beshop/db/be_pointMapper.xml"/>
-=======
-    <mapper resource="com/beshop/db/BE_ProductMapper.xml"/>
-	<mapper resource="com/beshop/db/be_orderMapper.xml"/>
->>>>>>> 81fbed5f244ad09c119c8cb07d683050a86dbb26
+    <mapper resource="com/beshop/db/be_rankingMapper.xml"/>
+        
   </mappers>
 </configuration>

@@ -12,8 +12,14 @@
   <select id="searchId"  resultType="String">
   	select beuid from be_user where uname = #{uname} and email = #{email}
   </select>
+  <select id="getUser" resultType="userVo">
+  	select * from be_user where beuid = #{beuid}
+  </select>  
   <select id="loginUser" resultType="userVo">
   	select * from be_user where beuid = #{beuid} and upw = #{upw}
+  </select>
+  <select id="snscheck" resultType="userVo">
+   select * from be_user where snsid = #{snsid}
   </select>
     <update id="updatePwd"  >
   	update be_user set upw = #{new_pwd} where upw = #{pwd} and beuid = #{beuid}
@@ -24,4 +30,7 @@
   <delete id="deleteUser">
   delete be_user where beuid =#{beuid} and upw = #{upw}
   </delete>
+  <insert id="channel">
+  insert into channel values(#{uname},'dpro.png',#{beuid})
+  </insert>
 </mapper>

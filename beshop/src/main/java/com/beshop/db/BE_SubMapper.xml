@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sub">
+<insert id="insertSub">
+  	insert into sub values(#{beuid},#{sbeuid})	
+  </insert>
+  <select id="subList" resultType="String">
+  	select beuid from sub where sbeuid = #{sbeuid}
+  </select>
+    <select id="list_sub" resultType="sub_ListVo">
+  	select c.ch_name, c.ch_img, s.beuid, p.p_video, p.pname, p.p_date, p.hits, p_sangse, s.sbeuid from product p, channel c, sub s
+                                            where p.beuid = s.beuid
+                                            and c.beuid = s.beuid
+                                            and s.sbeuid = #{sbeuid} 
+                                            order by s.beuid desc
+
+  </select>
+</mapper>
