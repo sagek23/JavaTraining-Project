@@ -13,13 +13,6 @@ import com.beshop.vo.BE_UserVo;
 @Repository
 public class BE_OrderDeliveryDao {
 
-	
-	public BE_OrderPurchaseVo listod(int onum) {
-		System.out.println("db ok");
-		return DBManager.listOrderdelivery(onum);
-		
-	}
-	
 	public List<BE_OrderDeliveryVo> orderList(String beuid)
 	{
 		return DBManager.orderList(beuid);
@@ -28,6 +21,13 @@ public class BE_OrderDeliveryDao {
 	public BE_OrderDeliveryVo orderDetail(String beuid, int onum)
 	{
 		return DBManager.orderDetail(beuid, onum);
+	}
+
+
+	public BE_OrderPurchaseVo listod(int onum) {
+		System.out.println("db ok");
+		return DBManager.listOrderdelivery(onum);
+		
 	}
 	public int insertOrderdelivery(BE_OrderDeliveryVo od)
 	{
