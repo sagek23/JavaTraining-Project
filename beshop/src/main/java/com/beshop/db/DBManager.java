@@ -43,10 +43,113 @@ public class DBManager {
 			System.out.println(e.getMessage());
 		}
 	}
-	//채널 업데이트
+	
+	public static List<BE_PayPointVo> minusPointList(String beuid)
+	{
+		List<BE_PayPointVo> mlist = null;
+		SqlSession session = factory.openSession();
+		mlist = session.selectList("point.MinusPointList");
+		session.close();
+		return mlist;
+	}
+	public static List<BE_ChargePointVo> plusPointList(String beuid)
+	{
+		List<BE_ChargePointVo> plist = null;
+		SqlSession session = factory.openSession();
+		plist = session.selectList("point.PlusPointList");
+		session.close();
+		return plist;
+	}
+	public static BE_PointBalanceVo pointBalance(String beuid)
+	{
+		HashMap map = new HashMap();
+		map.put("beuid", beuid);
+		BE_PointBalanceVo  p;
+		SqlSession session = factory.openSession();
+		p = session.selectOne("point.getPoint", beuid);
+		session.close();
+		return p;
+	}
+	
+	public static int  chargePoint(BE_ChargePointVo c)
+	{
+		int re = -1;
+		SqlSession session = factory.openSession();
+		re = session.insert("point.chargeP", c);
+		session.commit();
+		session.close();
+		
+		return re;
+	}
+	public static int payPoint(BE_PayPointVo p)
+	{
+		int re = -1;
+		SqlSession session = factory.openSession();
+		re = session.insert("point.payP", p);
+		session.close();
+		return re;
+	}
+	
+	public static List<Be_OrderDeliveryVo> orderList(String beuid)
+	{
+		HashMap map = new HashMap();
+		//System.out.println("아이디는 "+beuid);
+		map.put("beuid", beuid);
+		System.out.println("manager에서 map"+map);
+		List<Be_OrderDeliveryVo> list;
+		SqlSession session = factory.openSession();
+		list = session.selectList("ordered.orderList", map);
+		session.close();
+		return list;
+	}
+	
+	public static BE_OrderDeliveryVo orderDetail(String beuid, int onum)
+	{
+		BE_OrderDeliveryVo o;
+		HashMap map = new HashMap();
+		map.put("beuid", beuid);
+		map.put("onum", onum);
+		SqlSession session = factory.openSession();
+		o = session.selectOne("ordered.orderDetail", map);
+		session.close();
+		return o;
+	}
+	
+	   public static int insertReview(Be_ReviewVo r)
+    {
+    	int re = -1;
+		SqlSession session = factory.openSession();
+		re = session.insert("review.WritingReview", r);
+		session.commit();
+		session.close();
+		return re;
+    }
+	public static List<Be_ReviewVo> reviewList(int pnum){
+    	SqlSession session = factory.openSession();
+    	List<Be_ReviewVo> list = null;
+    	list = session.selectList("review.reviewList", pnum);
+    	System.out.println();
+    	session.close();
+    	return list;
+    }	
+    
+ 
+
+	
+	
+	public static BE_OrderPurchaseVo listOrderdelivery(int onum)
+	{
+		
+		SqlSession session = factory.openSession();
+		BE_OrderPurchaseVo vo = null;
+		vo = session.selectOne("Order.selectodpurchase",onum);
+		System.out.println(vo);
+		session.close();
+		
+		return vo;
+	}
 	public static int updateChannel(BE_ChannelVo vo) {
 		SqlSession session = factory.openSession();
-		System.out.println("DB매니저"+vo);
 		int r = session.update("channel.updateChannel", vo);
 		System.out.println(r);
 		session.commit();
@@ -54,7 +157,7 @@ public class DBManager {
 		return r;
 	}
 	
-	//경매 관련
+	
 		public static BE_AuctionVo nowAuction() {
 			BE_AuctionVo ao= null;
 			SqlSession session = factory.openSession();
@@ -95,7 +198,6 @@ public class DBManager {
 		String beuid = (String)map.get("beuid");
 		String pwd = (String)map.get("pwd");
 		String new_pwd = (String)map.get("new_pwd");
-		System.out.println("아이디 : "+beuid+"비밀번호 : "+pwd+"새 비번 : "+new_pwd);
 	    int r =  session.update("beuser.updatePwd",map);
 	    System.out.println(r);
 	    session.commit();
@@ -109,7 +211,6 @@ public class DBManager {
 		SqlSession session = factory.openSession();
 		String beuid = (String)map.get("beuid");
 		String upw = (String)map.get("upw");
-		System.out.println("로그인 시도한 아이디 : "+beuid+" 비밀번호 : "+upw);
 		vo = session.selectOne("beuser.loginUser",map);
 		System.out.println(vo);
 		session.close();
@@ -119,7 +220,6 @@ public class DBManager {
 	public static int newPwd(String beuid, String keyCode) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
-		System.out.println("매니저까지 잘 왔나용 아이디 :"+beuid+"keycode는 용"+keyCode);
 		HashMap map = new HashMap();
 		map.put("beuid", beuid);
 		map.put("new_pwd", keyCode);
@@ -145,7 +245,6 @@ public class DBManager {
 		// TODO Auto-generated method stub
 		int re=-1;
 		SqlSession session=factory.openSession();
-		System.out.println("매니저에서의 값확인"+v);
 		re=session.insert("beuser.insert",v);
 		session.commit();
 		session.close();
@@ -232,82 +331,8 @@ public class DBManager {
 	}
 	
 	
-	//포인트 관련
-	public static List<BE_PayPointVo> minusPointList(String beuid)
-	{
-		List<BE_PayPointVo> mlist = null;
-		SqlSession session = factory.openSession();
-		mlist = session.selectList("point.MinusPointList");
-		session.close();
-		return mlist;
-	}
-	public static List<BE_ChargePointVo> plusPointList(String beuid)
-	{
-		List<BE_ChargePointVo> plist = null;
-		SqlSession session = factory.openSession();
-		plist = session.selectList("point.PlusPointList");
-		session.close();
-		return plist;
-	}
-	public static BE_PointBalanceVo pointBalance(String beuid)
-	{
-		HashMap map = new HashMap();
-		//System.out.println("아이디는 "+beuid);
-		map.put("beuid", beuid);
-		System.out.println("manager에서 map"+map);
-		BE_PointBalanceVo  p;
-		SqlSession session = factory.openSession();
-		p = session.selectOne("point.getPoint", beuid);
-		session.close();
-		return p;
-	}
+	//�룷�씤�듃 愿��젴
 	
-	public static int  chargePoint(BE_ChargePointVo c)
-	{
-		int re = -1;
-		SqlSession session = factory.openSession();
-		re = session.insert("point.chargeP", c);
-
-		session.commit();
-		session.close();
-		
-		return re;
-	}
-	public static int payPoint(BE_PayPointVo p)
-	{
-		int re = -1;
-		SqlSession session = factory.openSession();
-		re = session.insert("point.payP", p);
-		session.close();
-		return re;
-	}
-	
-	//주문 관련 db
-	public static BE_OrderDeliveryVo orderDetail(String beuid, int onum)
-	{
-		BE_OrderDeliveryVo o;
-		HashMap map = new HashMap();
-		map.put("beuid", beuid);
-		map.put("onum", onum);
-		System.out.println("manager에서 map"+map);
-		SqlSession session = factory.openSession();
-		o = session.selectOne("ordered.orderDetail", map);
-		session.close();
-		return o;
-	}
-	
-	public static BE_OrderPurchaseVo listOrderdelivery(int onum)
-	{
-		
-		SqlSession session = factory.openSession();
-		BE_OrderPurchaseVo vo = null;
-		System.out.println("디비");
-		vo = session.selectOne("Order.selectodpurchase",onum);
-		System.out.println(vo);
-		session.close();
-		
-		return vo;
-	}
 	public static int insertODPay(BE_OrderDeliveryVo od)
 	{
 		int r=-1;
@@ -331,19 +356,6 @@ public class DBManager {
 	      
 	}
 
-	public static List<BE_OrderDeliveryVo> orderList(String beuid)
-		{
-			HashMap map = new HashMap();
-			//System.out.println("아이디는 "+beuid);
-			map.put("beuid", beuid);
-			System.out.println("manager에서 map"+map);
-			List<BE_OrderDeliveryVo> list;
-			SqlSession session = factory.openSession();
-			list = session.selectList("ordered.orderList", map);
-			session.close();
-			return list;
-		}
-
 	public static BE_UserVo snsIdCheck(String snsid) {
 		// TODO Auto-generated method stub
 		BE_UserVo vo = new BE_UserVo();
@@ -352,7 +364,7 @@ public class DBManager {
 		session.close();
 		return vo;
 	}
-	//회원가입시 자동으로 채널 생성
+
 	public static int insertChannel(BE_UserVo v) {
 		// TODO Auto-generated method stub
 		SqlSession session = factory.openSession();
@@ -364,13 +376,11 @@ public class DBManager {
 		session.close();
 		return r;
 	}
-	//아이디를 받아 회원의 채널 정보 담기
 	public static BE_ChannelVo getChannel(String beuid) {
 		// TODO Auto-generated method stub
 		BE_ChannelVo vo = null;
 		SqlSession session = factory.openSession();
 		vo = session.selectOne("channel.getChannel", beuid);
-		System.out.println("채널의 회원정보"+vo);
 		session.close();
 		return vo;
 	}
@@ -485,10 +495,8 @@ public class DBManager {
 		List<BE_Sub_ListVo> list = null;
 		HashMap map = new HashMap();
 		map.put("sbeuid", sbeuid);
-		System.out.println("받아짐?"+ sbeuid);
 		SqlSession session = factory.openSession();
 		list = session.selectList("sub.list_sub", map);
-		System.out.println("받아짐?"+ list);
 		session.close();
 		return list;
 	}
@@ -501,25 +509,6 @@ public class DBManager {
 		return list;
 	}
 
-	 public static List<Be_ReviewVo> reviewList(int pnum){
-	    	SqlSession session = factory.openSession();
-	    	List<Be_ReviewVo> list = null;
-	    	list = session.selectList("review.reviewList", pnum);
-	    	System.out.println();
-	    	session.close();
-	    	return list;
-	    }	
-	    
-	    public static int insertReview(Be_ReviewVo r)
-	    {
-	    	int re = -1;
-			SqlSession session = factory.openSession();
-			re = session.insert("review.WritingReview", r);
-			System.out.println("동작 리뷰");
-			System.out.println("리뷰re: "+re);
-			session.commit();
-			session.close();
-			return re;
-	    }
+	 
 
 }
