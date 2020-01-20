@@ -58,7 +58,6 @@ public class BE_OrderController {
 		String beuid = (String)session.getAttribute("beuid");
 		String onumval=request.getParameter("onum");
 		int onum=Integer.parseInt(onumval);
-		System.out.println("컨트롤러동작함");
 		ModelAndView mav=new ModelAndView();
 		System.out.println(dao.listod(onum));
 		mav.addObject("d",dao.listod(onum));
@@ -68,7 +67,7 @@ public class BE_OrderController {
 	 * @RequestMapping(value = "/orderpage",method = RequestMethod.GET) public void
 	 * Order() { HttpSession session = request.getSession(true); beuid =
 	 * (String)session.getAttribute("beuid");
-	 * //System.out.println("컨트롤러 beuid: "+beuid); String order =""; try {
+	 * //System.out.println("而⑦듃濡ㅻ윭 beuid: "+beuid); String order =""; try {
 	 * ObjectMapper mapper = new ObjectMapper(); order =
 	 * mapper.writeValueAsString(dao.orderList(beuid)); System.out.println(order); }
 	 * catch (Exception e) { // TODO: handle exception
@@ -90,7 +89,6 @@ public class BE_OrderController {
 	{
 		HttpSession session = request.getSession(true);
 		beuid = (String)session.getAttribute("beuid");
-		//System.out.println("컨트롤러 beuid: "+beuid);
 		String order ="";
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -117,6 +115,9 @@ public class BE_OrderController {
 		mav.setViewName("orderDetail");
 		return mav;
 	}
+
+
+
 
 
 	@RequestMapping(value = "/purchase_ok",method = RequestMethod.GET)
@@ -159,7 +160,7 @@ public class BE_OrderController {
 		
 	}
 	
-	//상품디테일에서 주문하기로 이동
+	
 	@RequestMapping(value="/orderpage", method=RequestMethod.GET)
 	public ModelAndView order(HttpSession session, HttpServletRequest request) {
 		int pnum = Integer.parseInt(request.getParameter("pnum"));
