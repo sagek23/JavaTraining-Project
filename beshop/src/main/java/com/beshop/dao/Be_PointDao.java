@@ -27,7 +27,6 @@ public class BE_PointDao {
 	
 	public int charge(BE_ChargePointVo p)
 	{
-		//System.out.println("동작dao");
 		return DBManager.chargePoint(p);
 	}
 	public int pay(BE_PayPointVo p)
